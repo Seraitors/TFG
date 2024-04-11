@@ -15,9 +15,13 @@ public class Main {
         // Imprimir un carácter
         char caracter = 'A';
         System.out.println(caracter);
+        
+        Integer manolo=null; 
+        System.out.println(manolo);
 
         // Imprimir una expresión
         System.out.println("El resultado de 5 + 3 es: " + (5 + 3));
+        System.out.println("algo");
 
         // Imprimir cualquier objeto
         Object objeto = new Object();
