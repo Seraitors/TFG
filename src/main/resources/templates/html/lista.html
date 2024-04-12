@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="/css/caja-boostrap.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+</head>
+<body>
+
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><img src="/imagen/calabera.png" id="foto" alt="Tu imagen" class="w-25 h-60"></li>
+                <li><a href="/inicio" class="nav-link px-2 text-secondary">Inicio</a></li>
+                <li><a href="/caracteristicas" class="nav-link px-2 text-white">Características</a></li>
+                <li><a href="/pagoEnca" class="nav-link px-2 text-white">Precios</a></li>
+                <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="/encabezado" class="nav-link px-2 text-white">Acerca</a></li>
+
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <!--  mirar por que da error-->
+                       <!-- <span th:text="${#authentication.name}">Opciones</span> <span class="caret"></span>-->
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><span class="dropdown-item" th:text="' App: ' + ${session.numVisitasApp}"></span></li>
+                        <li><span class="dropdown-item" th:text="' index: ' + ${session.numVisitasIndex}"></span></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="/perfil/new" class="nav-link px-2 text-secondary">Crear perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="/perfil/list" class="nav-link px-2 text-secondary">Lista perfiles</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get" action="/figuras/filtrar">
+                <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
+                <input type="text" class="form-control form-control-dark" id="buscarPorNombre" placeholder="Buscar..." name="nombre">
+            </form>
+
+            <div class="text-end">
+                <a href="/creador" class="btn btn-outline-light me-2">Iniciar sesion</a>
+            </div>
+            <div class="text-end">
+
+
+                <a href="" class="btn btn-warning"> Registrar </a>
+            <!--    <form id="logoutForm" th:action="@{/usuario/logout}" method="post">
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-sign-out-alt"></i> Exit
+                    </button>
+                </form>-->
+            </div>
+            <!--   Son para que te cuentes los inicios de sesion est atambien puesto arriba
+          <div  sec:authorize="hasRole('ROLE_ADMIN')" >
+
+                   <span class="dropdown-item" th:text=" ' App: ' + ${session.numVisitasApp}"></span>
+
+
+                   <span class="dropdown-item" th:text=" ' index: ' + ${session.numVisitasIndex}"></span>
+           </div> -->
+        </div>
+    </div>
+</header>
+
+   <!-- Encabezado de enlaces para ver las figuras-->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 mb-3">
+            <a href="#" class="btn btn-primary btn-lg btn-block">Novedades</a>
+        </div>
+        <div class="col-lg-3 mb-3">
+            <a href="#" class="btn btn-success btn-lg btn-block">One Piece</a>
+        </div>
+        <div class="col-lg-3 mb-3">
+            <a href="#" class="btn btn-danger btn-lg btn-block">Naruto</a>
+        </div>
+        <div class="col-lg-3 mb-3">
+            <a href="#" class="btn btn-info btn-lg btn-block">Dragon Ball</a>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</body>
+</html>
