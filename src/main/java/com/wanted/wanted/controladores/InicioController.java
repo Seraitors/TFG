@@ -47,7 +47,7 @@ public class InicioController {
     @GetMapping("/registrar")
     public  String registar(){
 
-        return  "html/encabezado/registro";
+        return  "html/registarSesion/register";
 
     }
 

@@ -1,8 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
   <link href="/css/caja-boostrap.css" type="text/css" rel="stylesheet">
@@ -11,56 +13,43 @@
 <body>
 
 <main class="container mt-5">
-  <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2">
-    <div class="card">
-      <div class="card-header">Acceso a la aplicación</div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">Acceso a la aplicación</div>
+         <!--  esto se pone asi aunque en el inicio de sesion tenga al ruta del getmaping aqui s epone post con ese nombre y va -->
+        <div class="card-body">
+          <form sec:authorize="!isAuthenticated()" th:action="@{/usuario/login}" method="post">
 
-      <div class="card-body pt-3">
-        <span th:if="${param.error}">Credenciales no válidas</span>
+            <div class="mb-3">
+              <label for="login-username" class="form-label">Usuario o correo electrónico:</label>
+              <input id="login-username" type="text" class="form-control" name="username" required>
+            </div>
 
-          <!--  esto se pone asi aunque en el inicio de sesion tenga al ruta del getmaping aqui s epone post con ese nombre y va -->
-        <form sec:authorize="!isAuthenticated()" th:action="@{/usuario/login}" method="post">
+            <div class="mb-3">
+              <label for="login-password" class="form-label">Contraseña:</label>
+              <input id="login-password" type="password" class="form-control" name="password" required>
+            </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text"><i class="fa fa-user"></i></span>
-            <input id="login-username" type="text" class="form-control" name="username"
-                   placeholder="Introduzca username o email">
-          </div>
-
-          <div class="input-group mb-3">
-            <span class="input-group-text"><i class="fa fa-lock"></i></span>
-            <input id="login-password" type="password" class="form-control" name="password"
-                   placeholder="Introduzca contraseña">
-          </div>
-
-
-          <!-- Button -->
-          <div class="col-sm-12">
-            <button id="btn-login" type="submit" class="btn btn-success">Login</button>
-          </div>
-
-        </form>
-      </div>
-      <div class="card-footer text-center">
-
-        <div class="checkbox mb-3">
-          <label for="recuerdame">Recuérdame</label>
-          <input type="checkbox" id="recuerdame" value="recuerdame">
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="recuerdame">
+              <label class="form-check-label" for="recuerdame">Recuérdame</label>
+            </div>
+             <!-- Button -->
+            <button type="submit" class="btn btn-success">Iniciar sesión</button>
+          </form>
         </div>
-        <p class="text-center mt-3">¿No tienes cuenta?
-          <a class="text-primary" th:href="@{/usuario/signup}">Crear cuenta</a>
-        </p>
-        <p sec:authorize="isAuthenticated()">Usted ya ha iniciado una sesión</p>
+
+        <div class="card-footer">
+          <p class="mb-0">¿No tienes cuenta? <a class="text-primary" th:href="@{/usuario/signup}">Crear cuenta</a></p>
+          <p sec:authorize="isAuthenticated()" class="mb-0">Ya has iniciado sesión</p>
+        </div>
       </div>
     </div>
   </div>
-
-
-
 </main>
 
-
-<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
