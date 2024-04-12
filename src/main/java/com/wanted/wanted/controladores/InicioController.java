@@ -30,12 +30,12 @@ public class InicioController {
      * Esto de aqui va a ser importante
      * @return
      */
-    @GetMapping("/inicioSesion")
+    /* @GetMapping("/inicioSesion")
     public  String iniciarSesion(){
 
 
         return "html/encabezado/iniciarSesion";
-    }
+    } */ 
 
 
     /**

@@ -45,12 +45,12 @@
             </form>
 
             <div class="text-end">
-                <a href="/creador" class="btn btn-outline-light me-2">Iniciar sesion</a>
+                <a href="/inicioSesion" class="btn btn-outline-light me-2">Iniciar sesion</a>
             </div>
             <div class="text-end">
 
 
-                <a href="" class="btn btn-warning"> Registrar </a>
+                <a href="/registrar" class="btn btn-warning"> Registrar </a>
             <!--    <form id="logoutForm" th:action="@{/usuario/logout}" method="post">
                     <button type="submit" class="btn btn-warning">
                         <i class="fas fa-sign-out-alt"></i> Exit
@@ -86,6 +86,41 @@
         </div>
     </div>
 </div>
+
+
+<!-- ahora desde aqui empieza la creacion de las figuras -->
+<!-- Hacer con html y css-->
+
+<div class="container-fluid">
+    <div class="card">
+        <h3>Lista de figura</h3>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Arco</th>
+                    <th>Precio</th>
+        
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="figura: ${listaFigura}">
+                   <!-- <td><img th:src="${persona.url}" alt="luffie"></td> --> 
+                   <!--<td th:text="${persona.id}">ID</td> --> 
+                    <td th:text="${figura.nombre}">Nombre</td>
+                    <td th:text="${figura.arco?.nombre}">Arco</td>
+                    <td th:text="${figura.des}">Descripción</td>
+                    <td th:text="${figura.precio}">Precio</td>
+                    <td>
+                        <input class="form-check-input" type="checkbox" id="compra">
+                        <label class="form-check-label" for="compra">Compra</label>
+                    </td>
+                   
+                </tr>
+                </tbody>
+            </table>
 
 
 <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
