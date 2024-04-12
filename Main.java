@@ -9,6 +9,8 @@ public class Main {
         System.out.println(numero);
 
         // Imprimir un número decimal
+
+        
         double numeroDecimal = 3.14;
         System.out.println(numeroDecimal);
 
