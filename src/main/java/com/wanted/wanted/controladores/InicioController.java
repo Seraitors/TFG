@@ -5,6 +5,7 @@ import com.wanted.wanted.servicios.FiguraServices;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,7 +20,8 @@ public class InicioController {
 
 
     @GetMapping({"/" ,"/inicio"})
-    public  String  inicio(){
+    public  String  inicio(Model model){
+    model.addAttribute("listaFigura",figuraServices.findAll());
 
     return "html/lista";
 
