@@ -79,13 +79,26 @@ public class InitDataConfig {
 
                 arcoServices.add(arco1);
 
+                Arco arco2 = Arco.builder()
+                                .nombre("Dressrosa")
+                                .build();
+
+                arcoServices.add(arco2);
+
+                Arco arco3 = Arco.builder()
+                        .nombre("Namek")
+                        .build();
+
+                        arcoServices.add(arco3);
+
+
                 Figura figura = Figura.builder()
 
                                 .url("/imagen/fotosLista/luffy.jpg")
                                 .nombre("Luffy")
                                 .des("Esta es una figura de luffy cuando estaba en wano ")
                                 .arco(arco)
-                                .precio(80).build();
+                                .precio("80€").build();
 
                 figuraServices.add(figura);
 
@@ -93,10 +106,46 @@ public class InitDataConfig {
                                 .url("/imagen/fotosLista/zoro.jpg")
                                 .nombre("Zoro")
                                 .des("Esta es una figura de Zoro en wano, El ancho es 10 cm de alto y de largo son 70cm.  ")
-                                .arco(arco)
-                                .precio(80).build();
+                                .arco(arco2)
+                                .precio("80€").build();
 
                 figuraServices.add(figura1);
+
+                Figura figura2 = Figura.builder()
+                                .url("/imagen/fotosLista/brook.jpg")
+                                .nombre("Brook")
+                                .des("Esta es una figura de Brook en su lucha de Bif Mom, El ancho es 15 cm de alto y de largo son 50cm.  ")
+                                .arco(arco2)
+                                .precio("100€").build();
+
+                figuraServices.add(figura2);
+
+                Figura figura3 = Figura.builder()
+                                .url("/imagen/fotosLista/goku.jpg")
+                                .nombre("Goku")
+                                .des("Esta es la figura de Goku en su lucha contra el manvado Freezer, El ancho es 12 cm de alto y de largo son 60cm.  ")
+                                .arco(arco3)
+                                .precio("100€").build();
+
+                figuraServices.add(figura3);
+
+                Figura figura4 = Figura.builder()
+                                .url("/imagen/fotosLista/vegeta.jpg")
+                                .nombre("Vegeta")
+                                .des("Esta es una figura de vegeta herido despues de su pelea en Namek, El ancho es 10 cm de alto y de largo son 45cm.  ")
+                                .arco(arco3)
+                                .precio("30€").build();
+
+                figuraServices.add(figura4);
+
+                Figura figura5 = Figura.builder()
+                                .url("/imagen/fotosLista/freezer.jpg")
+                                .nombre("Freezer")
+                                .des("Esta es una figura de Freezer en Namek, El ancho es 10 cm de alto y de largo son 70cm.  ")
+                                .arco(arco3)
+                                .precio("50€").build();
+
+                figuraServices.add(figura5);
 
         }
 
