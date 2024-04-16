@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px; /* Ancho deseado */
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    padding: 16px;
+    text-align: right;
+}
+
+.card-header h3 {
+    margin: 0;
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-check-input {
+    margin-right: 4px;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    padding-top: 20px; /* Espacio superior para separar de la parte superior de la página */
+}

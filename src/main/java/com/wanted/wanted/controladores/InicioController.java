@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 public class InicioController {
 
-    private FiguraServices   figuraServices;
+    private final FiguraServices   figuraServices;
 
 
 

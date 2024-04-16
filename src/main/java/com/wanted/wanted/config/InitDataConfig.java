@@ -1,6 +1,5 @@
 package com.wanted.wanted.config;
 
-
 import com.wanted.wanted.entidades.Arco;
 import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.servicios.ArcoServices;
@@ -13,81 +12,92 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Component;
 
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+
 @Configuration
 @EnableJpaAuditing
 @RequiredArgsConstructor
 @Component
 public class InitDataConfig {
 
-    @Autowired
-    private FiguraServices  figuraServices;
+        @Autowired
+        private FiguraServices figuraServices;
 
-    @Autowired
-    private ArcoServices arcoServices;
+        @Autowired
+        private ArcoServices arcoServices;
 
+        /*
+         * private final PasswordEncoder passwordEncoder;
+         * private final RegistrarService registrarService;
+         * 
+         * @PostConstruct
+         * public void initUsuarios() {
+         * Roles roleUser = Roles.builder().nombre("ROLE_USER").build();
+         * //perfilUser = perfilService.save(perfilUser);
+         * Roles perfilAdmin = Roles.builder().nombre("ROLE_ADMIN").build();
+         * //perfilAdmin = perfilService.save(perfilAdmin);
+         * 
+         * Registrar registrar = Registrar.builder()
+         * .username("user")
+         * .email("user@canciones.es")
+         * .password("user")
+         * .roles(Set.of(roleUser))
+         * .build();
+         * registrar.setPassword(passwordEncoder.encode(registrar.getPassword()));
+         * 
+         * //usuario1 = usuarioService.save(usuario1);
+         * 
+         * Registrar registrar2 = Registrar.builder()
+         * .username("admin")
+         * .email("admin@canciones.es")
+         * .password("admin")
+         * .roles(Set.of(roleUser, perfilAdmin))
+         * .build();
+         * registrar2.setPassword(passwordEncoder.encode(registrar2.getPassword()));
+         * 
+         * //usuario2 = usuarioService.save(usuario2);
+         * registrarService.saveAll(Arrays.asList(registrar,registrar2));
+         * }
+         */
 
+        /**
+         * hacer la base de datos como en el examen
+         */
 
-   /* private final PasswordEncoder passwordEncoder;
-    private final RegistrarService registrarService;
+        @PostConstruct
+        public void initData() {
 
-    @PostConstruct
-    public void initUsuarios() {
-        Roles roleUser = Roles.builder().nombre("ROLE_USER").build();
-        //perfilUser = perfilService.save(perfilUser);
-        Roles perfilAdmin = Roles.builder().nombre("ROLE_ADMIN").build();
-        //perfilAdmin = perfilService.save(perfilAdmin);
+                Arco arco = Arco.builder()
+                                .nombre("Wano").build();
 
-        Registrar registrar = Registrar.builder()
-                .username("user")
-                .email("user@canciones.es")
-                .password("user")
-                .roles(Set.of(roleUser))
-                .build();
-        registrar.setPassword(passwordEncoder.encode(registrar.getPassword()));
+                arcoServices.add(arco);
 
-        //usuario1 = usuarioService.save(usuario1);
+                Arco arco1 = Arco.builder()
+                                .nombre("Marinforce").build();
 
-        Registrar registrar2 = Registrar.builder()
-                .username("admin")
-                .email("admin@canciones.es")
-                .password("admin")
-                .roles(Set.of(roleUser, perfilAdmin))
-                .build();
-        registrar2.setPassword(passwordEncoder.encode(registrar2.getPassword()));
+                arcoServices.add(arco1);
 
-        //usuario2 = usuarioService.save(usuario2);
-        registrarService.saveAll(Arrays.asList(registrar,registrar2));
-    }*/
+                Figura figura = Figura.builder()
 
-/**
- * hacer la base de datos como en el examen
- */
+                                .url("/imagen/fotosLista/luffy.jpg")
+                                .nombre("Luffy")
+                                .des("Esta es una figura de luffy cuando estaba en wano ")
+                                .arco(arco)
+                                .precio(80).build();
 
+                figuraServices.add(figura);
 
-@PostConstruct
-    public  void  initData(){
+                Figura figura1 = Figura.builder()
+                                .url("/imagen/fotosLista/zoro.jpg")
+                                .nombre("Zoro")
+                                .des("Esta es una figura de Zoro en wano, El ancho es 10 cm de alto y de largo son 70cm.  ")
+                                .arco(arco)
+                                .precio(80).build();
 
-    Arco arco = Arco.builder()
-            .nombre("Wano").build();
+                figuraServices.add(figura1);
 
-    arcoServices.add(arco);
-
-    Figura figura =Figura.builder()
-            .nombre("Luffy")
-            .des("Esta es una figura de luffy cuando estaba en wano ")
-            .arco(arco)
-            .precio(80).build();
-
-        figuraServices.add(figura);
-
-}
-
-
-
-
+        }
 
 }
