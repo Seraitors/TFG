@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "Persona")
+@Table(name = "Figura")
 public class Figura {
     @Id @GeneratedValue
     //@Min(value=1, message = "{mascota.id.mayorquecero}")

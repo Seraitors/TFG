@@ -44,13 +44,7 @@ public class InicioController {
      * @return
      */
 
-    @GetMapping("/registrar")
-    public  String registar(){
-
-        return  "html/registarSesion/register";
-
-    }
-
+  
 
 
 

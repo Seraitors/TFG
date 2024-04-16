@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegistrarController {
     
+    @GetMapping("/registrar")
+    public  String registar(){
+
+        return  "html/registarSesion/register";
+
+    }
 
 
 }
