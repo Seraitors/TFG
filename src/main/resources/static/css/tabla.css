@@ -53,8 +53,5 @@
     margin-right: 4px;
 }
 
-.container {
-    display: flex;
-    justify-content: flex-end; /* Alinea los elementos a la derecha */
-    padding-top: 20px; /* Espacio superior para separar de la parte superior de la página */
-}
+
+

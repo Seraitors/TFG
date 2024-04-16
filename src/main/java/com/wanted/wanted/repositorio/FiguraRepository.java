@@ -17,12 +17,15 @@ public interface FiguraRepository extends JpaRepository<Figura,Long>  {
 
     public  List<Figura> findByNombreContainsIgnoreCase(String s);
     List<Figura> findByNombre(String nombre);
-    List<Figura>findFigurasByPrecioGreaterThan(int precio);
+
+    
+    /*   List<Figura>findFigurasByPrecioGreaterThan(int precio);*/
 
 
-    @Query("SELECT p FROM Figura p WHERE p.precio = :precio")
+
+   /*@Query("SELECT p FROM Figura p WHERE p.precio = :precio")
     List<Figura> findFigurasByPrecio(@Param("precio") int precio);
-
+ */ 
 
     @Query("SELECT p FROM Figura p WHERE p.nombre = :nombre")
     List<Figura> findFigurasByNombre(@Param("nombre") String nombre);
