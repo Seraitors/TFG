@@ -2,8 +2,11 @@ package com.wanted.wanted.config;
 
 import com.wanted.wanted.entidades.Arco;
 import com.wanted.wanted.entidades.Figura;
+import com.wanted.wanted.entidades.Novedad;
 import com.wanted.wanted.servicios.ArcoServices;
 import com.wanted.wanted.servicios.FiguraServices;
+import com.wanted.wanted.servicios.NovedadServices;
+
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,9 @@ public class InitDataConfig {
 
         @Autowired
         private ArcoServices arcoServices;
+
+        @Autowired
+        private NovedadServices novedadServices;
 
         /*
          * private final PasswordEncoder passwordEncoder;
@@ -86,11 +92,10 @@ public class InitDataConfig {
                 arcoServices.add(arco2);
 
                 Arco arco3 = Arco.builder()
-                        .nombre("Namek")
-                        .build();
+                                .nombre("Namek")
+                                .build();
 
-                        arcoServices.add(arco3);
-
+                arcoServices.add(arco3);
 
                 Figura figura = Figura.builder()
 
@@ -112,7 +117,7 @@ public class InitDataConfig {
                 figuraServices.add(figura1);
 
                 Figura figura2 = Figura.builder()
-                                .url("/imagen/fotosLista/brook.jpg")
+                                .url("/imagen/fotosLista/brook1.jpg")
                                 .nombre("Brook")
                                 .des("Esta es una figura de Brook en su lucha de Bif Mom, El ancho es 15 cm de alto y de largo son 50cm.  ")
                                 .arco(arco2)
@@ -146,6 +151,25 @@ public class InitDataConfig {
                                 .precio("50€").build();
 
                 figuraServices.add(figura5);
+
+                Figura figura6 = Figura.builder()
+                                .url("/imagen/fotosLista/freezer.jpg")
+                                .nombre("Piccolo")
+                                .des("Esta es una figura de Piccolo en Namek, El ancho es 11.5 cm de alto y de largo son 300cm.  ")
+                                .arco(arco3)
+                                .precio("20€").build();
+
+                figuraServices.add(figura6);
+
+                Novedad novedad = Novedad.builder()
+                        .url(null)
+                        .nombre(null)
+                        .des(null)
+                        .arco(arco3)
+                        .precio(null).build();
+
+
+                        novedadServices.add(novedad);
 
         }
 
