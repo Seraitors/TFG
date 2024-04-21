@@ -161,7 +161,7 @@ public class InitDataConfig {
 
                 figuraServices.add(figura6);
 
-                Novedad novedad = Novedad.builder()
+              /*  Novedad novedad = Novedad.builder()
                         .url(null)
                         .nombre(null)
                         .des(null)
@@ -169,7 +169,7 @@ public class InitDataConfig {
                         .precio(null).build();
 
 
-                        novedadServices.add(novedad);
+                        novedadServices.add(novedad);*/
 
         }
 

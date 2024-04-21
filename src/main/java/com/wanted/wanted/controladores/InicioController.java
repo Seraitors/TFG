@@ -96,7 +96,7 @@ public class InicioController {
 
         return "html/encabezado/creador";
     }
-    @PostMapping("/inicio/fifura")
+    @PostMapping("/inicio/figura")
     public  String volver(){
 
         return "redirect:/figuras/lista";
