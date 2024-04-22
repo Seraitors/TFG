@@ -166,12 +166,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  th:each="figura: ${listaFigura}">
-                                <td><img th:src="${listaFigura[2].url}" alt="imagen"></td>
-                                <td th:text="${listaFigura[6].nombre}">Nombre</td>
-                                <td th:text="${listaFigura[6].arco?.nombre}">Arco</td>
-                                <td th:text="${listaFigura[6].des}">Descripción</td>
-                                <td th:text="${listaFigura[6].precio}">Precio</td>
+                            <tr  th:each="novedad:${novedadFigura}">
+                                <td><img th:src="${novedad.url}" alt="imagen"></td>
+                                <td th:text="${novedad.nombre}">Nombre</td>
+                                <td th:text="${novedad.arco?.nombre}">Arco</td>
+                                <td th:text="${novedad.des}">Descripción</td>
+                                <td th:text="${novedad.precio}">Precio</td>
                                 <td >
                                     <!--<input class="form-check-input" type="checkbox" id="compra">
                                     
@@ -182,7 +182,7 @@
                                         </a>
                                        
                                     </td>
-                            </tr>
+                            </tr>   
                         </tbody>
                     </table>
                 </div>

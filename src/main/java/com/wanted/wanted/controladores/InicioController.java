@@ -2,6 +2,8 @@ package com.wanted.wanted.controladores;
 
 
 import com.wanted.wanted.servicios.FiguraServices;
+import com.wanted.wanted.servicios.NovedadServices;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -16,12 +18,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class InicioController {
 
     private final FiguraServices   figuraServices;
+    private final NovedadServices novedadServices;
 
 
 
     @GetMapping({"/" ,"/inicio"})
     public  String  inicio(Model model){
     model.addAttribute("listaFigura",figuraServices.findAll());
+    model.addAttribute("novedadFigura ", novedadServices.findAll());
 
     return "html/lista";
 

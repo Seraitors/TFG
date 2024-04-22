@@ -153,7 +153,7 @@ public class InitDataConfig {
                 figuraServices.add(figura5);
 
                 Figura figura6 = Figura.builder()
-                                .url("/imagen/fotosLista/freezer.jpg")
+                                .url("/imagen/fotosLista/piccolo.jpg")
                                 .nombre("Piccolo")
                                 .des("Esta es una figura de Piccolo en Namek, El ancho es 11.5 cm de alto y de largo son 300cm.  ")
                                 .arco(arco3)
@@ -161,15 +161,15 @@ public class InitDataConfig {
 
                 figuraServices.add(figura6);
 
-              /*  Novedad novedad = Novedad.builder()
-                        .url(null)
-                        .nombre(null)
-                        .des(null)
+                Novedad novedad = Novedad.builder()
+                        .url("/imagen/fotosLista/freezer.jpg")
+                        .nombre("Gohan")
+                        .des("Gohan modo bestia en la tierra su despertad ma skaioken")
                         .arco(arco3)
-                        .precio(null).build();
+                        .precio("150").build();
 
 
-                        novedadServices.add(novedad);*/
+                        novedadServices.add(novedad);
 
         }
 
