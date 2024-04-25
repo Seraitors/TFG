@@ -25,7 +25,7 @@ public class InicioController {
     @GetMapping({"/" ,"/inicio"})
     public  String  inicio(Model model){
     model.addAttribute("listaFigura",figuraServices.findAll());
-    model.addAttribute("novedadFigura ", novedadServices.findAll());
+    model.addAttribute("novedadFigura", novedadServices.findAll());
 
     return "html/lista";
 

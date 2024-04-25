@@ -75,6 +75,9 @@ public class InitDataConfig {
         @PostConstruct
         public void initData() {
 
+                /**
+                 * One piece
+                 */
                 Arco arco = Arco.builder()
                                 .nombre("Wano").build();
 
@@ -91,11 +94,30 @@ public class InitDataConfig {
 
                 arcoServices.add(arco2);
 
+                /**
+                 * Dragon ball
+                 */
                 Arco arco3 = Arco.builder()
                                 .nombre("Namek")
                                 .build();
 
                 arcoServices.add(arco3);
+
+                Arco arco4 = Arco.builder()
+                                .nombre("Tierra")
+                                .build();
+
+                arcoServices.add(arco4);
+
+                /**
+                 * Naruto
+                 */
+
+                Arco arco5 = Arco.builder()
+                                .nombre("Villa ocula de la Hoja")
+                                .build();
+
+                arcoServices.add(arco5);
 
                 Figura figura = Figura.builder()
 
@@ -161,15 +183,71 @@ public class InitDataConfig {
 
                 figuraServices.add(figura6);
 
+                Figura figura7 = Figura.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("sasuke")
+                                .des("Esta es una figura de sasuke en la villa oculta de la hoja de pequño, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
+                                .arco(arco5)
+                                .precio("30€").build();
+
+                figuraServices.add(figura7);
+                Figura figura8 = Figura.builder()
+                                .url("/imagen/fotosLista/naruto.jpg")
+                                .nombre("naruto")
+                                .des("Esta es una figura de naruto en la villa oculta de la hoja de pequño, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
+                                .arco(arco5)
+                                .precio("30€").build();
+
+                figuraServices.add(figura8);
+
+                Figura figura9 = Figura.builder()
+                                .url("/imagen/fotosLista/narutoM.jpg")
+                                .nombre("naruto")
+                                .des("Esta es una figura de naruto en la villa oculta de la hoja de mayor, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
+                                .arco(arco5)
+                                .precio("35€").build();
+
+                figuraServices.add(figura9);
+
+                /**
+                 * De aqui son las novedades de la semana
+                 */
+
                 Novedad novedad = Novedad.builder()
-                        .url("/imagen/fotosLista/freezer.jpg")
-                        .nombre("Gohan")
-                        .des("Gohan modo bestia en la tierra su despertad ma skaioken")
-                        .arco(arco3)
-                        .precio("150").build();
+                                .url("/imagen/fotosLista/gohan.jpg")
+                                .nombre("Gohan")
+                                .des("Gohan modo bestia en la tierra su despertad ma skaioken")
+                                .arco(arco4) // Aquí haces referencia a un arco no guardado
+                                .precio("150").build();
 
+                novedadServices.add(novedad);
 
-                        novedadServices.add(novedad);
+                Novedad novedad1 = Novedad.builder()
+                                .url("/imagen/fotosLista/narutoSabio.jpg")
+                                .nombre("Naruto")
+                                .des("Naruto pelea contra Pain Modo sabio 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                novedadServices.add(novedad1);
+
+                Novedad novedad2 = Novedad.builder()
+                                .url("/imagen/fotosLista/pain.jpg")
+                                .nombre("Pain")
+                                .des("Pain pelea contra Naruto Modo sabio 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("45").build();
+
+                novedadServices.add(novedad2);
+
+                Novedad novedad3 = Novedad.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                novedadServices.add(novedad3);
 
         }
 
