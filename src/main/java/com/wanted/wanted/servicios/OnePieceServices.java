@@ -23,32 +23,31 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OnePieceServices {
 
-    private  final OnePieceServices  onePieceServices;
+    private  final OnePieceRepository  onePieceRepository;
 
 
 
 
     public List<OnePiece> findAll() {
-        return onePieceServices.findAll();
+        return onePieceRepository.findAll();
     }
 
 
     public  OnePiece add(OnePiece p){
-        onePieceServices.save(p);
+        onePieceRepository.save(p);
         return p;
     }
 
 
    
     public OnePiece edit(OnePiece m) {
-        return onePieceServices.save(m);
+        return onePieceRepository.save(m);
     }
 
     public void delete(OnePiece m) {
 
-        onePieceServices.delete(m);
+        onePieceRepository.delete(m);
     }
    
-
-    
+   
 }

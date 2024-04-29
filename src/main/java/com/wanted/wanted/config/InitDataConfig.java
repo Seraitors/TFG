@@ -3,9 +3,13 @@ package com.wanted.wanted.config;
 import com.wanted.wanted.entidades.Arco;
 import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.entidades.Novedad;
+import com.wanted.wanted.entidades.OnePiece;
+import com.wanted.wanted.entidades.Naruto;
 import com.wanted.wanted.servicios.ArcoServices;
 import com.wanted.wanted.servicios.FiguraServices;
 import com.wanted.wanted.servicios.NovedadServices;
+import com.wanted.wanted.servicios.OnePieceServices;
+import com.wanted.wanted.servicios.NarutoServices;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +37,12 @@ public class InitDataConfig {
 
         @Autowired
         private NovedadServices novedadServices;
+
+        @Autowired
+        private OnePieceServices onePieceServices;
+
+        @Autowired
+        private NarutoServices narutoServices;
 
         /*
          * private final PasswordEncoder passwordEncoder;
@@ -114,7 +124,7 @@ public class InitDataConfig {
                  */
 
                 Arco arco5 = Arco.builder()
-                                .nombre("Villa ocula de la Hoja")
+                                .nombre("Villa oculta de la Hoja")
                                 .build();
 
                 arcoServices.add(arco5);
@@ -248,6 +258,258 @@ public class InitDataConfig {
                                 .precio("50").build();
 
                 novedadServices.add(novedad3);
+
+                /* Aqui empieza la pagina de one piece de figuras */
+                OnePiece onePiece = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece);
+
+                OnePiece onePiece1 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece1);
+
+                OnePiece onePiece2 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece2);
+
+                OnePiece onePiece3 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece3);
+
+                OnePiece onePiece4 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece4);
+
+                OnePiece onePiece5 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece5);
+
+                OnePiece onePiece6 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece6);
+
+                OnePiece onePiece7 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece7);
+                OnePiece onePiece8 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece8);
+                OnePiece onePiece9 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece9);
+                OnePiece onePiece10 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece10);
+                OnePiece onePiece11 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece11);
+                OnePiece onePiece12 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece12);
+                OnePiece onePiece13 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece13);
+                OnePiece onePiece14 = OnePiece.builder()
+                                .url("/imagen/fotosLista/obito.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                onePieceServices.add(onePiece14);
+
+                /* Aqui vienen las figuras de naruto */
+
+                Naruto naruto = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto);
+                Naruto naruto1 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto1);
+                Naruto naruto2 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto2);
+                Naruto naruto3 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto3);
+                Naruto naruto4 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto4);
+                Naruto naruto5 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto5);
+                Naruto naruto6 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto6);
+                Naruto naruto7 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto7);
+                Naruto naruto8 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto8);
+                Naruto naruto9 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto9);
+                Naruto naruto10 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto10);
+                Naruto naruto11 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto11);
+                Naruto naruto12 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto12);
+                Naruto naruto13 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto13);
+                Naruto naruto14 = Naruto.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                narutoServices.add(naruto14);
 
         }
 
