@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
-public interface DargonBallRepository  extends JpaRepository<DragonBall,Long>{
+public interface DragonBallRepository  extends JpaRepository<DragonBall,Long>{
     
 }

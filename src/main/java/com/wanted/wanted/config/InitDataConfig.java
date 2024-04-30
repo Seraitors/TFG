@@ -1,11 +1,13 @@
 package com.wanted.wanted.config;
 
 import com.wanted.wanted.entidades.Arco;
+import com.wanted.wanted.entidades.DragonBall;
 import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.entidades.Novedad;
 import com.wanted.wanted.entidades.OnePiece;
 import com.wanted.wanted.entidades.Naruto;
 import com.wanted.wanted.servicios.ArcoServices;
+import com.wanted.wanted.servicios.DragonBallServices;
 import com.wanted.wanted.servicios.FiguraServices;
 import com.wanted.wanted.servicios.NovedadServices;
 import com.wanted.wanted.servicios.OnePieceServices;
@@ -43,6 +45,8 @@ public class InitDataConfig {
 
         @Autowired
         private NarutoServices narutoServices;
+        @Autowired
+        private DragonBallServices dragonBallServices;
 
         /*
          * private final PasswordEncoder passwordEncoder;
@@ -261,16 +265,16 @@ public class InitDataConfig {
 
                 /* Aqui empieza la pagina de one piece de figuras */
                 OnePiece onePiece = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
-                                .nombre("Obito")
-                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
-                                .arco(arco5)
+                                .url("/imagen/fotosOnePiece/luffySombrero.jpg")
+                                .nombre("Luffy")
+                                .des("Luffy en la batalla contra kaido despues de dar la cara ante los yonkous, 30 cm de alto y de largo 122cm")
+                                .arco(arco)
                                 .precio("50").build();
 
                 onePieceServices.add(onePiece);
 
                 OnePiece onePiece1 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/shanks.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -279,8 +283,8 @@ public class InitDataConfig {
                 onePieceServices.add(onePiece1);
 
                 OnePiece onePiece2 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
-                                .nombre("Obito")
+                                .url("/imagen/fotosOnePiece/ace.jpg")
+                                .nombre("Ace")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
                                 .precio("50").build();
@@ -288,7 +292,7 @@ public class InitDataConfig {
                 onePieceServices.add(onePiece2);
 
                 OnePiece onePiece3 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/choper.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -297,7 +301,7 @@ public class InitDataConfig {
                 onePieceServices.add(onePiece3);
 
                 OnePiece onePiece4 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/trio.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -306,7 +310,7 @@ public class InitDataConfig {
                 onePieceServices.add(onePiece4);
 
                 OnePiece onePiece5 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/zoro1.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -315,7 +319,7 @@ public class InitDataConfig {
                 onePieceServices.add(onePiece5);
 
                 OnePiece onePiece6 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/nami.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -324,7 +328,7 @@ public class InitDataConfig {
                 onePieceServices.add(onePiece6);
 
                 OnePiece onePiece7 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/zoro2.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -332,7 +336,7 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece7);
                 OnePiece onePiece8 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/law.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -340,7 +344,7 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece8);
                 OnePiece onePiece9 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/sanji.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -348,7 +352,7 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece9);
                 OnePiece onePiece10 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/luffy1.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -356,7 +360,7 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece10);
                 OnePiece onePiece11 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/barbanegra.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -364,7 +368,7 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece11);
                 OnePiece onePiece12 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/kaido.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -372,7 +376,7 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece12);
                 OnePiece onePiece13 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/mam.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -380,7 +384,7 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece13);
                 OnePiece onePiece14 = OnePiece.builder()
-                                .url("/imagen/fotosLista/obito.jpg")
+                                .url("/imagen/fotosOnePiece/sabo.jpg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -510,6 +514,127 @@ public class InitDataConfig {
                                 .precio("50").build();
 
                 narutoServices.add(naruto14);
+
+                DragonBall dragonBall = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall);
+                DragonBall dragonBall1 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall1);
+                DragonBall dragonBall2 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall2);
+                DragonBall dragonBall3 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall3);
+                DragonBall dragonBall4 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall4);
+                DragonBall dragonBall5 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall5);
+                DragonBall dragonBall6 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall6);
+                DragonBall dragonBall7 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall7);
+                DragonBall dragonBall8 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall8);
+                DragonBall dragonBall9 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall9);
+                DragonBall dragonBall10 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall10);
+                DragonBall dragonBall11 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall11);
+                DragonBall dragonBall12 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall12);
+                DragonBall dragonBall13 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall13);
+                DragonBall dragonBall14 = DragonBall.builder()
+                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio("50").build();
+
+                dragonBallServices.add(dragonBall14);
 
         }
 
