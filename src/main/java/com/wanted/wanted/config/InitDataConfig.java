@@ -515,8 +515,29 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto14);
 
+                Naruto naruto15 = Naruto.builder()
+                        .url("/imagen/fotosLista/sasuke.jpg")
+                        .nombre("Obito")
+                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                        .arco(arco5)
+                        .precio("50").build();
+
+                narutoServices.add(naruto15);
+
+
+                Naruto naruto16 = Naruto.builder()
+                        .url("/imagen/fotosLista/sasuke.jpg")
+                        .nombre("Obito")
+                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                        .arco(arco5)
+                        .precio("50").build();
+
+                narutoServices.add(naruto16);
+
+
+                /*Aqui empieza las figuras de dragon ball*/
                 DragonBall dragonBall = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/broly.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -524,7 +545,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall);
                 DragonBall dragonBall1 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/gohan3.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -532,7 +553,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall1);
                 DragonBall dragonBall2 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/vegeta.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -540,7 +561,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall2);
                 DragonBall dragonBall3 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/broly1.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -548,7 +569,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall3);
                 DragonBall dragonBall4 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/goku.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -556,7 +577,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall4);
                 DragonBall dragonBall5 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/vegeta1.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -564,7 +585,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall5);
                 DragonBall dragonBall6 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/broly2.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -572,7 +593,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall6);
                 DragonBall dragonBall7 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/goku1.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -580,7 +601,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall7);
                 DragonBall dragonBall8 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/vegeta2.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -588,7 +609,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall8);
                 DragonBall dragonBall9 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/gohan.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -596,7 +617,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall9);
                 DragonBall dragonBall10 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/goku3.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -604,7 +625,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall10);
                 DragonBall dragonBall11 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/vegeta3.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -612,7 +633,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall11);
                 DragonBall dragonBall12 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/gohan1.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -620,7 +641,7 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall12);
                 DragonBall dragonBall13 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/goku4.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -628,13 +649,31 @@ public class InitDataConfig {
 
                 dragonBallServices.add(dragonBall13);
                 DragonBall dragonBall14 = DragonBall.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosDragonBall/vegeta4.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
                                 .precio("50").build();
 
                 dragonBallServices.add(dragonBall14);
+
+                DragonBall dragonBall15 = DragonBall.builder()
+                        .url("/imagen/fotosDragonBall/gohan2.jpeg")
+                        .nombre("Obito")
+                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                        .arco(arco5)
+                        .precio("50").build();
+
+                dragonBallServices.add(dragonBall15);
+
+                DragonBall dragonBall16 = DragonBall.builder()
+                        .url("/imagen/fotosDragonBall/goku5.jpeg")
+                        .nombre("Obito")
+                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                        .arco(arco5)
+                        .precio("50").build();
+
+                dragonBallServices.add(dragonBall16);
 
         }
 
