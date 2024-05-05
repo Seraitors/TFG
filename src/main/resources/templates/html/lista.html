@@ -47,15 +47,24 @@
                 </ul>
                 <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get"
-                    action="/figuras/filtrar">
-                    <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
-                    <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
-                        placeholder="Buscar..." name="nombre">
-                </form>
+                <div class="text-start ml-2 ml-lg-4"> <!-- Agregué ml-2 para el espaciado en dispositivos pequeños -->
+                    <div>
+                        <i class="bi bi-search"></i>
+                        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get"
+                            action="/figuras/filtrar">
+                          <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
+                          <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
+                                 placeholder="Buscar..." name="nombre">
+                      </form>-->
+                    </div>
+                    <div>
+                        <i class="bi bi-save"></i>
+                    </div>
+                </div>
+
 
                 <div class="text-end">
-                    <a href="/inicioSesion" class="btn btn-outline-light me-2">Iniciar sesion</a>
+                    <a href="/inicioSesion/login" class="btn btn-outline-light me-2">Iniciar sesion</a>
                 </div>
                 <div class="text-end">
 
@@ -119,6 +128,7 @@
                                 <th>Arco</th>
                                 <th>Descripción</th>
                                 <th>Precio</th>
+                                <th>Inspeccionar</th>
                                 <th>Compra</th>
                             </tr>
                         </thead>
@@ -129,6 +139,10 @@
                                 <td th:text="${figura.arco?.nombre}">Arco</td>
                                 <td th:text="${figura.des}">Descripción</td>
                                 <td th:text="${figura.precio}">Precio</td>
+                                <td>
+                                    <a href="">  <button type="button" class="boton btn-comprar">Información</button> </a>
+
+                                </td>
                                 <td>
                                     <!--<input class="form-check-input" type="checkbox" id="compra">
                                     

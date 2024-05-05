@@ -1,17 +1,7 @@
 package com.wanted.wanted.config;
 
-import com.wanted.wanted.entidades.Arco;
-import com.wanted.wanted.entidades.DragonBall;
-import com.wanted.wanted.entidades.Figura;
-import com.wanted.wanted.entidades.Novedad;
-import com.wanted.wanted.entidades.OnePiece;
-import com.wanted.wanted.entidades.Naruto;
-import com.wanted.wanted.servicios.ArcoServices;
-import com.wanted.wanted.servicios.DragonBallServices;
-import com.wanted.wanted.servicios.FiguraServices;
-import com.wanted.wanted.servicios.NovedadServices;
-import com.wanted.wanted.servicios.OnePieceServices;
-import com.wanted.wanted.servicios.NarutoServices;
+import com.wanted.wanted.entidades.*;
+import com.wanted.wanted.servicios.*;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -48,39 +39,39 @@ public class InitDataConfig {
         @Autowired
         private DragonBallServices dragonBallServices;
 
-        /*
-         * private final PasswordEncoder passwordEncoder;
-         * private final RegistrarService registrarService;
-         * 
-         * @PostConstruct
-         * public void initUsuarios() {
-         * Roles roleUser = Roles.builder().nombre("ROLE_USER").build();
-         * //perfilUser = perfilService.save(perfilUser);
-         * Roles perfilAdmin = Roles.builder().nombre("ROLE_ADMIN").build();
-         * //perfilAdmin = perfilService.save(perfilAdmin);
-         * 
-         * Registrar registrar = Registrar.builder()
-         * .username("user")
-         * .email("user@canciones.es")
-         * .password("user")
-         * .roles(Set.of(roleUser))
-         * .build();
-         * registrar.setPassword(passwordEncoder.encode(registrar.getPassword()));
-         * 
-         * //usuario1 = usuarioService.save(usuario1);
-         * 
-         * Registrar registrar2 = Registrar.builder()
-         * .username("admin")
-         * .email("admin@canciones.es")
-         * .password("admin")
-         * .roles(Set.of(roleUser, perfilAdmin))
-         * .build();
-         * registrar2.setPassword(passwordEncoder.encode(registrar2.getPassword()));
-         * 
-         * //usuario2 = usuarioService.save(usuario2);
-         * registrarService.saveAll(Arrays.asList(registrar,registrar2));
-         * }
-         */
+
+          private final PasswordEncoder passwordEncoder;
+          private final UsuarioServices usuarioServices;
+
+          @PostConstruct
+          public void initUsuarios() {
+          Rol roleUser = Rol.builder().nombre("ROLE_USER").build();
+          //perfilUser = perfilService.save(perfilUser);
+          Rol perfilAdmin = Rol.builder().nombre("ROLE_ADMIN").build();
+          //perfilAdmin = perfilService.save(perfilAdmin);
+
+          Usuario usuario = Usuario.builder()
+          .username("user")
+          .email("user@canciones.es")
+          .password("user")
+          .roles(Set.of(roleUser))
+          .build();
+                  usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+
+          //usuario1 = usuarioService.save(usuario1);
+
+          Usuario usuario2 = Usuario.builder()
+          .username("admin")
+          .email("admin@canciones.es")
+          .password("admin")
+          .roles(Set.of(roleUser, perfilAdmin))
+          .build();
+                  usuario2.setPassword(passwordEncoder.encode(usuario2.getPassword()));
+
+          //usuario2 = usuarioService.save(usuario2);
+                  usuarioServices.saveAll(Arrays.asList(usuario,usuario2));
+         }
+
 
         /**
          * hacer la base de datos como en el examen
@@ -135,7 +126,7 @@ public class InitDataConfig {
 
                 Figura figura = Figura.builder()
 
-                                .url("/imagen/fotosLista/luffy.jpg")
+                                .url("../imagen/fotosLista/luffy.jpg")
                                 .nombre("Luffy")
                                 .des("Esta es una figura de luffy cuando estaba en wano ")
                                 .arco(arco)
@@ -144,7 +135,7 @@ public class InitDataConfig {
                 figuraServices.add(figura);
 
                 Figura figura1 = Figura.builder()
-                                .url("/imagen/fotosLista/zoro.jpg")
+                                .url("../imagen/fotosLista/zoro.jpg")
                                 .nombre("Zoro")
                                 .des("Esta es una figura de Zoro en wano, El ancho es 10 cm de alto y de largo son 70cm.  ")
                                 .arco(arco2)
@@ -395,7 +386,7 @@ public class InitDataConfig {
                 /* Aqui vienen las figuras de naruto */
 
                 Naruto naruto = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/gaara.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -403,7 +394,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto);
                 Naruto naruto1 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/naruto1.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -411,7 +402,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto1);
                 Naruto naruto2 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/obito2.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -419,7 +410,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto2);
                 Naruto naruto3 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/itachi.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -427,7 +418,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto3);
                 Naruto naruto4 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/naruto2.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -435,7 +426,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto4);
                 Naruto naruto5 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/pain.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -443,7 +434,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto5);
                 Naruto naruto6 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/kakasi.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -451,7 +442,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto6);
                 Naruto naruto7 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/naruto3.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -459,7 +450,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto7);
                 Naruto naruto8 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/sasuke.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -467,7 +458,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto8);
                 Naruto naruto9 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/madara.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -475,7 +466,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto9);
                 Naruto naruto10 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/obite3.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -483,7 +474,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto10);
                 Naruto naruto11 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/kakasi1.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -491,7 +482,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto11);
                 Naruto naruto12 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/madara1.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -499,7 +490,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto12);
                 Naruto naruto13 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/obito.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -507,7 +498,7 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto13);
                 Naruto naruto14 = Naruto.builder()
-                                .url("/imagen/fotosLista/sasuke.jpg")
+                                .url("/imagen/fotosNaruto/naruto.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
@@ -516,7 +507,7 @@ public class InitDataConfig {
                 narutoServices.add(naruto14);
 
                 Naruto naruto15 = Naruto.builder()
-                        .url("/imagen/fotosLista/sasuke.jpg")
+                        .url("/imagen/fotosNaruto/obito1.jpeg")
                         .nombre("Obito")
                         .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                         .arco(arco5)
@@ -526,7 +517,7 @@ public class InitDataConfig {
 
 
                 Naruto naruto16 = Naruto.builder()
-                        .url("/imagen/fotosLista/sasuke.jpg")
+                        .url("/imagen/fotosNaruto/sakura.jpeg")
                         .nombre("Obito")
                         .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                         .arco(arco5)

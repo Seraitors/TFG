@@ -31,18 +31,14 @@ public class InicioController {
 
 
     }
-
-    /**
-     * Esto de aqui va a ser importante
-     * @return
-     */
-    /* @GetMapping("/inicioSesion")
-    public  String iniciarSesion(){
+    @GetMapping("/inicio/inspeccionar ")
+    public  String inspeccionar(Model model){
+        model.addAttribute("listaFigura",figuraServices.findAll());
+        model.addAttribute("novedadFigura", novedadServices.findAll());
 
 
-        return "html/encabezado/iniciarSesion";
-    } */ 
-
+        return null;
+    }
 
     /**
      * esto va a ser importnate
@@ -94,7 +90,7 @@ public class InicioController {
 
     }
 
-    @GetMapping("/creador")
+    @GetMapping("/inicio/creador")
     public  String creador (){
 
 
