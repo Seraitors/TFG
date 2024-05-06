@@ -29,11 +29,14 @@ public class InicioSesionController {
         return "html/iniciarSesion/index";
     }
 
-
+    /**
+     * Mirar por qu eno me redirige al informacion
+     * @return
+     */
     @PostMapping("/inicioSesion/entrar")
     public  String entrar(){
 
-        return "redirect:/inicio";
+        return "redirect:/html/informacion/info";
     }
 
     @GetMapping("/inicioSesion/logout")
