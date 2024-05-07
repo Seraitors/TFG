@@ -22,71 +22,65 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class SeguridadConfig {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder().encode("user"))
-                .roles("USER")
-                .build();
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles("USER", "ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user, admin);
-    }
+        
+          @Bean
+         public PasswordEncoder passwordEncoder() {
+          return new BCryptPasswordEncoder();
+          }
+         
+         @Bean
+        public InMemoryUserDetailsManager userDetailsService() {
+                UserDetails user = User.builder()
+                                .username("user")
+                                .password(passwordEncoder().encode("user"))
+                                .roles("USER")
+                                .build();
+                UserDetails admin = User.builder()
+                                .username("admin")
+                                .password(passwordEncoder().encode("admin"))
+                                .roles("USER", "ADMIN")
+                                .build();
+                return new InMemoryUserDetailsManager(user, admin);
+        } 
 
+        @Bean
+        public SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
 
-    @Bean
-    public SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
+                /* Esto es nuevo */
+                http
+                                .authorizeHttpRequests(auth -> auth
+                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
+                                                                AntPathRequestMatcher.antMatcher("/webjars/**"),
+                                                                AntPathRequestMatcher.antMatcher("/css/**"),
+                                                                AntPathRequestMatcher.antMatcher("/imagen/**"),
+                                                                AntPathRequestMatcher.antMatcher("/DragonBall/**"),
+                                                                AntPathRequestMatcher.antMatcher("/Naruto/**"),
+                                                                AntPathRequestMatcher.antMatcher("/OnePiece/**"),
+                                                                AntPathRequestMatcher.antMatcher("/caracteristicas/**"),
+                                                                AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
+                                                                AntPathRequestMatcher.antMatcher("/encabezado/**"),
+                                                                AntPathRequestMatcher.antMatcher("/faqs/**"),
+                                                                PathRequest.toH2Console())
+                                                .permitAll()
+                                                .anyRequest().authenticated())
+                                .formLogin(form -> form
+                                                .loginPage("/inicioSesion/login")
+                                                .permitAll())
+                                .logout(out -> out
+                                                .logoutUrl("/inicioSesion/logout")
+                                                .logoutSuccessUrl("/inicioSesion/login?logout").permitAll());
 
-        /* Esto es nuevo */
-        http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
+                // Para que funcione la consola del h2
+                http.csrf(csrf -> csrf.ignoringRequestMatchers(
+                                AntPathRequestMatcher.antMatcher("/"),
                                 AntPathRequestMatcher.antMatcher("/webjars/**"),
                                 AntPathRequestMatcher.antMatcher("/css/**"),
-                                AntPathRequestMatcher.antMatcher("/imagen/**"),
-                                AntPathRequestMatcher.antMatcher("/DragonBall/**"),
-                                AntPathRequestMatcher.antMatcher("/Naruto/**"),
-                                AntPathRequestMatcher.antMatcher("/OnePiece/**"),
-                                AntPathRequestMatcher.antMatcher("/caracteristicas/**"),
-                                AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
-                                AntPathRequestMatcher.antMatcher("/encabezado/**"),
-                                AntPathRequestMatcher.antMatcher("/faqs/**"),
-                                PathRequest.toH2Console()).permitAll()
-                        .anyRequest().authenticated())
-                .formLogin(form -> form
-                        .loginPage("/inicioSesion/login")
-                        .permitAll())
-                .logout(out -> out
-                        .logoutUrl("/inicioSesion/logout")
-                        .logoutSuccessUrl("/inicioSesion/login?logout").permitAll());
+                                PathRequest.toH2Console()));
 
+                // Para que funcione la consola del h2
+                http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 
-             // Para que funcione la consola del h2
-        http.csrf(csrf ->
-                csrf.ignoringRequestMatchers(
-                        AntPathRequestMatcher.antMatcher("/"),
-                        AntPathRequestMatcher.antMatcher("/webjars/**"),
-                        AntPathRequestMatcher.antMatcher("/css/**"),
-                        PathRequest.toH2Console()));
+                return http.build();
 
-        // Para que funcione la consola del h2
-        http.headers(headers ->
-                headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
-
-        return http.build();
-
-    }
+        }
 }
-
-
-
-
-

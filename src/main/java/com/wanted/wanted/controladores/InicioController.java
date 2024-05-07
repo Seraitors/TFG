@@ -31,7 +31,7 @@ public class InicioController {
 
 
     }
-    @GetMapping("/inicio/inspeccionar ")
+    @GetMapping("/inspeccionar ")
     public  String inspeccionar(Model model){
         model.addAttribute("listaFigura",figuraServices.findAll());
         model.addAttribute("novedadFigura", novedadServices.findAll());
