@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/caja-boostrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/tabla.css">
-    <link rel="stylesheet" href="/css/pantalla.css">
+    <link rel="stylesheet" href="/css/carrusel.css">
 
 
 
@@ -29,10 +29,10 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
 
-                            
+
                             <!--  mirar por que da error-->
-                       <span th:text="${#authentication.username}">Opciones</span> <span class="caret"></span>
-                         <!--<span th:text="${#authentication.name}">Opciones</span>-->
+                            <!--  <span th:text="${#authentication.username}">Opciones</span> <span class="caret"></span> -->
+                            <!--<span th:text="${#authentication.name}">Opciones</span>-->
                         </a>
                         <ul class="dropdown-menu">
                             <li><span class="dropdown-item" th:text="' App: ' + ${session.numVisitasApp}"></span></li>
@@ -51,23 +51,22 @@
                 </ul>
                 <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
 
-                <div class="text-start ml-2 ml-lg-4"> <!-- Agregué ml-2 para el espaciado en dispositivos pequeños -->
-                    <div>
-                        <i class="bi bi-search"></i>
-                        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get"
-                            action="/figuras/filtrar">
-                          <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
-                          <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
-                                 placeholder="Buscar..." name="nombre">
-                      </form>-->
-                    </div>
-                    <div>
-                        <i class="bi bi-save"></i>
-                    </div>
+                <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;" >
+                    <i class="bi bi-search"></i>
+                    <form id="searchForm" role="search" method="get"
+                        action="/figuras/filtrar">
+                        <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
+                        <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
+                            placeholder="Buscar..." name="nombre">
+                    </form>
                 </div>
-                  
+                <div class="d-inline-flex align-items-center" id="addToCart" style="margin-right: 20px;">
+                    <i class="bi bi-save"></i>
+                </div>
 
-                <div class="text-end">
+
+
+                <div class="text-end"  >
                     <a href="/inicioSesion/login" class="btn btn-outline-light me-2">Iniciar sesion</a>
                 </div>
                 <div class="text-end">
@@ -113,11 +112,11 @@
         </div>
 
 
-      <!--   prurbe ade carrusel -->
+        <!--   prurbe ade carrusel -->
         <div class="carrusel-container">
             <div class="carrusel">
                 <div class="carrusel-slide">
-                    <a href="/OnePiece">      <img src="/imagen/carrusel/onepiece.jpg" alt="Slide 1">  </a>
+                    <a href="/OnePiece"> <img src="/imagen/carrusel/onepiece.jpg" alt="Slide 1"> </a>
 
                 </div>
                 <div class="carrusel-slide"><img src="/imagen/fotosLista/zoro.jpg" alt="Slide 2"></div>
@@ -130,189 +129,192 @@
 
 
 
-    <!-- ahora desde aqui empieza la creacion de las figuras -->
-    <!-- Hacer con html y css-->
+        <!-- ahora desde aqui empieza la creacion de las figuras -->
+        <!-- Hacer con html y css-->
 
-    <div class="container">
-        <div class="card-container">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Lista de Figuras</h3>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Imagen</th>
-                                <th>Nombre</th>
-                                <th>Arco</th>
-                                <th>Descripción</th>
-                                <th>Precio</th>
-                                <th>Inspeccionar</th>
-                                <th>Compra</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="figura: ${listaFigura}">
-                                <td><img th:src="${figura.url}" alt="imagen"></td>
-                                <td th:text="${figura.nombre}">Nombre</td>
-                                <td th:text="${figura.arco?.nombre}">Arco</td>
-                                <td th:text="${figura.des}">Descripción</td>
-                                <td th:text="${figura.precio}">Precio</td>
-                                <td>
-                                    <a href="">  <button type="button" class="boton btn-comprar">Información</button> </a>
+        <div class="container">
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Lista de Figuras</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Arco</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Inspeccionar</th>
+                                    <th>Compra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="figura: ${listaFigura}">
+                                    <td><img th:src="${figura.url}" alt="imagen"></td>
+                                    <td th:text="${figura.nombre}">Nombre</td>
+                                    <td th:text="${figura.arco?.nombre}">Arco</td>
+                                    <td th:text="${figura.des}">Descripción</td>
+                                    <td th:text="${figura.precio}">Precio</td>
+                                    <td>
+                                        <a href=""> <button type="button" class="boton btn-comprar">Información</button>
+                                        </a>
 
-                                </td>
-                                <td>
-                                    <!--<input class="form-check-input" type="checkbox" id="compra">
+                                    </td>
+                                    <td>
+                                        <!--<input class="form-check-input" type="checkbox" id="compra">
                                     
                                         <label class="form-check-label" for="compra">Compra</label> -->
-                                    <a href="">
+                                        <a href="">
 
-                                        <button type="button" class="boton btn-comprar">Comprar</button>
-                                    </a>
+                                            <button type="button" class="boton btn-comprar">Comprar</button>
+                                        </a>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <br>
+        <br>
 
-    <div class="container">
-        <div class="card-container">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Novedad de la semana</h3>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Imagen</th>
-                                <th>Nombre</th>
-                                <th>Arco</th>
-                                <th>Descripción</th>
-                                <th>Precio</th>
-                                <th>Compra</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="novedad:${novedadFigura}">
-                                <td><img th:src="${novedad.url}" alt="imagen"></td>
-                                <td th:text="${novedad.nombre}">Nombre</td>
-                                <td th:text="${novedad.arco?.nombre}">Arco</td>
-                                <td th:text="${novedad.des}">Descripción</td>
-                                <td th:text="${novedad.precio}">Precio</td>
-                                <td>
-                                    <!--<input class="form-check-input" type="checkbox" id="compra">
+        <div class="container">
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Novedad de la semana</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Arco</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Compra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="novedad:${novedadFigura}">
+                                    <td><img th:src="${novedad.url}" alt="imagen"></td>
+                                    <td th:text="${novedad.nombre}">Nombre</td>
+                                    <td th:text="${novedad.arco?.nombre}">Arco</td>
+                                    <td th:text="${novedad.des}">Descripción</td>
+                                    <td th:text="${novedad.precio}">Precio</td>
+                                    <td>
+                                        <!--<input class="form-check-input" type="checkbox" id="compra">
                                     
                                         <label class="form-check-label" for="compra">Compra</label> -->
-                                    <a href="">
+                                        <a href="">
 
-                                        <button type="button" class="boton btn-comprar">Comprar</button>
-                                    </a>
+                                            <button type="button" class="boton btn-comprar">Comprar</button>
+                                        </a>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="menu">
-        <div class="menuTitulo">
-            <h2>Menú</h2>
+        <div class="menu">
+            <div class="menuTitulo">
+                <h2>Menú</h2>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Por que comprar </th>
+                    <th>Quienes somos </th>
+                    <th>Contactar</th>
+                    <th>Otros</th>
+                    <th>Comunidad</th>
+                </tr>
+                <tr>
+                    <td>
+
+                        <a href="#">Cómo comprar</a><br>
+                        <a href="#">Formas de pago</a><br>
+                        <a href="#">Gastos de envío</a><br>
+                        <a href="#">Cupones descuento</a><br>
+                        <a href="#">Preguntas frecuentes</a><br>
+                        <a href="#">Opiniones de clientes</a><br>
+                        <a href="#">Tarjetas regalo</a><br>
+
+                    </td>
+                    <td>
+
+                        <a href="#">Compromisos</a><br>
+                        <a href="#">Nuestras tiendas</a><br>
+                        <a href="#">Nuestras Marcas</a><br>
+                        <a href="#">Condiciones de compra</a><br>
+                        <a href="#">Afiliados</a><br>
+                        <a href="#">Aviso legal</a><br>
+                        <a href="#">Privacidad</a>
+
+
+                    </td>
+                    <td>
+                        <a href="#">Centro de soporte</a><br>
+                        <a href="#">Devoluciones y Garantías</a><br>
+                        <a href="#">Wiki PcComponentes</a><br>
+                        <a href="#">Opina y Gana</a><br>
+                        <a href="#">Publicidad</a><br>
+                        <a href="#">Trabaja con nosotros</a>
+                        <a href="#">Politicas de cookies</a>
+
+
+                    </td>
+
+                    <td>
+                        <a href="#">Replay </a><br>
+                        <a href="#">Black Friday </a><br>
+                        <a href="#">Cyber Monday </a><br>
+                        <a href="#">PcDays </a><br>
+                        <a href="#">Marketplace </a><br>
+                        <a href="#">Servicio logistico Fulfilment </a><br>
+                        <a href="#">Servicio de reparaciones </a><br>
+                        <a href="#">Concurso </a><br>
+                        <a href="#">Cita asistencia tecnica </a><br>
+                        <a href="#">Responsabilidad social </a><br>
+
+
+                    </td>
+
+
+                    <td>
+
+
+                        <a href="#">Instagram</a><br>
+                        <a href="#">Twitter</a><br>
+                        <a href="#">Facebook</a><br>
+                        <a href="#">Telegram</a><br>
+                        <a href="#">Youtube</a><br>
+                        <a href="#">TikTok</a><br>
+                        <a href="#">Twitch</a>
+                    </td>
+                </tr>
+            </table>
         </div>
-
-        <table>
-            <tr>
-                <th>Por que comprar </th>
-                <th>Quienes somos </th>
-                <th>Contactar</th>
-                <th>Otros</th>
-                <th>Comunidad</th>
-            </tr>
-            <tr>
-                <td>
-
-                    <a href="#">Cómo comprar</a><br>
-                    <a href="#">Formas de pago</a><br>
-                    <a href="#">Gastos de envío</a><br>
-                    <a href="#">Cupones descuento</a><br>
-                    <a href="#">Preguntas frecuentes</a><br>
-                    <a href="#">Opiniones de clientes</a><br>
-                    <a href="#">Tarjetas regalo</a><br>
-
-                </td>
-                <td>
-
-                    <a href="#">Compromisos</a><br>
-                    <a href="#">Nuestras tiendas</a><br>
-                    <a href="#">Nuestras Marcas</a><br>
-                    <a href="#">Condiciones de compra</a><br>
-                    <a href="#">Afiliados</a><br>
-                    <a href="#">Aviso legal</a><br>
-                    <a href="#">Privacidad</a>
-
-
-                </td>
-                <td>
-                    <a href="#">Centro de soporte</a><br>
-                    <a href="#">Devoluciones y Garantías</a><br>
-                    <a href="#">Wiki PcComponentes</a><br>
-                    <a href="#">Opina y Gana</a><br>
-                    <a href="#">Publicidad</a><br>
-                    <a href="#">Trabaja con nosotros</a>
-                    <a href="#">Politicas de cookies</a>
-
-
-                </td>
-
-                <td>
-                    <a href="#">Replay </a><br>
-                    <a href="#">Black Friday </a><br>
-                    <a href="#">Cyber Monday </a><br>
-                    <a href="#">PcDays </a><br>
-                    <a href="#">Marketplace </a><br>
-                    <a href="#">Servicio logistico Fulfilment </a><br>
-                    <a href="#">Servicio de reparaciones </a><br>
-                    <a href="#">Concurso </a><br>
-                    <a href="#">Cita asistencia tecnica </a><br>
-                    <a href="#">Responsabilidad social </a><br>
-
-
-                </td>
-
-
-                <td>
-
-
-                    <a href="#">Instagram</a><br>
-                    <a href="#">Twitter</a><br>
-                    <a href="#">Facebook</a><br>
-                    <a href="#">Telegram</a><br>
-                    <a href="#">Youtube</a><br>
-                    <a href="#">TikTok</a><br>
-                    <a href="#">Twitch</a>
-                </td>
-            </tr>
-        </table>
-    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="/js/pantalla.js"></script>
- </body>
+    <script src="/js/carrusel.js"></script>
+    <script src="/js/buscar.js"></script>
+    <script src="/js/favoritos.js"></script>
+</body>
 
 </html>
