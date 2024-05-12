@@ -1,15 +1,22 @@
 package com.wanted.wanted.controladores;
 
 
+import com.wanted.wanted.entidades.Figura;
+import com.wanted.wanted.entidades.UsuarioSeguridad;
 import com.wanted.wanted.servicios.FiguraServices;
 import com.wanted.wanted.servicios.NovedadServices;
 
+import com.wanted.wanted.servicios.UsuariosServicesSeguridad;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -19,6 +26,7 @@ public class InicioController {
 
     private final FiguraServices   figuraServices;
     private final NovedadServices novedadServices;
+    private final UsuariosServicesSeguridad usuariosServicesSeguridad;
 
 
 
@@ -26,18 +34,18 @@ public class InicioController {
     public  String  inicio(Model model){
     model.addAttribute("listaFigura",figuraServices.findAll());
     model.addAttribute("novedadFigura", novedadServices.findAll());
+    model.addAttribute("usuario", usuariosServicesSeguridad.findAll());
 
     return "html/lista";
 
 
     }
-    @GetMapping("/inspeccionar ")
-    public  String inspeccionar(Model model){
-        model.addAttribute("listaFigura",figuraServices.findAll());
-        model.addAttribute("novedadFigura", novedadServices.findAll());
-
-
-        return null;
+    @GetMapping("/detalle/{id}")
+    public String verDetalle(@PathVariable("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<Figura> figura = figuraServices.findById(id);
+        model.addAttribute("figura", figura);
+        return "html/inspeccionar"; // Devolver la vista de detalle
     }
 
     /**
@@ -113,4 +121,80 @@ public class InicioController {
 
         return "redirect:/figuras/lista";
     }
+
+    //seguridad probar
+
+
+
+    @GetMapping( "/inicioSesion")
+    public  String inicio (){
+
+        return "html/index";
+    }
+
+    @PostMapping("/inicioSesion/submit")
+    public String inicioSesion(@ModelAttribute UsuarioSeguridad usuario, Model model) {
+        if (usuario.getNombre().isEmpty() ) {
+            model.addAttribute("errorNombre", "Credenciales inválidas");
+        }
+
+        if (usuario.getApellido().isEmpty()){
+            model.addAttribute("errorApellido", "Credenciales inválidas");
+        }
+        if (usuario.getCorreo().isEmpty()){
+            model.addAttribute("errorCorreo","Credenciales invalidas");
+        }
+        if (usuario.getContrasena().isEmpty()){
+            model.addAttribute("errorContra","Credenciales invalidas");
+        }
+
+        if (model.containsAttribute("errorNombre") || model.containsAttribute("errorApellido") || model.containsAttribute("errorCorreo") || model.containsAttribute("errorContra") ) {
+
+            return "html/index";
+        } else {
+            if (usuariosServicesSeguridad.validarusuario(usuario.getNombre(),usuario.getContrasena(), usuario.getCorreo())==true){
+                return "redirect:/inicio";
+            } else {
+                model.addAttribute("errorValidacion","Credenciales invalidas");
+                return "html/index";
+            }
+
+        }
+    }
+
+
+    @GetMapping("/registrarse")
+    public String registro() {
+        log.info(" estoy ne el get mapping");
+
+        return "html/registro";
+    }
+
+
+    @PostMapping("/registrarse/submit")
+    public String registrarUsuario(@ModelAttribute UsuarioSeguridad usuario, Model model) {
+        if (usuario.getNombre().isEmpty() ) {
+            model.addAttribute("errorNombre", "Credenciales inválidas");
+        }
+
+        if (usuario.getApellido().isEmpty()){
+            model.addAttribute("errorApellido", "Credenciales inválidas");
+        }
+        if (usuario.getCorreo().isEmpty()){
+            model.addAttribute("errorCorreo","Credenciales invalidas");
+        }
+        if (usuario.getContrasena().isEmpty()){
+            model.addAttribute("errorContra","Credenciales invalidas");
+        }
+
+        if (model.containsAttribute("errorNombre") || model.containsAttribute("errorApellido") || model.containsAttribute("errorCorreo") || model.containsAttribute("errorContra") ) {
+
+            return "html/registro";
+        } else {
+            //usuariosServices.addUser(usuario);
+            usuariosServicesSeguridad.registarUSuario(usuario);
+            return "html/index";
+        }
+    }
+
 }

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -27,16 +28,12 @@ public class UsuarioServices {
 
 
 
-/*    public Usuario save(Usuario u) {
+    public Usuario save(Usuario u) {
         u.setPassword(passwordEncoder.encode(u.getPassword()));
         return usuarioRepository.save(u);
     }
 
-    public Usuario save(UsuarioSignupDto dto) {
-        Usuario usuario = mapper.toEntity(dto);
-        Usuario.setPassword(passwordEncoder.encode(dto.password()));
-        return usuarioRepository.save(mapper.toEntity(dto));
-    }*/
+
 
 
 
@@ -48,7 +45,26 @@ public class UsuarioServices {
 
 
     public Usuario findByUsernameOrEmail(String username, String email) {
-        return usuarioRepository.findByUsernameOrEmail(username,email).orElse(null);
+        return usuarioRepository.findByUsernameOrEmail(username, email).orElse(null);
     }
+
+
+
+
+    private List<Usuario> usuarios = new ArrayList<>();
+
+        public void registrarUsuario(Usuario usuario) {
+            usuarios.add(usuario);
+        }
+
+        public boolean validarUsuario(String email, String contrasena) {
+            for (Usuario usuario : usuarios) {
+                if (usuario.getEmail().equals(email) && usuario.getPassword().equals(contrasena)) {
+                    return true; // Credenciales válidas
+                }
+            }
+            return false; // Credenciales inválidas
+        }
+
 
 }

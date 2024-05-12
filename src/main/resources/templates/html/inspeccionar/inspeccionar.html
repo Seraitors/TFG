@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Figura</title>
+    <!-- Agrega tus estilos y scripts aquí si es necesario -->
+</head>
+
+<body>
+<h1>Detalle de Figura</h1>
+<div>
+    <img th:src="${figura.url}" alt="imagen">
+    <h2 th:text="${figura.nombre}"></h2>
+    <p th:text="${figura.des}"></p>
+    <p>Precio: <span th:text="${figura.precio}"></span></p>
+    <!-- Agrega más detalles de la figura si lo necesitas -->
+</div>
+<!-- Agrega más contenido según tus necesidades -->
+</body>
+
+</html>

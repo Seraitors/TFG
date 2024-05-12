@@ -9,9 +9,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-
-
-    Optional<Usuario> findByUsernameOrEmail(String Registrar, String email);
+    Optional<Usuario> findByUsernameOrEmail(String username, String email);
+}
 
 /*    @Query("select u from Registrar u " +
             "where lower(u.username) = ?1 or lower(u.email) = ?1")
@@ -20,4 +19,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query("select u from Registrar u " +
             "where lower(u.username) = :cadena or lower(u.email) = :cadena")
     Optional<Registrar> buscarPorUsernameOEmail_args_por_nombre(@Param("cadena") String cadena);*/
-}
+

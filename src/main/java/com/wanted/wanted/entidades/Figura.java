@@ -26,7 +26,7 @@ public class Figura {
     @JoinColumn(name = "tipo_arco", referencedColumnName = "nombre")
     private  Arco arco;
 
-    private String precio;
+    private int precio;
     private  String des;
     private String url;
 }

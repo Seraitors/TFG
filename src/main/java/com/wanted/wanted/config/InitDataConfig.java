@@ -39,39 +39,37 @@ public class InitDataConfig {
         @Autowired
         private DragonBallServices dragonBallServices;
 
+        private final PasswordEncoder passwordEncoder;
+        private final UsuarioServices usuarioServices;
 
-          private final PasswordEncoder passwordEncoder;
-          private final UsuarioServices usuarioServices;
+        @PostConstruct
+        public void initUsuarios() {
+                Rol roleUser = Rol.builder().nombre("ROLE_USER").build();
+                // perfilUser = perfilService.save(perfilUser);
+                Rol perfilAdmin = Rol.builder().nombre("ROLE_ADMIN").build();
+                // perfilAdmin = perfilService.save(perfilAdmin);
 
-          @PostConstruct
-          public void initUsuarios() {
-          Rol roleUser = Rol.builder().nombre("ROLE_USER").build();
-          //perfilUser = perfilService.save(perfilUser);
-          Rol perfilAdmin = Rol.builder().nombre("ROLE_ADMIN").build();
-          //perfilAdmin = perfilService.save(perfilAdmin);
+                Usuario usuario = Usuario.builder()
+                                .username("user")
+                                .email("user@canciones.es")
+                                .password("user")
+                                .roles(Set.of(roleUser))
+                                .build();
+                usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 
-          Usuario usuario = Usuario.builder()
-          .username("user")
-          .email("user@canciones.es")
-          .password("user")
-          .roles(Set.of(roleUser))
-          .build();
-                  usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+                // usuario1 = usuarioService.save(usuario1);
 
-          //usuario1 = usuarioService.save(usuario1);
+                Usuario usuario2 = Usuario.builder()
+                                .username("admin")
+                                .email("admin@canciones.es")
+                                .password("admin")
+                                .roles(Set.of(roleUser, perfilAdmin))
+                                .build();
+                usuario2.setPassword(passwordEncoder.encode(usuario2.getPassword()));
 
-          Usuario usuario2 = Usuario.builder()
-          .username("admin")
-          .email("admin@canciones.es")
-          .password("admin")
-          .roles(Set.of(roleUser, perfilAdmin))
-          .build();
-                  usuario2.setPassword(passwordEncoder.encode(usuario2.getPassword()));
-
-          //usuario2 = usuarioService.save(usuario2);
-                  usuarioServices.saveAll(Arrays.asList(usuario,usuario2));
-         }
-
+                // usuario2 = usuarioService.save(usuario2);
+                usuarioServices.saveAll(Arrays.asList(usuario, usuario2));
+        }
 
         /**
          * hacer la base de datos como en el examen
@@ -130,7 +128,7 @@ public class InitDataConfig {
                                 .nombre("Luffy")
                                 .des("Esta es una figura de luffy cuando estaba en wano ")
                                 .arco(arco)
-                                .precio("80€").build();
+                                .precio(80).build();
 
                 figuraServices.add(figura);
 
@@ -139,7 +137,7 @@ public class InitDataConfig {
                                 .nombre("Zoro")
                                 .des("Esta es una figura de Zoro en wano, El ancho es 10 cm de alto y de largo son 70cm.  ")
                                 .arco(arco2)
-                                .precio("80€").build();
+                                .precio(65).build();
 
                 figuraServices.add(figura1);
 
@@ -148,7 +146,7 @@ public class InitDataConfig {
                                 .nombre("Brook")
                                 .des("Esta es una figura de Brook en su lucha de Bif Mom, El ancho es 15 cm de alto y de largo son 50cm.  ")
                                 .arco(arco2)
-                                .precio("100€").build();
+                                .precio(100).build();
 
                 figuraServices.add(figura2);
 
@@ -157,7 +155,7 @@ public class InitDataConfig {
                                 .nombre("Goku")
                                 .des("Esta es la figura de Goku en su lucha contra el manvado Freezer, El ancho es 12 cm de alto y de largo son 60cm.  ")
                                 .arco(arco3)
-                                .precio("100€").build();
+                                .precio(100).build();
 
                 figuraServices.add(figura3);
 
@@ -166,7 +164,7 @@ public class InitDataConfig {
                                 .nombre("Vegeta")
                                 .des("Esta es una figura de vegeta herido despues de su pelea en Namek, El ancho es 10 cm de alto y de largo son 45cm.  ")
                                 .arco(arco3)
-                                .precio("30€").build();
+                                .precio(30).build();
 
                 figuraServices.add(figura4);
 
@@ -175,7 +173,7 @@ public class InitDataConfig {
                                 .nombre("Freezer")
                                 .des("Esta es una figura de Freezer en Namek, El ancho es 10 cm de alto y de largo son 70cm.  ")
                                 .arco(arco3)
-                                .precio("50€").build();
+                                .precio(50).build();
 
                 figuraServices.add(figura5);
 
@@ -184,7 +182,7 @@ public class InitDataConfig {
                                 .nombre("Piccolo")
                                 .des("Esta es una figura de Piccolo en Namek, El ancho es 11.5 cm de alto y de largo son 300cm.  ")
                                 .arco(arco3)
-                                .precio("20€").build();
+                                .precio(20).build();
 
                 figuraServices.add(figura6);
 
@@ -193,7 +191,7 @@ public class InitDataConfig {
                                 .nombre("sasuke")
                                 .des("Esta es una figura de sasuke en la villa oculta de la hoja de pequño, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
                                 .arco(arco5)
-                                .precio("30€").build();
+                                .precio(30).build();
 
                 figuraServices.add(figura7);
                 Figura figura8 = Figura.builder()
@@ -201,7 +199,7 @@ public class InitDataConfig {
                                 .nombre("naruto")
                                 .des("Esta es una figura de naruto en la villa oculta de la hoja de pequño, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
                                 .arco(arco5)
-                                .precio("30€").build();
+                                .precio(30).build();
 
                 figuraServices.add(figura8);
 
@@ -210,7 +208,7 @@ public class InitDataConfig {
                                 .nombre("naruto")
                                 .des("Esta es una figura de naruto en la villa oculta de la hoja de mayor, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
                                 .arco(arco5)
-                                .precio("35€").build();
+                                .precio(35).build();
 
                 figuraServices.add(figura9);
 
@@ -223,7 +221,7 @@ public class InitDataConfig {
                                 .nombre("Gohan")
                                 .des("Gohan modo bestia en la tierra su despertad ma skaioken")
                                 .arco(arco4) // Aquí haces referencia a un arco no guardado
-                                .precio("150").build();
+                                .precio(150).build();
 
                 novedadServices.add(novedad);
 
@@ -232,7 +230,7 @@ public class InitDataConfig {
                                 .nombre("Naruto")
                                 .des("Naruto pelea contra Pain Modo sabio 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 novedadServices.add(novedad1);
 
@@ -241,7 +239,7 @@ public class InitDataConfig {
                                 .nombre("Pain")
                                 .des("Pain pelea contra Naruto Modo sabio 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("45").build();
+                                .precio(45).build();
 
                 novedadServices.add(novedad2);
 
@@ -250,7 +248,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 novedadServices.add(novedad3);
 
@@ -260,7 +258,7 @@ public class InitDataConfig {
                                 .nombre("Luffy")
                                 .des("Luffy en la batalla contra kaido despues de dar la cara ante los yonkous, 30 cm de alto y de largo 122cm")
                                 .arco(arco)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece);
 
@@ -269,7 +267,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece1);
 
@@ -278,7 +276,7 @@ public class InitDataConfig {
                                 .nombre("Ace")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece2);
 
@@ -287,7 +285,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece3);
 
@@ -296,7 +294,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece4);
 
@@ -305,7 +303,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece5);
 
@@ -314,7 +312,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece6);
 
@@ -323,7 +321,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece7);
                 OnePiece onePiece8 = OnePiece.builder()
@@ -331,7 +329,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece8);
                 OnePiece onePiece9 = OnePiece.builder()
@@ -339,7 +337,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece9);
                 OnePiece onePiece10 = OnePiece.builder()
@@ -347,7 +345,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece10);
                 OnePiece onePiece11 = OnePiece.builder()
@@ -355,7 +353,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece11);
                 OnePiece onePiece12 = OnePiece.builder()
@@ -363,7 +361,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece12);
                 OnePiece onePiece13 = OnePiece.builder()
@@ -371,7 +369,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece13);
                 OnePiece onePiece14 = OnePiece.builder()
@@ -379,7 +377,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 onePieceServices.add(onePiece14);
 
@@ -390,7 +388,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto);
                 Naruto naruto1 = Naruto.builder()
@@ -398,7 +396,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto1);
                 Naruto naruto2 = Naruto.builder()
@@ -406,7 +404,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto2);
                 Naruto naruto3 = Naruto.builder()
@@ -414,7 +412,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto3);
                 Naruto naruto4 = Naruto.builder()
@@ -422,7 +420,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto4);
                 Naruto naruto5 = Naruto.builder()
@@ -430,7 +428,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto5);
                 Naruto naruto6 = Naruto.builder()
@@ -438,7 +436,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto6);
                 Naruto naruto7 = Naruto.builder()
@@ -446,7 +444,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto7);
                 Naruto naruto8 = Naruto.builder()
@@ -454,7 +452,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto8);
                 Naruto naruto9 = Naruto.builder()
@@ -462,7 +460,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto9);
                 Naruto naruto10 = Naruto.builder()
@@ -470,7 +468,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto10);
                 Naruto naruto11 = Naruto.builder()
@@ -478,7 +476,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto11);
                 Naruto naruto12 = Naruto.builder()
@@ -486,7 +484,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto12);
                 Naruto naruto13 = Naruto.builder()
@@ -494,7 +492,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto13);
                 Naruto naruto14 = Naruto.builder()
@@ -502,37 +500,35 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 narutoServices.add(naruto14);
 
                 Naruto naruto15 = Naruto.builder()
-                        .url("/imagen/fotosNaruto/obito1.jpeg")
-                        .nombre("Obito")
-                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
-                        .arco(arco5)
-                        .precio("50").build();
+                                .url("/imagen/fotosNaruto/obito1.jpeg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio(50).build();
 
                 narutoServices.add(naruto15);
 
-
                 Naruto naruto16 = Naruto.builder()
-                        .url("/imagen/fotosNaruto/sakura.jpeg")
-                        .nombre("Obito")
-                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
-                        .arco(arco5)
-                        .precio("50").build();
+                                .url("/imagen/fotosNaruto/sakura.jpeg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio(20).build();
 
                 narutoServices.add(naruto16);
 
-
-                /*Aqui empieza las figuras de dragon ball*/
+                /* Aqui empieza las figuras de dragon ball */
                 DragonBall dragonBall = DragonBall.builder()
                                 .url("/imagen/fotosDragonBall/broly.jpeg")
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall);
                 DragonBall dragonBall1 = DragonBall.builder()
@@ -540,7 +536,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall1);
                 DragonBall dragonBall2 = DragonBall.builder()
@@ -548,7 +544,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall2);
                 DragonBall dragonBall3 = DragonBall.builder()
@@ -556,7 +552,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall3);
                 DragonBall dragonBall4 = DragonBall.builder()
@@ -564,7 +560,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall4);
                 DragonBall dragonBall5 = DragonBall.builder()
@@ -572,7 +568,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall5);
                 DragonBall dragonBall6 = DragonBall.builder()
@@ -580,7 +576,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall6);
                 DragonBall dragonBall7 = DragonBall.builder()
@@ -588,7 +584,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall7);
                 DragonBall dragonBall8 = DragonBall.builder()
@@ -596,7 +592,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall8);
                 DragonBall dragonBall9 = DragonBall.builder()
@@ -604,7 +600,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall9);
                 DragonBall dragonBall10 = DragonBall.builder()
@@ -612,7 +608,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall10);
                 DragonBall dragonBall11 = DragonBall.builder()
@@ -620,7 +616,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall11);
                 DragonBall dragonBall12 = DragonBall.builder()
@@ -628,7 +624,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall12);
                 DragonBall dragonBall13 = DragonBall.builder()
@@ -636,7 +632,7 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall13);
                 DragonBall dragonBall14 = DragonBall.builder()
@@ -644,25 +640,25 @@ public class InitDataConfig {
                                 .nombre("Obito")
                                 .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
                                 .arco(arco5)
-                                .precio("50").build();
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall14);
 
                 DragonBall dragonBall15 = DragonBall.builder()
-                        .url("/imagen/fotosDragonBall/gohan2.jpeg")
-                        .nombre("Obito")
-                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
-                        .arco(arco5)
-                        .precio("50").build();
+                                .url("/imagen/fotosDragonBall/gohan2.jpeg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall15);
 
                 DragonBall dragonBall16 = DragonBall.builder()
-                        .url("/imagen/fotosDragonBall/goku5.jpeg")
-                        .nombre("Obito")
-                        .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
-                        .arco(arco5)
-                        .precio("50").build();
+                                .url("/imagen/fotosDragonBall/goku5.jpeg")
+                                .nombre("Obito")
+                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
+                                .arco(arco5)
+                                .precio(50).build();
 
                 dragonBallServices.add(dragonBall16);
 

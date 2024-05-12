@@ -1,0 +1,36 @@
+.cart-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    border-left: 1px solid #ccc;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 9999;
+    color: black; /* Cambia el color del texto a negro */
+}
+
+#btnComprar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000000; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Relleno interno */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cursor al pasar el ratón */
+    transition: background-color 0.3s ease; /* Transición suave */
+    outline: none; /* Sin contorno al hacer clic */
+}
+
+#btnComprar:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+#btnComprar:active {
+    transform: translateY(1px); /* Efecto de clic */
+}

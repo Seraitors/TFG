@@ -23,25 +23,23 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SeguridadConfig {
 
         
-          @Bean
-         public PasswordEncoder passwordEncoder() {
-          return new BCryptPasswordEncoder();
-          }
-         
          @Bean
-        public InMemoryUserDetailsManager userDetailsService() {
-                UserDetails user = User.builder()
-                                .username("user")
-                                .password(passwordEncoder().encode("user"))
-                                .roles("USER")
+        public PasswordEncoder passwordEncoder() {
+         return new BCryptPasswordEncoder();
+         }
+
+         @Bean
+      public InMemoryUserDetailsManager userDetailsService() {
+               UserDetails user = User.builder()
+                               .username("user")
+                              .password(passwordEncoder().encode("user"))
+                             .roles("USER")                        .build();
+              UserDetails admin = User.builder()
+                              .username("admin")
+                             .password(passwordEncoder().encode("admin"))
+                             .roles("USER", "ADMIN")
                                 .build();
-                UserDetails admin = User.builder()
-                                .username("admin")
-                                .password(passwordEncoder().encode("admin"))
-                                .roles("USER", "ADMIN")
-                                .build();
-                return new InMemoryUserDetailsManager(user, admin);
-        } 
+               return new InMemoryUserDetailsManager(user, admin);}
 
         @Bean
         public SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
