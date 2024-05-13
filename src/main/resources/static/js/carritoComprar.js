@@ -65,3 +65,56 @@ function addToCart(event) {
 }
 
 const cartItems = [];
+
+
+// comprar 
+// Agregar un evento de clic a los botones de compra
+
+const btnComprar = document.getElementById('btnComprar');
+
+
+let total = 0;
+
+
+function addToCart(event) {
+    const productId = event.target.getAttribute('data-figura-id');
+    const productName = event.target.getAttribute('data-figura-nombre');
+    const productPrice = parseFloat(event.target.getAttribute('data-figura-precio'));
+
+    itemCount++;
+    total += productPrice;
+
+    cartItemCount.textContent = itemCount;
+
+    const cartItem = document.createElement('li');
+    cartItem.textContent = productName + ' - $' + productPrice.toFixed(2);
+    document.getElementById('cartItems').appendChild(cartItem);
+
+    updateCartTotal();
+}
+
+function updateCartTotal() {
+    document.getElementById('cartTotal').textContent = 'Total: $' + total.toFixed(2);
+}
+
+cart.addEventListener('click', () => {
+    cartContainer.style.display = 'block';
+});
+
+btnComprar.addEventListener('click', () => {
+    alert('Compra realizada!');
+});
+
+document.addEventListener('click', (event) => {
+    if (!cart.contains(event.target) && event.target !== cartContainer) {
+        cartContainer.style.display = 'none';
+    }
+});
+
+const addToCartButtons = document.querySelectorAll('.btn-comprar');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+
+

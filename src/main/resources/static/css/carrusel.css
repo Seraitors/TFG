@@ -56,3 +56,33 @@
 .flecha-derecha:hover {
     background-color: #555; /* Color de fondo al pasar el cursor */
 }
+
+
+
+/*Imagenes    ponerlas bien */
+.onePiece{
+
+    width: 90%; /* Ocupa todo el ancho del contenedor */
+    height: 100%; 
+    object-fit: cover;
+}
+
+.dragonBall{
+
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: 100%; 
+    object-fit: cover;
+}
+.naruto{
+
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: 100%; 
+    object-fit: cover;
+}
+.novedad{
+
+    width: 90%; /* Ocupa todo el ancho del contenedor */
+    height: 90%; 
+    object-fit: cover;
+    
+}

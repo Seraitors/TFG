@@ -44,10 +44,26 @@ public class InicioController {
     public String verDetalle(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
         Optional<Figura> figura = figuraServices.findById(id);
-        model.addAttribute("figura", figura);
-        return "html/inspeccionar"; // Devolver la vista de detalle
+
+        if (figura.isPresent()) {
+            Figura figura2 = figura.get();
+             model.addAttribute("figura", figura2);
+               return "html/inspeccionar"; // Devolver la vista de detalle
+        }else{
+
+            return "redirect:/inicio";
+        }
+       
+      
     }
 
+
+
+
+    
+
+
+    
     /**
      * esto va a ser importnate
      * Tenemso qu ecoger los correos que se queden guardados y que los pille para cada usuario
@@ -196,5 +212,12 @@ public class InicioController {
             return "html/index";
         }
     }
+
+    @PostMapping("/logout")
+    public String logout() {
+        // En este método, puedes realizar cualquier limpieza o tareas adicionales necesarias para el logout
+        return "redirect:/inicio"; // Redirige al usuario a la página de inicio de sesión después del logout
+    }
+
 
 }

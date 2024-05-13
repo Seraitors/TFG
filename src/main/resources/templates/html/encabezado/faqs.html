@@ -47,28 +47,15 @@
                 </ul>
                 <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
 
-                <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;" >
-                    <i class="bi bi-search"></i>
-                    <form id="searchForm" role="search" method="get"
-                        action="/figuras/filtrar">
-                        <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
-                        <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
-                            placeholder="Buscar..." name="nombre">
-                    </form>
-                </div>
-                <div class="d-inline-flex align-items-center" id="addToCart" style="margin-right: 20px;">
-                    <i class="bi bi-save"></i>
-                </div>
 
-
-
-                <div class="text-end"  >
-                    <a href="/inicioSesion/login" class="btn btn-outline-light me-2">Iniciar sesion</a>
+                <div class="text-end">
+                    <a href="/inicioSesion" class="btn btn-outline-light me-2">Iniciar sesion</a>
                 </div>
                 <div class="text-end">
 
 
-                    <a href="/registrar" class="btn btn-warning"> Registrar </a>
+                    <a href="/registrarse" class="btn btn-warning"> Registrar </a><br>
+
                     <!--    <form id="logoutForm" th:action="@{/usuario/logout}" method="post">
                     <button type="submit" class="btn btn-warning">
                         <i class="fas fa-sign-out-alt"></i> Exit

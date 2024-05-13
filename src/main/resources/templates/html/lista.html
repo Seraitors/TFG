@@ -36,26 +36,27 @@
                             <!--<span th:text="${#authentication.name}">Opciones</span>-->
                         </a>
                         <ul class="dropdown-menu">
-                            <li><span class="dropdown-item" th:text="' App: ' + ${session.numVisitasApp}"></span></li>
-                            <li><span class="dropdown-item" th:text="' index: ' + ${session.numVisitasIndex}"></span>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            
                             <li><a href="/perfil/new" class="nav-link px-2 text-secondary">Crear perfil</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a href="/perfil/list" class="nav-link px-2 text-secondary">Lista perfiles</a></li>
+                            <li>
+                                <form action="/logout" method="post">
+
+                                       <button  type="submit"> exit</button>
+                                    </li>
+                                </form>
+                             
                         </ul>
                     </li>
                 </ul>
                 <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
 
-                <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;" >
+                <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;">
                     <i class="bi bi-search"></i>
-                    <form id="searchForm" role="search" method="get"
-                        action="/figuras/filtrar">
+                    <form id="searchForm" role="search" method="get" action="/figuras/filtrar">
                         <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
                         <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
                             placeholder="Buscar..." name="nombre">
@@ -67,18 +68,30 @@
 
 
 
-                <div class="text-end"  >
+                <div class="text-end">
                     <a href="/inicioSesion" class="btn btn-outline-light me-2">Iniciar sesion</a>
                 </div>
                 <div class="text-end">
 
 
-                    <a href="/registrarse" class="btn btn-warning"> Registrar </a>
+                    <a href="/registrarse" class="btn btn-warning"> Registrar </a><br>
+
                     <!--    <form id="logoutForm" th:action="@{/usuario/logout}" method="post">
                     <button type="submit" class="btn btn-warning">
                         <i class="fas fa-sign-out-alt"></i> Exit
                     </button>
                 </form>-->
+                </div>
+                <div id="cart" style="margin: 10px;">
+                    <i class="bi bi-cart"></i>
+                    <span id="cartItemCount">0</span>
+                </div>
+                
+                <div id="cartContainer" class="cart-container" style="display: none;">
+                    <h2>Carrito de Compras</h2>
+                    <ul id="cartItems"></ul>
+                    <div id="cartTotal">Total: $0.00</div>
+                    <button id="btnComprar">Comprar</button>
                 </div>
                 <!--   Son para que te cuentes los inicios de sesion est atambien puesto arriba
           <div  sec:authorize="hasRole('ROLE_ADMIN')" >
@@ -89,18 +102,8 @@
                    <span class="dropdown-item" th:text=" ' index: ' + ${session.numVisitasIndex}"></span>
            </div> -->
             </div>
-            <div id="cart" style="margin-right:20px;">
-                <i class="bi bi-cart"></i>
-                <span id="cartItemCount">0</span>
-            </div>
 
-            <div id="cartContainer" class="cart-container">
-                <h2>Carrito de Compras</h2>
-                <ul id="cartItems"></ul>
-                <div id="cartTotal">Total: $0.00</div>
-                <button id="btnComprar">Comprar</button>
-            </div>
-            
+
 
 
         </div>
@@ -131,11 +134,22 @@
         <div class="carrusel-container">
             <div class="carrusel">
                 <div class="carrusel-slide">
-                    <a href="/OnePiece"> <img src="/imagen/carrusel/onepiece.jpg" alt="Slide 1"> </a>
+                    <a href="/OnePiece"> <img src="/imagen/carrusel/onepiece.jpg" alt="Slide 1" class="onePiece"> </a>
 
                 </div>
-                <div class="carrusel-slide"><img src="/imagen/fotosLista/zoro.jpg" alt="Slide 2"></div>
-                <div class="carrusel-slide"><img src="/imagen/fotosLista/brook1.jpg" alt="Slide 3"></div>
+                <div class="carrusel-slide">
+                    <a href="/DragonBall">    <img src="/imagen/carrusel/carruselDragonBall.png" alt="Slide 2" class="dragonBall">  </a>
+                   
+                </div>
+                <div class="carrusel-slide">
+                    <a href="/Naruto"> <img src="/imagen/carrusel/carruselNaruto.png" alt="Slide 3" class="naruto"> </a>
+                   
+                </div>
+
+                <div class="carrusel-slide">
+                    <a href="/novedad"> <img src="/imagen/carrusel/novedad.png" alt="Slide 3" class="novedad"> </a>
+                   
+                </div>
             </div>
             <button id="prevBtn" class="flecha-izquierda">←</button>
             <button id="nextBtn" class="flecha-derecha">→</button>
@@ -180,14 +194,13 @@
                                     </td>
 
                                     <td>
-                                        <!--<input class="form-check-input" type="checkbox" id="compra">
+                                        <button type="button" class="boton btn-comprar"
+                                        data-figura-id="id_de_la_figura"
+                                        data-figura-nombre="nombre_de_la_figura"
+                                        data-figura-precio="10.99" >Comprar </button>
+                                        
+                                         
                                     
-                                        <label class="form-check-label" for="compra">Compra</label> -->
-                                        <a href="">
-
-                                            <button type="button" class="boton btn-comprar">Comprar</button>
-                                        </a>
-
                                     </td>
                                 </tr>
                             </tbody>

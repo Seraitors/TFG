@@ -39,8 +39,9 @@ public class SeguridadConfig {
                              .password(passwordEncoder().encode("admin"))
                              .roles("USER", "ADMIN")
                                 .build();
-               return new InMemoryUserDetailsManager(user, admin);}
+               return new InMemoryUserDetailsManager(user, admin);} 
 
+               
         @Bean
         public SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
 
@@ -58,6 +59,7 @@ public class SeguridadConfig {
                                                                 AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
                                                                 AntPathRequestMatcher.antMatcher("/encabezado/**"),
                                                                 AntPathRequestMatcher.antMatcher("/faqs/**"),
+                                                                AntPathRequestMatcher.antMatcher("/registrarse/**"),
                                                                 PathRequest.toH2Console())
                                                 .permitAll()
                                                 .anyRequest().authenticated())
@@ -65,8 +67,8 @@ public class SeguridadConfig {
                                                 .loginPage("/inicioSesion/login")
                                                 .permitAll())
                                 .logout(out -> out
-                                                .logoutUrl("/inicioSesion/logout")
-                                                .logoutSuccessUrl("/inicioSesion/login?logout").permitAll());
+                                                .logoutUrl("/logout")
+                                                .logoutSuccessUrl("/inicio").permitAll());
 
                 // Para que funcione la consola del h2
                 http.csrf(csrf -> csrf.ignoringRequestMatchers(

@@ -50,7 +50,7 @@ public class InicioSesionController {
         {
 
             if (usuarioServices.validarUsuario(usuario.getEmail(), usuario.getPassword())) {
-                return "redirect:/Pelis";
+                return "redirect:/inicio";
             } else if (bindingResult.hasErrors()) {
                 // Hay errores de validación, devuelve la vista del formulario con los mensajes de error
                 return "InicioSesion";
