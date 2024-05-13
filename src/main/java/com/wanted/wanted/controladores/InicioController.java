@@ -141,6 +141,7 @@ public class InicioController {
     //seguridad probar
 
 
+/*
 
     @GetMapping( "/inicioSesion")
     public  String inicio (){
@@ -218,6 +219,7 @@ public class InicioController {
         // En este método, puedes realizar cualquier limpieza o tareas adicionales necesarias para el logout
         return "redirect:/inicio"; // Redirige al usuario a la página de inicio de sesión después del logout
     }
+*/
 
 
 }

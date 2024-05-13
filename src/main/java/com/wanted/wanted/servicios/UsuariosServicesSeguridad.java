@@ -51,7 +51,7 @@ public class UsuariosServicesSeguridad {
 
 
 
-    @PostConstruct
+   /* @PostConstruct
     public  void init(){
 
         usuarios.addAll(
@@ -69,7 +69,7 @@ public class UsuariosServicesSeguridad {
 
 
 
-    }
+    }*/
 
 
 

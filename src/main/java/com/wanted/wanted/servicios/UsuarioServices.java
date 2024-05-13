@@ -34,7 +34,10 @@ public class UsuarioServices {
     }
 
 
+    public  List<Usuario>findAll(){
 
+        return usuarioRepository.findAll();
+    }
 
 
     public List<Usuario> saveAll (List<Usuario> lista) { return usuarioRepository.saveAll(lista); }

@@ -28,7 +28,7 @@ public class SeguridadConfig {
          return new BCryptPasswordEncoder();
          }
 
-         @Bean
+ /*        @Bean
       public InMemoryUserDetailsManager userDetailsService() {
                UserDetails user = User.builder()
                                .username("user")
@@ -39,7 +39,7 @@ public class SeguridadConfig {
                              .password(passwordEncoder().encode("admin"))
                              .roles("USER", "ADMIN")
                                 .build();
-               return new InMemoryUserDetailsManager(user, admin);} 
+               return new InMemoryUserDetailsManager(user, admin);} */
 
                
         @Bean
@@ -47,27 +47,28 @@ public class SeguridadConfig {
 
                 /* Esto es nuevo */
                 http
-                                .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
-                                                                AntPathRequestMatcher.antMatcher("/webjars/**"),
-                                                                AntPathRequestMatcher.antMatcher("/css/**"),
-                                                                AntPathRequestMatcher.antMatcher("/imagen/**"),
-                                                                AntPathRequestMatcher.antMatcher("/DragonBall/**"),
-                                                                AntPathRequestMatcher.antMatcher("/Naruto/**"),
-                                                                AntPathRequestMatcher.antMatcher("/OnePiece/**"),
-                                                                AntPathRequestMatcher.antMatcher("/caracteristicas/**"),
-                                                                AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
-                                                                AntPathRequestMatcher.antMatcher("/encabezado/**"),
-                                                                AntPathRequestMatcher.antMatcher("/faqs/**"),
-                                                                AntPathRequestMatcher.antMatcher("/registrarse/**"),
-                                                                PathRequest.toH2Console())
-                                                .permitAll()
-                                                .anyRequest().authenticated())
-                                .formLogin(form -> form
+                        .authorizeHttpRequests(auth -> auth
+                                .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
+                                        AntPathRequestMatcher.antMatcher("/webjars/**"),
+                                        AntPathRequestMatcher.antMatcher("/css/**"),
+                                        AntPathRequestMatcher.antMatcher("/imagen/**"),
+                                        AntPathRequestMatcher.antMatcher("/DragonBall/**"),
+                                        AntPathRequestMatcher.antMatcher("/Naruto/**"),
+                                        AntPathRequestMatcher.antMatcher("/OnePiece/**"),
+                                        AntPathRequestMatcher.antMatcher("/caracteristicas/**"),
+                                        AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
+                                        AntPathRequestMatcher.antMatcher("/encabezado/**"),
+                                        AntPathRequestMatcher.antMatcher("/faqs/**"),
+                          /*              AntPathRequestMatcher.antMatcher("/usuario/signup/**"), // Agregado*/
+                                        PathRequest.toH2Console())
+                                .permitAll()
+                                .anyRequest().authenticated())
+
+                        .formLogin(form -> form
                                                 .loginPage("/inicioSesion/login")
                                                 .permitAll())
                                 .logout(out -> out
-                                                .logoutUrl("/logout")
+                                                .logoutUrl("/usuario/logout")
                                                 .logoutSuccessUrl("/inicio").permitAll());
 
                 // Para que funcione la consola del h2

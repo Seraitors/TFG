@@ -45,30 +45,57 @@ public class InicioSesionController {
      * EN le htmll cambiar para ver si carga y funciona
      * @return
      */
-    @PostMapping("/inicioSesion/entrar")
-    public  String entrar(@ModelAttribute @Valid Usuario usuario, BindingResult bindingResult, Model model) {
-        {
+    @PostMapping("/iniciarSesion/entrar")
+    public  String entar(){
 
-            if (usuarioServices.validarUsuario(usuario.getEmail(), usuario.getPassword())) {
-                return "redirect:/inicio";
-            } else if (bindingResult.hasErrors()) {
-                // Hay errores de validación, devuelve la vista del formulario con los mensajes de error
-                return "InicioSesion";
-            } else {
-                return "redirect:/inicio";
+        return "redirect:/inicio";
+    }
+
+    /*Crear un idex para cuando te salgas de la aplicacion*/
+    @GetMapping("/usuario/logout")
+    public String salir(){
+        return "redirect:/inicio";
+    }
+
+
+
+    @GetMapping("/usuario/signup")
+    public String signup(Model model){
+        model.addAttribute("usuarioDto", new Usuario()); // Debes pasar un nuevo Usuario
+        return "usuario/signup"; // Asumiendo que "usuario/signup" es la ruta correcta para el formulario de registro
+    }
+
+
+    @PostMapping("/usuario/signup/entrar")
+    public String signupSubmit(@Valid @ModelAttribute("usuarioDto")
+                               BindingResult bindingResult,Usuario dto,
+                               Model model) {
+        if (bindingResult.hasErrors()) {
+            log.info("hay errores en el formulario");
+            bindingResult.getFieldErrors()
+                    .forEach(e -> log.info("field: " + e.getField() + ", rejected value: " + e.getRejectedValue()));
+            return "/inicioSesion/login";
+            /*return "Añadir";*/
+        } else {
+            Usuario usuario = usuarioServices.findByUsernameOrEmail(dto.getUsername(), dto.getEmail());
+            if (usuario != null) { // el usuario ya existe
+                bindingResult.rejectValue("username", "username.existente",
+                        "ya existe un usuario con ese username");
+                return "/usuario/signup";
             }
-        }}
+            usuarioServices.save(dto);
+            return "redirect:/inicioSesion/login";
+
+        }
+    }
 
 
 
-
-
-
-    @GetMapping("/inicioSesion/logout")
+   /* @PostMapping("/inicioSesion/logout")
             public String logout () {
             return "redirect:html/encabezado/iniciarSesion";
         }
-
+*/
 }
 
 

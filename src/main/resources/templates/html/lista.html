@@ -26,14 +26,15 @@
                     <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
                     <li><a href="/encabezado" class="nav-link px-2 text-white">Acerca</a></li>
 
-                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown" th:each="usuario1: ${usuario}">
+                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                            aria-expanded="false" >
 
 
                             <!--  mirar por que da error-->
-                            <span th:text="${usuario1.getNombre()}">Opciones</span> <span class="caret"></span>
-                            <!--<span th:text="${#authentication.name}">Opciones</span>-->
+
+                            <span th:text="${#authentication.name}">Nombre de Usuario</span>
+
                         </a>
                         <ul class="dropdown-menu">
                             
@@ -42,12 +43,14 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a href="/perfil/list" class="nav-link px-2 text-secondary">Lista perfiles</a></li>
+
                             <li>
-                                <form action="/logout" method="post">
+                                <form th:action="@{/usuario/logout}" method="post">
 
                                        <button  type="submit"> exit</button>
-                                    </li>
                                 </form>
+                                    </li>
+
                              
                         </ul>
                     </li>
@@ -69,12 +72,12 @@
 
 
                 <div class="text-end">
-                    <a href="/inicioSesion" class="btn btn-outline-light me-2">Iniciar sesion</a>
+                    <a href="/inicioSesion/login" class="btn btn-outline-light me-2">Iniciar sesion</a>
                 </div>
                 <div class="text-end">
 
 
-                    <a href="/registrarse" class="btn btn-warning"> Registrar </a><br>
+                    <a href="/usuario/signup" class="btn btn-warning"> Registrar </a><br>
 
                     <!--    <form id="logoutForm" th:action="@{/usuario/logout}" method="post">
                     <button type="submit" class="btn btn-warning">
