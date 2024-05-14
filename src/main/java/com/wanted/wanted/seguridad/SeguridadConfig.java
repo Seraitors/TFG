@@ -48,9 +48,11 @@ public class SeguridadConfig {
                 /* Esto es nuevo */
                 http
                         .authorizeHttpRequests(auth -> auth
-                                .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
+                                .requestMatchers(AntPathRequestMatcher.antMatcher( "/inicio/**"),
+                             /*    AntPathRequestMatcher.antMatcher("///**"), */
                                         AntPathRequestMatcher.antMatcher("/webjars/**"),
                                         AntPathRequestMatcher.antMatcher("/css/**"),
+                                        AntPathRequestMatcher.antMatcher("/js/**"),
                                         AntPathRequestMatcher.antMatcher("/imagen/**"),
                                         AntPathRequestMatcher.antMatcher("/DragonBall/**"),
                                         AntPathRequestMatcher.antMatcher("/Naruto/**"),

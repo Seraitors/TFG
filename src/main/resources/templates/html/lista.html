@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="/css/carrusel.css">
     <link rel="stylesheet" href="/css/comprarCarrito.css">
 
+    <style>
+        /* Estilo para el texto del nombre de usuario */
+        .nav-item.dropdown .nav-link span.text-primary {
+            transition: color 0.3s;
+            /* Transición suave de color */
+        }
+
+        /* Cambio de color al pasar el ratón sobre el texto */
+        .nav-item.dropdown .nav-link:hover span.text-primary {
+            color: #0056b3;
+            /* Cambio de color al pasar el ratón */
+        }
+    </style>
 
 
 <body>
@@ -25,36 +38,7 @@
                     <li><a href="/pagoEnca" class="nav-link px-2 text-white">Precios</a></li>
                     <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
                     <li><a href="/encabezado" class="nav-link px-2 text-white">Acerca</a></li>
-
-                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" >
-
-
-                            <!--  mirar por que da error-->
-
-                            <span th:text="${#authentication.name}">Nombre de Usuario</span>
-
-                        </a>
-                        <ul class="dropdown-menu">
-                            
-                            <li><a href="/perfil/new" class="nav-link px-2 text-secondary">Crear perfil</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a href="/perfil/list" class="nav-link px-2 text-secondary">Lista perfiles</a></li>
-
-                            <li>
-                                <form th:action="@{/usuario/logout}" method="post">
-
-                                       <button  type="submit"> exit</button>
-                                </form>
-                                    </li>
-
-                             
-                        </ul>
-                    </li>
-                </ul>
+               </ul>
                 <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
 
                 <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;">
@@ -69,27 +53,48 @@
                     <i class="bi bi-save"></i>
                 </div>
 
+                <div>
 
+                    <div th:if="${#authorization.expression('!isAuthenticated()')}">
+                        <div class="d-flex justify-content-end">
+                            <a href="/inicioSesion/login" class="btn btn-outline-light me-2">Iniciar sesión</a>
+                            <a href="/usuario/signup" class="btn btn-warning">Registrar</a>
+                        </div>
+                    </div>
+                    <ul style="margin-top: auto" class="nav ">
+                        <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                            <!-- pones estio -->
+                            <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 0;">
+                                <span class="text-primary">
+                                    <span th:text="${#authentication.name}">Nombre de Usuario</span>
+                                </span>
+                            </a>
 
-                <div class="text-end">
-                    <a href="/inicioSesion/login" class="btn btn-outline-light me-2">Iniciar sesion</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/perfil/new" class="nav-link px-2 text-secondary">Crear perfil</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a href="/perfil/list" class="nav-link px-2 text-secondary">Lista perfiles</a></li>
+                                <li>
+                                    <form th:action="@{/usuario/logout}" method="post">
+                                        <button type="submit" class="btn btn-danger">Salir</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
                 </div>
-                <div class="text-end">
 
 
-                    <a href="/usuario/signup" class="btn btn-warning"> Registrar </a><br>
 
-                    <!--    <form id="logoutForm" th:action="@{/usuario/logout}" method="post">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-sign-out-alt"></i> Exit
-                    </button>
-                </form>-->
-                </div>
                 <div id="cart" style="margin: 10px;">
                     <i class="bi bi-cart"></i>
                     <span id="cartItemCount">0</span>
                 </div>
-                
+
                 <div id="cartContainer" class="cart-container" style="display: none;">
                     <h2>Carrito de Compras</h2>
                     <ul id="cartItems"></ul>
@@ -141,17 +146,18 @@
 
                 </div>
                 <div class="carrusel-slide">
-                    <a href="/DragonBall">    <img src="/imagen/carrusel/carruselDragonBall.png" alt="Slide 2" class="dragonBall">  </a>
-                   
+                    <a href="/DragonBall"> <img src="/imagen/carrusel/carruselDragonBall.png" alt="Slide 2"
+                            class="dragonBall"> </a>
+
                 </div>
                 <div class="carrusel-slide">
                     <a href="/Naruto"> <img src="/imagen/carrusel/carruselNaruto.png" alt="Slide 3" class="naruto"> </a>
-                   
+
                 </div>
 
                 <div class="carrusel-slide">
                     <a href="/novedad"> <img src="/imagen/carrusel/novedad.png" alt="Slide 3" class="novedad"> </a>
-                   
+
                 </div>
             </div>
             <button id="prevBtn" class="flecha-izquierda">←</button>
@@ -197,13 +203,12 @@
                                     </td>
 
                                     <td>
-                                        <button type="button" class="boton btn-comprar"
-                                        data-figura-id="id_de_la_figura"
-                                        data-figura-nombre="nombre_de_la_figura"
-                                        data-figura-precio="10.99" >Comprar </button>
-                                        
-                                         
-                                    
+                                        <button type="button" class="boton btn-comprar" data-figura-id="id_de_la_figura"
+                                            data-figura-nombre="nombre_de_la_figura" data-figura-precio="10.99">Comprar
+                                        </button>
+
+
+
                                     </td>
                                 </tr>
                             </tbody>

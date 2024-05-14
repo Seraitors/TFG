@@ -22,20 +22,33 @@ public class RegistrarController {
 
     private final UsuarioServices usuarioServices;
 
-    @GetMapping("/registro")
-    public String registrar(Model model){
-        model.addAttribute("usuario", new Usuario());
-        return "Registro";
+    @GetMapping("/usuario/signup")
+    public String signup(Model model){
+        model.addAttribute("usuarioDto", new Usuario()); // Debes pasar un nuevo Usuario
+        return "usuario/signup"; // Asumiendo que "usuario/signup" es la ruta correcta para el formulario de registro
     }
-    @PostMapping("/registro/submit")
-    public String registroSubmit(@ModelAttribute("usuario" ) @Valid Usuario usuario, BindingResult bindingResult){
 
+
+    @PostMapping("/usuario/signup/entrar")
+    public String signupSubmit(@Valid @ModelAttribute("usuarioDto")
+                               BindingResult bindingResult,Usuario dto,
+                               Model model) {
         if (bindingResult.hasErrors()) {
-            return "Registro";
-        }else {
-            usuarioServices.registrarUsuario(usuario);
-            System.out.println("Se ha registrado");
-            return "redirect:/InicioSesion";
+            log.info("hay errores en el formulario");
+            bindingResult.getFieldErrors()
+                    .forEach(e -> log.info("field: " + e.getField() + ", rejected value: " + e.getRejectedValue()));
+            return "/inicioSesion/login";
+            /*return "Añadir";*/
+        } else {
+            Usuario usuario = usuarioServices.findByUsernameOrEmail(dto.getUsername(), dto.getEmail());
+            if (usuario != null) { // el usuario ya existe
+                bindingResult.rejectValue("username", "username.existente",
+                        "ya existe un usuario con ese username");
+                return "/usuario/signup";
+            }
+            usuarioServices.save(dto);
+            return "redirect:/inicioSesion/login";
+
         }
     }
 }

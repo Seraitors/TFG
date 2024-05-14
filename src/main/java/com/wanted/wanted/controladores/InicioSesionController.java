@@ -32,6 +32,7 @@ public class InicioSesionController {
     //roles son los perfiles
 
     private final RolServices rolServices;
+    
     @GetMapping("/inicioSesion/login")
     public  String iniciarSesion( Model model){
         model.addAttribute("usuario", new Usuario());
@@ -59,35 +60,7 @@ public class InicioSesionController {
 
 
 
-    @GetMapping("/usuario/signup")
-    public String signup(Model model){
-        model.addAttribute("usuarioDto", new Usuario()); // Debes pasar un nuevo Usuario
-        return "usuario/signup"; // Asumiendo que "usuario/signup" es la ruta correcta para el formulario de registro
-    }
-
-
-    @PostMapping("/usuario/signup/entrar")
-    public String signupSubmit(@Valid @ModelAttribute("usuarioDto")
-                               BindingResult bindingResult,Usuario dto,
-                               Model model) {
-        if (bindingResult.hasErrors()) {
-            log.info("hay errores en el formulario");
-            bindingResult.getFieldErrors()
-                    .forEach(e -> log.info("field: " + e.getField() + ", rejected value: " + e.getRejectedValue()));
-            return "/inicioSesion/login";
-            /*return "Añadir";*/
-        } else {
-            Usuario usuario = usuarioServices.findByUsernameOrEmail(dto.getUsername(), dto.getEmail());
-            if (usuario != null) { // el usuario ya existe
-                bindingResult.rejectValue("username", "username.existente",
-                        "ya existe un usuario con ese username");
-                return "/usuario/signup";
-            }
-            usuarioServices.save(dto);
-            return "redirect:/inicioSesion/login";
-
-        }
-    }
+    
 
 
 
