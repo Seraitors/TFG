@@ -4,6 +4,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.wanted.wanted.entidades.DragonBall;
 import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.servicios.DragonBallServices;
 
@@ -39,14 +40,14 @@ public class DragonBallController {
     /**
      * Poner bonito y hacer todo lo del detalle con todos 
      */
-    /*   @GetMapping("/detalle/{id}")
+       @GetMapping("/detalle/{id}")
     public String verDetallee(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<Figura> figura = figuraServices.findById(id);
+        Optional<DragonBall> dragon = dragonBallServices.findById(id);
 
-        if (figura.isPresent()) {
-            Figura figura2 = figura.get();
-             model.addAttribute("figura", figura2);
+        if (dragon.isPresent()) {
+            DragonBall dragonBall2 = dragon.get();
+             model.addAttribute("figura", dragonBall2);
                return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
         }else{
 
@@ -54,7 +55,7 @@ public class DragonBallController {
         }
        
       
-    } */
+    } 
 
 
 }

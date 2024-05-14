@@ -104,7 +104,8 @@
                                 <td th:text="${figuraDragonBall.des}">Descripción</td>
                                 <td th:text="${figuraDragonBall.precio}">Precio</td>
                                 <td>
-                                    <a href=""> <button type="button" class="boton btn-comprar">Información</button>
+                                    <a th:href="@{/detalle/{id}(id=${dragon.id})}">
+                                        <button type="button" class="boton btn-comprar">Información</button>
                                     </a>
 
                                 </td>

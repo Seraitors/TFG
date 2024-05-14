@@ -3,6 +3,7 @@ package com.wanted.wanted.servicios;
 import java.util.List;
 
 import com.wanted.wanted.entidades.DragonBall;
+import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.repositorio.DragonBallRepository;
 
 
@@ -46,5 +47,10 @@ public class DragonBallServices {
     public void delete(DragonBall m) {
 
         DragonBallRepository.delete(m);
+    }
+
+    
+    public Optional<DragonBall> findById(Long id) {
+        return DragonBallRepository.findById(id);
     }
 }
