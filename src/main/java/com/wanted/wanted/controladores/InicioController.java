@@ -40,6 +40,12 @@ public class InicioController {
 
 
     }
+    /**
+     * Para coger le id y ver el detalle
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/detalle/{id}")
     public String verDetalle(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
@@ -48,7 +54,7 @@ public class InicioController {
         if (figura.isPresent()) {
             Figura figura2 = figura.get();
              model.addAttribute("figura", figura2);
-               return "html/inspeccionar"; // Devolver la vista de detalle
+               return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
         }else{
 
             return "redirect:/inicio";
@@ -56,7 +62,7 @@ public class InicioController {
        
       
     }
-
+  
 
 
 
