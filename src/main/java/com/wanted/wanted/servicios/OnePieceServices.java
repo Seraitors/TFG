@@ -2,6 +2,7 @@ package com.wanted.wanted.servicios;
 
 
 
+import com.wanted.wanted.entidades.Naruto;
 import com.wanted.wanted.entidades.OnePiece;
 import com.wanted.wanted.repositorio.OnePieceRepository;
 import com.wanted.wanted.repositorio.OnePieceRepository;
@@ -47,6 +48,10 @@ public class OnePieceServices {
     public void delete(OnePiece m) {
 
         onePieceRepository.delete(m);
+    }
+
+    public Optional<OnePiece> findById(Long id) {
+        return onePieceRepository.findById(id);
     }
    
    

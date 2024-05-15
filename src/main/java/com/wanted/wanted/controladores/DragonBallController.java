@@ -23,11 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 @Controller
 public class DragonBallController {
-    
 
 
-
-       private final DragonBallServices  dragonBallServices;
+    private final DragonBallServices dragonBallServices;
 
     @GetMapping("/DragonBall")
     public String inicioOnePiece(Model model) {
@@ -38,24 +36,25 @@ public class DragonBallController {
     }
 
     /**
-     * Poner bonito y hacer todo lo del detalle con todos 
+     * Poner bonito y hacer todo lo del detalle con todos
      */
-       @GetMapping("/detalle/{id}")
+    @GetMapping("/detalle/dragon/{id}")
     public String verDetallee(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
         Optional<DragonBall> dragon = dragonBallServices.findById(id);
 
         if (dragon.isPresent()) {
             DragonBall dragonBall2 = dragon.get();
-             model.addAttribute("figura", dragonBall2);
-               return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
-        }else{
+            model.addAttribute("figura", dragonBall2);
+            return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
+        } else {
 
             return "redirect:/inicio";
         }
-       
-      
-    } 
 
 
+    }
 }
+
+
+

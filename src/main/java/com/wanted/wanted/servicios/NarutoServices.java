@@ -2,6 +2,7 @@ package com.wanted.wanted.servicios;
 
 
 
+import com.wanted.wanted.entidades.DragonBall;
 import com.wanted.wanted.entidades.Naruto;
 import com.wanted.wanted.repositorio.NarutoRepository;
 import com.wanted.wanted.repositorio.NarutoRepository;
@@ -47,6 +48,11 @@ public class NarutoServices {
     public void delete(Naruto m) {
 
         narutoRepository.delete(m);
+    }
+
+
+    public Optional<Naruto> findById(Long id) {
+        return narutoRepository.findById(id);
     }
    
    
