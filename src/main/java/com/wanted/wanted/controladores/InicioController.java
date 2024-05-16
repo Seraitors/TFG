@@ -7,14 +7,21 @@ import com.wanted.wanted.servicios.FiguraServices;
 import com.wanted.wanted.servicios.NovedadServices;
 
 import com.wanted.wanted.servicios.UsuariosServicesSeguridad;
+
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
@@ -65,8 +72,21 @@ public class InicioController {
   
 
 
+    // darle un ojo
+/*     @RestController
+@RequestMapping("/carrito")
+public class CarritoController {
 
-    
+    @PostMapping("/agregar")
+    public ResponseEntity<String> agregarAlCarrito(@RequestBody Figura figura, HttpServletResponse response) {
+        // Aquí deberías agregar la lógica para almacenar la figura en una cookie
+        Cookie cookie = new Cookie("carrito", figura.getId().toString()); 
+        cookie.setMaxAge(24 * 60 * 60); // La cookie expirará en 1 día
+        response.addCookie(cookie);
+        return ResponseEntity.ok("Figura agregada al carrito");
+    }
+} */
+
 
 
     
