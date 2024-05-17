@@ -13,7 +13,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "One Piece")
+@Table(name = "One_Piece")
 public class OnePiece {
     @Id @GeneratedValue
     //@Min(value=1, message = "{mascota.id.mayorquecero}")
