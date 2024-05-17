@@ -1,5 +1,6 @@
 package com.wanted.wanted.controladores;
 
+import com.wanted.wanted.entidades.OnePiece;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -98,9 +99,9 @@ public class AdminController {
 
     /* Editar One piece */
 
-/*     @GetMapping("/edit/onePiece/{id}")
+    @GetMapping("/edit/onePiece/{id}")
     public String editar1(@PathVariable Long id, Model moddel) {
-      OnePiece onePiece1 = onePieceServices.findById(id);
+        Optional<OnePiece> onePiece1 = onePieceServices.findById(id);
 
         if (onePiece1.isPresent()) {
 
@@ -116,17 +117,17 @@ public class AdminController {
 
     }
 
-    @PostMapping("/edit/submit")
-    public String editarSubmit1(@Valid @ModelAttribute("figura") Figura figura, BindingResult bindingResult) {
+    @PostMapping("/edit/onePiece/submit")
+    public String editarSubmit1(@Valid @ModelAttribute("onePiece") OnePiece onePiece, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "editarFigura";
+            return "editarOnePiece";
         }
-        figuraServices.edit(figura);
+        onePieceServices.edit(onePiece);
 
         return "redirect:/admin/pagina";
 
     }
- */
+
 
 
     @GetMapping("/figuras/delete/{id}")

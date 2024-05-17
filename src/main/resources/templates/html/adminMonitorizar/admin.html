@@ -176,9 +176,13 @@
                 <img th:src="${figuraOnePiece.url}" alt="imagen">
                 <h2 th:text="${figuraOnePiece.nombre}"></h2>
                 <p>Precio: <span class="price" th:text="${figuraOnePiece.precio}"></span></p>
+            
+                <a class="button" th:href="@{/edit/onePiece/{id}id=$onePiece.id}">Editar</a>
+      <!--           <a  class="button" th:href="@{/figuras/delete/{id}(id=${onePiece.id})}">Borrar</a>
+ -->
+            
             </div>
-            <button type="button"> Editar</button>
-            <button type="button"> Borrar</button>
+         
         </div>
         <h3>Figuras Naruto </h3>
         <div th:each="figuraNaruto: ${naruto}" class="figura-container">

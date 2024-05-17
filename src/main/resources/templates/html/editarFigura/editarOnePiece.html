@@ -10,8 +10,8 @@
 <body>
 <h4>Agregar</h4>
 <form method="post" action="#"
-      th:action="@{/edit/submit}"
-      th:object="${figura}">
+      th:action="@{/edit/onePiece/submit}"
+      th:object="${onePiece}">
         <input type="hidden" th:field="*{id}">
 
     <!--<div class="input-group mb-3" sec:authorize="hasRole('ROLE_ADMIN')"
