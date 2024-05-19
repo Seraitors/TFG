@@ -1,6 +1,7 @@
 package com.wanted.wanted.servicios;
 
 import com.wanted.wanted.entidades.Novedad;
+import com.wanted.wanted.entidades.OnePiece;
 import com.wanted.wanted.repositorio.NovedadRepository;
 import com.wanted.wanted.repositorio.NovedadRepository;
 
@@ -50,8 +51,10 @@ public class NovedadServices {
 
         novedadRepository.delete(m);
     }
-   
 
+    public Optional<Novedad> findById(Long id) {
+        return novedadRepository.findById(id);
+    }
   
     
 }

@@ -1,8 +1,11 @@
 package com.wanted.wanted.controladores;
 
+import com.wanted.wanted.entidades.DragonBall;
+import com.wanted.wanted.entidades.Naruto;
 import com.wanted.wanted.entidades.OnePiece;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Null;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -128,15 +131,81 @@ public class AdminController {
 
     }
 
+    //Editar Dragon Ball Z
 
+
+    @GetMapping("/edit/dragonBall/{id}")
+    public String editar2(@PathVariable Long id, Model moddel) {
+        Optional<DragonBall> dragonBall1 = dragonBallServices.findById(id);
+
+        if (dragonBall1.isPresent()) {
+
+            DragonBall dragonBall = dragonBall1.get();
+            moddel.addAttribute("dragonBall", dragonBall);
+
+            return "html/editarFigura/editarDragonBall";
+        } else {
+
+            // el fallo puede estar aqui de por qu ete crea cosas nuevas
+            return "redirect:/admin/pagina";
+        }
+
+    }
+
+    @PostMapping("/edit/dragonBall/submit")
+    public String editarSubmit2(@Valid @ModelAttribute("dragonBall") DragonBall dragonBall, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "editarDragonBall";
+        }
+        dragonBallServices.edit(dragonBall);
+
+        return "redirect:/admin/pagina";
+
+    }
+    // Aqui empieza lo de naruto
+
+
+    @GetMapping("/edit/naruto/{id}")
+    public String editar3(@PathVariable Long id, Model moddel) {
+        Optional<Naruto> naruto1 = narutoServices.findById(id);
+
+        if (naruto1.isPresent()) {
+
+            Naruto naruto = naruto1.get();
+            moddel.addAttribute("naruto", naruto);
+
+            return "html/editarFigura/editarNaruto";
+        } else {
+
+            // el fallo puede estar aqui de por qu ete crea cosas nuevas
+            return "redirect:/admin/pagina";
+        }
+
+    }
+
+    @PostMapping("/edit/naruto/submit")
+    public String editarSubmit3(@Valid @ModelAttribute("naruto") Naruto naruto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "editarNaruto";
+        }
+        narutoServices.edit(naruto);
+
+        return "redirect:/admin/pagina";
+
+    }
 
     @GetMapping("/figuras/delete/{id}")
     public String borrarMascota(@PathVariable("id") Long id, Model model) {
 
         Optional<Figura> figura = figuraServices.findById(id);
-        if (figura != null)
+        Optional<OnePiece> onePiece = onePieceServices.findById(id);
+        Optional<DragonBall> dragonBall =dragonBallServices.findById(id);
+        Optional<Naruto> naruto= narutoServices.findById(id);
+        if (figura != null || onePiece!=null || dragonBall!= null || naruto!=null)
             figuraServices.delete(figura.get());
-
+            onePieceServices.delete(onePiece.get());
+            dragonBallServices.delete(dragonBall.get());
+            narutoServices.delete(naruto.get());
         return "redirect:/admin/pagina";
     }
 

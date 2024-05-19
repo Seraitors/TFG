@@ -247,7 +247,8 @@
                                     <td th:text="${novedad.des}">Descripción</td>
                                     <td th:text="${novedad.precio}">Precio</td>
                                     <td>
-                                        <a href=""> <button type="button" class="boton btn-comprar">Información</button>
+                                        <a th:href="@{/detalle/novedad/{id}(id=${novedad.id})}">
+                                            <button type="button" class="boton btn-comprar">Información</button>
                                         </a>
 
                                     </td>
