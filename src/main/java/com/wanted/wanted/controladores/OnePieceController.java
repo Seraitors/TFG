@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -43,6 +44,24 @@ public class OnePieceController {
             OnePiece  onePiece2 = onePiece.get();
             model.addAttribute("figura", onePiece2);
             return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
+        } else {
+
+            return "redirect:/inicio";
+        }
+
+
+    }
+
+
+    @GetMapping("/comprar/onePiece")
+    public String comprarOnePiece(@RequestParam("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<OnePiece> onePiece = onePieceServices.findById(id);
+
+        if (onePiece.isPresent()) {
+            OnePiece  onePiece2 = onePiece.get();
+            model.addAttribute("figura", onePiece2);
+            return "html/comprar/comprar"; // Devolver la vista de detalle
         } else {
 
             return "redirect:/inicio";

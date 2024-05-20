@@ -54,6 +54,24 @@ public class DragonBallController {
 
 
     }
+
+
+    @GetMapping("/comprar/dragon")
+    public String comprarDragonBall(@RequestParam("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<DragonBall> dragon = dragonBallServices.findById(id);
+
+        if (dragon.isPresent()) {
+            DragonBall dragonBall2 = dragon.get();
+            model.addAttribute("figura", dragonBall2);
+            return "html/comprar/comprar"; // Devolver la vista de detalle
+        } else {
+
+            return "redirect:/inicio";
+        }
+
+
+    }
 }
 
 

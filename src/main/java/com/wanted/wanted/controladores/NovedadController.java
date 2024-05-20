@@ -31,7 +31,7 @@ public class NovedadController {
 
         if (novedad.isPresent()) {
             Novedad novedad2 = novedad.get();
-            model.addAttribute("novedad", novedad2);
+            model.addAttribute("figura", novedad2);
             return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
         }else{
 

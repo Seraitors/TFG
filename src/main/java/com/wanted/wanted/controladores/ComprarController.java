@@ -44,7 +44,7 @@ public class ComprarController {
             return "html/comprar/comprar"; // Devolver la vista de detalle
         }else{
 
-            return "html/comprar/comprar";
+            return "redirect:html/inicio";
         }
 
 

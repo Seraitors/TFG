@@ -3,6 +3,7 @@ package com.wanted.wanted.controladores;
 
 
 import com.wanted.wanted.entidades.DragonBall;
+import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.entidades.Naruto;
 import com.wanted.wanted.servicios.NarutoServices;
 import lombok.RequiredArgsConstructor;
@@ -50,4 +51,23 @@ public class NarutoController {
 
 
     }
+
+
+    @GetMapping("/comprar/naruto")
+    public String comprarNaruto(@RequestParam("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<Naruto> naruto = narutoServices.findById(id);
+
+        if (naruto.isPresent()) {
+            Naruto naruto2 = naruto.get();
+            model.addAttribute("figura", naruto2);
+            return "html/comprar/comprar"; // Devolver la vista de detalle
+        } else {
+
+            return "redirect:/inicio";
+        }
+
+
+    }
+
 }
