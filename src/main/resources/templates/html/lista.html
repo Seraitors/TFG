@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/tabla.css">
     <link rel="stylesheet" href="/css/carrusel.css">
     <link rel="stylesheet" href="/css/comprarCarrito.css">
-
+    <link rel="icon" href="/imagen/pestaña/corona.jpg" >
     <style>
         /* Estilo para el texto del nombre de usuario */
         .nav-item.dropdown .nav-link span.text-primary {
@@ -201,15 +201,10 @@
                                             <button type="button" class="boton btn-comprar">Información</button>
                                         </a>
                                     </td>
-
                                     <td>
-                                        <button type="button" class="boton btn-comprar" data-figura-id="id_de_la_figura"
-                                            data-figura-nombre="nombre_de_la_figura" data-figura-precio="10.99">Comprar
-                                        </button>
-
-
-
-                                    </td>
+                                        <a th:href="@{/comprar(id=${figura.id})}">
+                                            <button type="button" class="boton btn-comprar">Comprar</button>
+                                        </a>
                                 </tr>
                             </tbody>
                         </table>
