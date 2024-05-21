@@ -88,33 +88,30 @@
 </head>
 
 <body>
-    <header class="p-3 bg-dark text-white fixed-top">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li class="d-flex align-items-center">
-                        <img src="/imagen/encabezado/calabera.png" id="foto" alt="Tu imagen" class="w-25 h-60 me-2">
-                        <span class="text-white">Wanted</span>
-                    </li>
-                    <li><a href="/inicio" class="nav-link px-2 text-secondary">Inicio</a></li>
-                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown"> </li>
-                    <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false" style="padding-left: 0;">
-                        <span class="text-primary">
-                            <span th:text="${#authentication.name}">Nombre de Usuario</span>
-                        </span>
-                    </a>
-                    <li><a href="/admin/meter/figura" class="nav-link px-2 text-secondary">Agregar figura</a></li>
-                    <li><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a></li>
-                </ul>
+<header class="p-3 bg-dark text-white fixed-top">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li class="d-flex align-items-center">
+                    <img src="/imagen/encabezado/calabera.png" id="foto" alt="Tu imagen" class="w-25 h-60 me-2">
+                    <span class="text-white">Wanted</span>
+                </li>
+                <li><a href="/inicio" class="nav-link px-2 text-secondary">Inicio</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <span class="nav-link px-2 text-primary">
+                        <span th:text="${#authentication.name}">admin</span>
+                    </span>
+                </li>
+                <li><a href="/admin/meter/figura" class="nav-link px-2 text-secondary">Agregar figura</a></li>
+                <li><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a></li>
+            </ul>
 
-                <form th:action="@{/usuario/logout}" method="post">
-                    <button type="submit" class="nav-link logout btn btn-link">Salir</button>
-                </form>
-
-            </div>
+            <form th:action="@{/usuario/logout}" method="post">
+                <button type="submit" class="nav-link logout btn btn-link text-white">Salir</button>
+            </form>
         </div>
-    </header>
+    </div>
+</header>
 
     <div class="admin-page" style="margin-top: 90px">
         <div class="admin-header">

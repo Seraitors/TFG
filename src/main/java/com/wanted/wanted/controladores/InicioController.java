@@ -94,6 +94,36 @@ public class InicioController {
         return "html/adminMonitorizar/adminMeterFigura";
     }
 
+
+    /**
+     * Esto para añadir a favoritos
+     * @return
+     */
+
+ /*   @PostMapping("/figuras/{id}/favorito")
+    public ResponseEntity<String> toggleFavorito(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
+        Optional<Figura> figuraOpt = figuraServices.findById(id);
+        if (figuraOpt.isPresent()) {
+            Figura figura = figuraOpt.get();
+            Usuario usuario = usuariosServicesSeguridad.findByUsername(userDetails.getUsername());
+            if (usuario.getFavoritos().contains(figura)) {
+                usuario.getFavoritos().remove(figura);
+            } else {
+                usuario.getFavoritos().add(figura);
+            }
+            usuariosServicesSeguridad.save(usuario);
+            return ResponseEntity.ok("Favorito actualizado");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}*/
+
+
+
+
+
+
     // darle un ojo
 /*     @RestController
 @RequestMapping("/carrito")
