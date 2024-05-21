@@ -1,8 +1,7 @@
 package com.wanted.wanted.controladores;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import com.wanted.wanted.entidades.DragonBall;
 import com.wanted.wanted.entidades.Figura;
@@ -16,8 +15,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -71,6 +68,21 @@ public class DragonBallController {
         }
 
 
+    }
+
+
+    @GetMapping("/figuras/dragonBall/new")
+    public String nuevaFigura(Model model) {
+        log.info("Estoy en nuevaFigura");
+        model.addAttribute("dragonBall", new DragonBall()); // Cambio el nombre del objeto en el modelo
+        return "/html/agregarFigura/agregarDragonBall";
+    }
+
+    @PostMapping("/figuras/dragonBall/new/submit") // Cambio la URL de la anotación
+    public String nuevaMascotaSubmit(@ModelAttribute("dragonBall") DragonBall nuevaPersona) {
+        log.info(nuevaPersona.toString());
+        dragonBallServices.add(nuevaPersona);
+        return "redirect:/inicio";
     }
 }
 

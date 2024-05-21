@@ -43,8 +43,6 @@ import com.wanted.wanted.servicios.NarutoServices;
 import com.wanted.wanted.servicios.NovedadServices;
 import com.wanted.wanted.servicios.OnePieceServices;
 
-
-
 @RequiredArgsConstructor
 @Slf4j
 @Controller
@@ -131,8 +129,7 @@ public class AdminController {
 
     }
 
-    //Editar Dragon Ball Z
-
+    // Editar Dragon Ball Z
 
     @GetMapping("/edit/dragonBall/{id}")
     public String editar2(@PathVariable Long id, Model moddel) {
@@ -153,7 +150,8 @@ public class AdminController {
     }
 
     @PostMapping("/edit/dragonBall/submit")
-    public String editarSubmit2(@Valid @ModelAttribute("dragonBall") DragonBall dragonBall, BindingResult bindingResult) {
+    public String editarSubmit2(@Valid @ModelAttribute("dragonBall") DragonBall dragonBall,
+            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "editarDragonBall";
         }
@@ -163,7 +161,6 @@ public class AdminController {
 
     }
     // Aqui empieza lo de naruto
-
 
     @GetMapping("/edit/naruto/{id}")
     public String editar3(@PathVariable Long id, Model moddel) {
@@ -199,13 +196,13 @@ public class AdminController {
 
         Optional<Figura> figura = figuraServices.findById(id);
         Optional<OnePiece> onePiece = onePieceServices.findById(id);
-        Optional<DragonBall> dragonBall =dragonBallServices.findById(id);
-        Optional<Naruto> naruto= narutoServices.findById(id);
-        if (figura != null || onePiece!=null || dragonBall!= null || naruto!=null)
+        Optional<DragonBall> dragonBall = dragonBallServices.findById(id);
+        Optional<Naruto> naruto = narutoServices.findById(id);
+        if (figura != null || onePiece != null || dragonBall != null || naruto != null)
             figuraServices.delete(figura.get());
-            onePieceServices.delete(onePiece.get());
-            dragonBallServices.delete(dragonBall.get());
-            narutoServices.delete(naruto.get());
+        onePieceServices.delete(onePiece.get());
+        dragonBallServices.delete(dragonBall.get());
+        narutoServices.delete(naruto.get());
         return "redirect:/admin/pagina";
     }
 

@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="/css/tabla.css">
     <link rel="stylesheet" href="/css/carrusel.css">
     <link rel="stylesheet" href="/css/comprarCarrito.css">
-    <link rel="icon" href="/imagen/pestaña/corona.jpg" >
+    <link rel="stylesheet" href="/css/cambiarColoCabezera.css">
+    <link rel="icon" href="/imagen/pestaña/corona.jpg">
+
     <style>
         /* Estilo para el texto del nombre de usuario */
         .nav-item.dropdown .nav-link span.text-primary {
@@ -23,6 +25,31 @@
             color: #0056b3;
             /* Cambio de color al pasar el ratón */
         }
+
+        .menu {
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+            border-top: 2px solid #dee2e6;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .menu h5 {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #6c757d;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #0056b3;
+        }
+
+
+
     </style>
 
 
@@ -33,12 +60,12 @@
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><img src="/imagen/encabezado/calabera.png" id="foto" alt="Tu imagen" class="w-25 h-60"></li>
-                    <li><a href="/inicio" class="nav-link px-2 text-secondary">Inicio</a></li>
-                    <li><a href="/caracteristicas" class="nav-link px-2 text-white">Características</a></li>
-                    <li><a href="/pagoEnca" class="nav-link px-2 text-white">Precios</a></li>
-                    <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
-                    <li><a href="/encabezado" class="nav-link px-2 text-white">Acerca</a></li>
-               </ul>
+                    <li><a href="/inicio" id="linkInicio" class="nav-link px-2 text-secondary">Inicio</a></li>
+                    <li><a href="/caracteristicas" id="linkCaracteristicas" class="nav-link px-2 text-white">Características</a></li>
+                    <li><a href="/pagoEnca" id="linkPrecios" class="nav-link px-2 text-white">Precios</a></li>
+                    <li><a href="/faqs" id="linkFaqs" class="nav-link px-2 text-white">FAQs</a></li>
+                    <li><a href="/encabezado" id="linkAcerca" class="nav-link px-2 text-white">Acerca</a></li>
+                </ul>
                 <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
 
                 <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;">
@@ -72,11 +99,13 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a href="/perfil/new" class="nav-link px-2 text-secondary">Agregar  figura</a></li>
+                                <li><a href="/admin/meter/figura" class="nav-link px-2 text-secondary">Agregar
+                                        figura</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a></li>
+                                <li><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a>
+                                </li>
                                 <li>
                                     <form th:action="@{/usuario/logout}" method="post">
                                         <button type="submit" class="btn btn-danger">Salir</button>
@@ -266,89 +295,82 @@
         </div>
 
 
-        <div class="menu">
-            <div class="menuTitulo">
-                <h2>Menú</h2>
-            </div>
-
-            <table>
-                <tr>
-                    <th>Por que comprar </th>
-                    <th>Quienes somos </th>
-                    <th>Contactar</th>
-                    <th>Otros</th>
-                    <th>Comunidad</th>
-                </tr>
-                <tr>
-                    <td>
-
-                        <a href="#">Cómo comprar</a><br>
-                        <a href="#">Formas de pago</a><br>
-                        <a href="#">Gastos de envío</a><br>
-                        <a href="#">Cupones descuento</a><br>
-                        <a href="#">Preguntas frecuentes</a><br>
-                        <a href="#">Opiniones de clientes</a><br>
-                        <a href="#">Tarjetas regalo</a><br>
-
-                    </td>
-                    <td>
-
-                        <a href="#">Compromisos</a><br>
-                        <a href="#">Nuestras tiendas</a><br>
-                        <a href="#">Nuestras Marcas</a><br>
-                        <a href="#">Condiciones de compra</a><br>
-                        <a href="#">Afiliados</a><br>
-                        <a href="#">Aviso legal</a><br>
-                        <a href="#">Privacidad</a>
-
-
-                    </td>
-                    <td>
-                        <a href="#">Centro de soporte</a><br>
-                        <a href="#">Devoluciones y Garantías</a><br>
-                        <a href="#">Wiki PcComponentes</a><br>
-                        <a href="#">Opina y Gana</a><br>
-                        <a href="#">Publicidad</a><br>
-                        <a href="#">Trabaja con nosotros</a>
-                        <a href="#">Politicas de cookies</a>
-
-
-                    </td>
-
-                    <td>
-                        <a href="#">Replay </a><br>
-                        <a href="#">Black Friday </a><br>
-                        <a href="#">Cyber Monday </a><br>
-                        <a href="#">PcDays </a><br>
-                        <a href="#">Marketplace </a><br>
-                        <a href="#">Servicio logistico Fulfilment </a><br>
-                        <a href="#">Servicio de reparaciones </a><br>
-                        <a href="#">Concurso </a><br>
-                        <a href="#">Cita asistencia tecnica </a><br>
-                        <a href="#">Responsabilidad social </a><br>
-
-
-                    </td>
-
-
-                    <td>
-
-
-                        <a href="#">Instagram</a><br>
-                        <a href="#">Twitter</a><br>
-                        <a href="#">Facebook</a><br>
-                        <a href="#">Telegram</a><br>
-                        <a href="#">Youtube</a><br>
-                        <a href="#">TikTok</a><br>
-                        <a href="#">Twitch</a>
-                    </td>
-                </tr>
-            </table>
+        <div class="menu bg-light py-5">
+            <div class="container">
+                <div class="menuTitulo text-center mb-4">
+                    <h2 class="text-uppercase">Menú</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <h5 class="text-dark mb-3">Por qué comprar</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-secondary">Cómo comprar</a></li>
+                            <li><a href="#" class="text-secondary">Formas de pago</a></li>
+                            <li><a href="#" class="text-secondary">Gastos de envío</a></li>
+                            <li><a href="#" class="text-secondary">Cupones descuento</a></li>
+                            <li><a href="#" class="text-secondary">Preguntas frecuentes</a></li>
+                            <li><a href="#" class="text-secondary">Opiniones de clientes</a></li>
+                            <li><a href="#" class="text-secondary">Tarjetas regalo</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <h5 class="text-dark mb-3">Quiénes somos</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-secondary">Compromisos</a></li>
+                            <li><a href="#" class="text-secondary">Nuestras tiendas</a></li>
+                            <li><a href="#" class="text-secondary">Nuestras Marcas</a></li>
+                            <li><a href="#" class="text-secondary">Condiciones de compra</a></li>
+                            <li><a href="#" class="text-secondary">Afiliados</a></li>
+                            <li><a href="#" class="text-secondary">Aviso legal</a></li>
+                            <li><a href="#" class="text-secondary">Privacidad</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <h5 class="text-dark mb-3">Contactar</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-secondary">Centro de soporte</a></li>
+                            <li><a href="#" class="text-secondary">Devoluciones y Garantías</a></li>
+                            <li><a href="#" class="text-secondary">Wiki PcComponentes</a></li>
+                            <li><a href="#" class="text-secondary">Opina y Gana</a></li>
+                            <li><a href="#" class="text-secondary">Publicidad</a></li>
+                            <li><a href="#" class="text-secondary">Trabaja con nosotros</a></li>
+                            <li><a href="#" class="text-secondary">Políticas de cookies</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <h5 class="text-dark mb-3">Otros</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-secondary">Replay</a></li>
+                            <li><a href="#" class="text-secondary">Black Friday</a></li>
+                            <li><a href="#" class="text-secondary">Cyber Monday</a></li>
+                            <li><a href="#" class="text-secondary">PcDays</a></li>
+                            <li><a href="#" class="text-secondary">Marketplace</a></li>
+                            <li><a href="#" class="text-secondary">Servicio logístico Fulfilment</a></li>
+                            <li><a href="#" class="text-secondary">Servicio de reparaciones</a></li>
+                            <li><a href="#" class="text-secondary">Concurso</a></li>
+                            <li><a href="#" class="text-secondary">Cita asistencia técnica</a></li>
+                            <li><a href="#" class="text-secondary">Responsabilidad social</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <h5 class="text-dark mb-3">Comunidad</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-secondary">Instagram</a></li>
+                            <li><a href="#" class="text-secondary">Twitter</a></li>
+                            <li><a href="#" class="text-secondary">Facebook</a></li>
+                            <li><a href="#" class="text-secondary">Telegram</a></li>
+                            <li><a href="#" class="text-secondary">Youtube</a></li>
+                            <li><a href="#" class="text-secondary">TikTok</a></li>
+                            <li><a href="#" class="text-secondary">Twitch</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>ç
         </div>
     </div>
 
 
-<!--    Cambiar esto -->
+    <!--    Cambiar esto
     <footer th:fragment="footer">
         <div class="container-fluid bg-secondary py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
             <div class="row pt-5">
@@ -417,7 +439,7 @@
         <div class="container-fluid bg-dark py-4">
             <p class="mb-2 text-center text-body">&copy; <a th:href="@{/index}">TANGER ROYAL CARS</a>. All Rights Reserved.</p>
         </div>
-    </footer>
+    </footer>-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
@@ -425,6 +447,10 @@
     <script src="/js/buscar.js"></script>
     <script src="/js/favoritos.js"></script>
     <script src="/js/carritoComprar.js"></script>
+    <script src="/js/cambiarDeColorCabecera.js"></script>
+
+
+
 
 
 </body>

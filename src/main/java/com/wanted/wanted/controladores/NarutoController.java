@@ -10,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -68,6 +65,20 @@ public class NarutoController {
         }
 
 
+    }
+
+    @GetMapping("/figuras/naruto/new")
+    public String nuevaFigura(Model model) {
+        log.info("Estoy en nuevaFigura");
+        model.addAttribute("naruto", new Naruto()); // Cambio el nombre del objeto en el modelo
+        return "/html/agregarFigura/agregarNaruto";
+    }
+
+    @PostMapping("/figuras/naruto/new/submit") // Cambio la URL de la anotación
+    public String nuevaMascotaSubmit(@ModelAttribute("naruto") Naruto nuevaPersona) {
+        log.info(nuevaPersona.toString());
+        narutoServices.add(nuevaPersona);
+        return "redirect:/inicio";
     }
 
 }

@@ -58,9 +58,23 @@ public class InicioSesionController {
         return "redirect:/inicio";
     }
 
+/*    *//**
+     * Esto es para cuando le des al login que se vay aa ets apagina
+     * @return
+     *//*
+    @GetMapping("/despues/login")
+    public  String despuesLogin(){
 
+        return "html/inicarSesion/despuesLogin";
 
-    
+    }
+
+    @PostMapping("/despues/login/entrar")
+    public  String entar1(){
+
+        return "redirect:/despues/login";
+    }
+    */
 
 
 

@@ -7,8 +7,8 @@
 </head>
 <body>
 <form method="post" action="#"
-      th:action="@{/figuras/new/submit}"
-      th:object="${figuraDTO}">
+      th:action="@{/figuras/onePiece/new/submit}"
+      th:object="${onePiece}">
     <h4 >Agregar elemento</h4>
     <div>
         <div class="input-group mb-3"
@@ -26,7 +26,7 @@
              th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
             <label class="form-label" for="id" >Id</label>
             <input class="form-control" type="text" id="id" placeholder="Id" th:field="*{id}"
-                   th:attrappend="readonly=${figuraDTO.id != null and modoEdicion} ? 'readonly' : null" />
+                   th:attrappend="readonly=${onePiece.id != null and modoEdicion} ? 'readonly' : null" />
             <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
                   class="help-block" id="id-error">Errores</span>
 

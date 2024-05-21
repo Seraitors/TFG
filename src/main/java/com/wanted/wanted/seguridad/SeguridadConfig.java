@@ -22,51 +22,55 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class SeguridadConfig {
 
-        
-         @Bean
+        @Bean
         public PasswordEncoder passwordEncoder() {
-         return new BCryptPasswordEncoder();
-         }
+                return new BCryptPasswordEncoder();
+        }
 
- /*        @Bean
-      public InMemoryUserDetailsManager userDetailsService() {
-               UserDetails user = User.builder()
-                               .username("user")
-                              .password(passwordEncoder().encode("user"))
-                             .roles("USER")                        .build();
-              UserDetails admin = User.builder()
-                              .username("admin")
-                             .password(passwordEncoder().encode("admin"))
-                             .roles("USER", "ADMIN")
-                                .build();
-               return new InMemoryUserDetailsManager(user, admin);} */
+        /*
+         * @Bean
+         * public InMemoryUserDetailsManager userDetailsService() {
+         * UserDetails user = User.builder()
+         * .username("user")
+         * .password(passwordEncoder().encode("user"))
+         * .roles("USER") .build();
+         * UserDetails admin = User.builder()
+         * .username("admin")
+         * .password(passwordEncoder().encode("admin"))
+         * .roles("USER", "ADMIN")
+         * .build();
+         * return new InMemoryUserDetailsManager(user, admin);}
+         */
 
-               
         @Bean
         public SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
 
                 /* Esto es nuevo */
                 http
-                        .authorizeHttpRequests(auth -> auth
-                                .requestMatchers(AntPathRequestMatcher.antMatcher( "/inicio/**"),
-                             /*    AntPathRequestMatcher.antMatcher("///**"), */
-                                        AntPathRequestMatcher.antMatcher("/webjars/**"),
-                                        AntPathRequestMatcher.antMatcher("/css/**"),
-                                        AntPathRequestMatcher.antMatcher("/js/**"),
-                                        AntPathRequestMatcher.antMatcher("/imagen/**"),
-                                        AntPathRequestMatcher.antMatcher("/DragonBall/**"),
-                                        AntPathRequestMatcher.antMatcher("/Naruto/**"),
-                                        AntPathRequestMatcher.antMatcher("/OnePiece/**"),
-                                        AntPathRequestMatcher.antMatcher("/caracteristicas/**"),
-                                        AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
-                                        AntPathRequestMatcher.antMatcher("/encabezado/**"),
-                                        AntPathRequestMatcher.antMatcher("/faqs/**"),
-                          /*              AntPathRequestMatcher.antMatcher("/usuario/signup/**"), // Agregado*/
-                                        PathRequest.toH2Console())
-                                .permitAll()
-                                .anyRequest().authenticated())
+                                .authorizeHttpRequests(auth -> auth
+                                                .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
+                                                                /* AntPathRequestMatcher.antMatcher("///**"), */
+                                                                AntPathRequestMatcher.antMatcher("/webjars/**"),
+                                                                AntPathRequestMatcher.antMatcher("/usuario/signup/**"),
+                                                                AntPathRequestMatcher.antMatcher("/css/**"),
+                                                                AntPathRequestMatcher.antMatcher("/js/**"),
+                                                                AntPathRequestMatcher.antMatcher("/imagen/**"),
+                                                                AntPathRequestMatcher.antMatcher("/DragonBall/**"),
+                                                                AntPathRequestMatcher.antMatcher("/Naruto/**"),
+                                                                AntPathRequestMatcher.antMatcher("/OnePiece/**"),
+                                                                AntPathRequestMatcher.antMatcher("/caracteristicas/**"),
+                                                                AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
+                                                                AntPathRequestMatcher.antMatcher("/encabezado/**"),
+                                                                AntPathRequestMatcher.antMatcher("/faqs/**"),
+                                                                /*
+                                                                 * AntPathRequestMatcher.antMatcher("/usuario/signup/**"
+                                                                 * ), // Agregado
+                                                                 */
+                                                                PathRequest.toH2Console())
+                                                .permitAll()
+                                                .anyRequest().authenticated())
 
-                        .formLogin(form -> form
+                                .formLogin(form -> form
                                                 .loginPage("/inicioSesion/login")
                                                 .permitAll())
                                 .logout(out -> out

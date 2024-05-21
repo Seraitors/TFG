@@ -69,8 +69,30 @@ public class InicioController {
        
       
     }
-  
 
+
+    @GetMapping("/figuras/new")
+    public String nuevaFigura(Model model) {
+        log.info("Estoy en nuevaFigura");
+        model.addAttribute("figuraDTO", new Figura()); // Cambio el nombre del objeto en el modelo
+        return "/html/agregarFigura/agregar";
+    }
+
+    @PostMapping("/figuras/new/submit") // Cambio la URL de la anotación
+    public String nuevaMascotaSubmit(@ModelAttribute("figuraDTO") Figura nuevaPersona) {
+        log.info(nuevaPersona.toString());
+        figuraServices.add(nuevaPersona);
+        return "redirect:/inicio";
+    }
+
+
+    @GetMapping("/admin/meter/figura")
+
+    public  String añadirFiguras (){
+
+
+        return "html/adminMonitorizar/adminMeterFigura";
+    }
 
     // darle un ojo
 /*     @RestController
@@ -87,16 +109,6 @@ public class CarritoController {
     }
 } */
 
-
-
-    
-    /**
-     * esto va a ser importnate
-     * Tenemso qu ecoger los correos que se queden guardados y que los pille para cada usuario
-     * @return
-     */
-
-  
 
 
 

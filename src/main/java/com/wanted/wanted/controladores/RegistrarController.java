@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 @RequiredArgsConstructor
 @Slf4j
 @Controller
@@ -23,32 +22,26 @@ public class RegistrarController {
     private final UsuarioServices usuarioServices;
 
     @GetMapping("/usuario/signup")
-    public String signup(Model model){
-        model.addAttribute("usuarioDto", new Usuario()); // Debes pasar un nuevo Usuario
-        return "usuario/signup"; // Asumiendo que "usuario/signup" es la ruta correcta para el formulario de registro
+    public String signup(Model model) {
+        model.addAttribute("usuarioDto", new Usuario());
+        return "html/registrarSesion/signup"; // Ruta correcta para el formulario de registro
     }
 
-
     @PostMapping("/usuario/signup/entrar")
-    public String signupSubmit(@Valid @ModelAttribute("usuarioDto")
-                               BindingResult bindingResult,Usuario dto,
-                               Model model) {
+    public String signupSubmit(@Valid @ModelAttribute("usuarioDto") Usuario dto,
+                               BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            log.info("hay errores en el formulario");
-            bindingResult.getFieldErrors()
-                    .forEach(e -> log.info("field: " + e.getField() + ", rejected value: " + e.getRejectedValue()));
-            return "/inicioSesion/login";
-            /*return "Añadir";*/
+            log.info("Hay errores en el formulario");
+            bindingResult.getFieldErrors().forEach(e -> log.info("field: " + e.getField() + ", rejected value: " + e.getRejectedValue()));
+            return "html/registrarSesion/signup"; // Ruta correcta para mostrar errores
         } else {
             Usuario usuario = usuarioServices.findByUsernameOrEmail(dto.getUsername(), dto.getEmail());
-            if (usuario != null) { // el usuario ya existe
-                bindingResult.rejectValue("username", "username.existente",
-                        "ya existe un usuario con ese username");
-                return "/usuario/signup";
+            if (usuario != null) { // El usuario ya existe
+                bindingResult.rejectValue("username", "username.existente", "Ya existe un usuario con ese username");
+                return "html/registrarSesion/signup";
             }
             usuarioServices.save(dto);
             return "redirect:/inicioSesion/login";
-
         }
     }
 }
