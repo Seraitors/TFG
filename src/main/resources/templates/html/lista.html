@@ -78,7 +78,7 @@
                 </div>
                 <div class="d-inline-flex align-items-center" id="addToCart" style="margin-right: 20px;" data-id="${figura.id}">
 <!--                    si da error es aqui -->
-                    <i class="bi bi-save bi-heart${figura.enFavoritos ? ' text-danger' : ''}" ></i>
+                    <i class="bi bi-bookmark bi-heart${figura.enFavoritos ? ' text-danger' : ''}" ></i>
                 </div>
 
                 <div>
@@ -240,6 +240,13 @@
                                         <a th:href="@{/comprar(id=${figura.id})}">
                                             <button type="button" class="boton btn-comprar">Comprar</button>
                                         </a>
+                                    </td>
+
+                                    <td>
+                                        <div>
+                                            <i class="bi bi-suit-heart" style="font-size: 30px"></i>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
