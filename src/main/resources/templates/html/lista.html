@@ -76,9 +76,9 @@
                             placeholder="Buscar..." name="nombre">
                     </form>
                 </div>
-                <div class="d-inline-flex align-items-center" id="addToCart" style="margin-right: 20px;" data-id="${figura.id}">
-<!--                    si da error es aqui -->
-                    <i class="bi bi-bookmark bi-heart${figura.enFavoritos ? ' text-danger' : ''}" ></i>
+
+                <div class="d-inline-flex align-items-center" id="addToCart" style="margin-right: 20px;" data-id="${figura.id}" onclick="addFavoriteProduct(${figura.id})">
+                    <i class="bi bi-bookmark bi-heart${figura.enFavoritos ? ' text-danger' : ''}"></i>
                 </div>
 
                 <div>
@@ -174,29 +174,57 @@
 
 
         <!--   prurbe ade carrusel -->
-        <div class="carrusel-container">
-            <div class="carrusel">
-                <div class="carrusel-slide">
-                    <a href="/OnePiece"> <img src="/imagen/carrusel/onepiece.jpg" alt="Slide 1" class="onePiece"> </a>
+        <div class="container-fluid p-0" style="margin-bottom: 90px;">
+            <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="/imagen/carrusel/onepiece.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
 
+                                <a href="@{/car}" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" src="/imagen/carrusel/carruselNaruto.png" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+
+                                <a href="#" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" src="/imagen/carrusel/carruselDragonBall.png" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+
+                                <a href="#" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" src="/imagen/carrusel/novedad.png" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+
+                                <a href="#" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="carrusel-slide">
-                    <a href="/DragonBall"> <img src="/imagen/carrusel/carruselDragonBall.png" alt="Slide 2"
-                            class="dragonBall"> </a>
-
-                </div>
-                <div class="carrusel-slide">
-                    <a href="/Naruto"> <img src="/imagen/carrusel/carruselNaruto.png" alt="Slide 3" class="naruto"> </a>
-
-                </div>
-
-                <div class="carrusel-slide">
-                    <a href="/novedad"> <img src="/imagen/carrusel/novedad.png" alt="Slide 3" class="novedad"> </a>
-
-                </div>
+                <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                </a>
+                <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                </a>
             </div>
-            <button id="prevBtn" class="flecha-izquierda">←</button>
-            <button id="nextBtn" class="flecha-derecha">→</button>
         </div>
 
 
@@ -299,6 +327,11 @@
                                         </a>
 
                                     </td>
+                                    <td>
+                                        <div>
+                                            <i class="bi bi-suit-heart" style="font-size: 30px"></i>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -391,6 +424,33 @@
     <script src="/js/carritoComprar.js"></script>
     <script src="/js/cambiarDeColorCabecera.js"></script>
 
+    <script>
+
+        function addFavoriteProduct(productId) {
+            const favoriteProduct = {
+                user: null,
+                product: productId
+            };
+
+            fetch('/favoritos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(favoriteProduct)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Product added to favorites successfully');
+                        document.querySelector(`[data-id="${productId}"] i`).classList.add('text-danger');
+                    } else {
+                        console.error('Error adding product to favorites:', response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error adding product to favorites:', error);
+                });
+        }
 
     </script>
 

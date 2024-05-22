@@ -18,7 +18,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             "where lower(u.username) = ?1 or lower(u.email) = ?1")
     Optional<Usuario> buscarPorUsernameOEmail(String s);
 
-
 }
 
 /*    @Query("select u from Registrar u " +

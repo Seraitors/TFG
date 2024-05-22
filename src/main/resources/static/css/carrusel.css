@@ -1,7 +1,8 @@
+/*
 .carrusel-container {
     position: relative;
-    width: 1300px; /* Ancho del carrusel */
-    height: 300px; /* Alto del carrusel */
+    width: 1300px; !* Ancho del carrusel *!
+    height: 300px; !* Alto del carrusel *!
 }
 
 .carrusel {
@@ -22,67 +23,67 @@
 }
 
 
-/* Estilos para los botones de navegación del carrusel */
+!* Estilos para los botones de navegación del carrusel *!
 .flecha-izquierda,
 .flecha-derecha {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #333; /* Color de fondo */
-    color: #fff; /* Color del texto */
+    background-color: #333; !* Color de fondo *!
+    color: #fff; !* Color del texto *!
     border: none;
     padding: 10px;
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+    transition: background-color 0.3s ease; !* Transición suave del color de fondo *!
 }
 
-/* Estilos para el botón de navegación izquierdo */
+!* Estilos para el botón de navegación izquierdo *!
 .flecha-izquierda {
     left: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-/* Estilos para el botón de navegación derecho */
+!* Estilos para el botón de navegación derecho *!
 .flecha-derecha {
     right: 0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-/* Estilos cuando el cursor está sobre los botones */
+!* Estilos cuando el cursor está sobre los botones *!
 .flecha-izquierda:hover,
 .flecha-derecha:hover {
-    background-color: #555; /* Color de fondo al pasar el cursor */
+    background-color: #555; !* Color de fondo al pasar el cursor *!
 }
 
 
 
-/*Imagenes    ponerlas bien */
+!*Imagenes    ponerlas bien *!
 .onePiece{
 
-    width: 90%; /* Ocupa todo el ancho del contenedor */
-    height: 100%; 
+    width: 90%; !* Ocupa todo el ancho del contenedor *!
+    height: 100%;
     object-fit: cover;
 }
 
 .dragonBall{
 
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    height: 100%; 
+    width: 100%; !* Ocupa todo el ancho del contenedor *!
+    height: 100%;
     object-fit: cover;
 }
 .naruto{
 
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    height: 100%; 
+    width: 100%; !* Ocupa todo el ancho del contenedor *!
+    height: 100%;
     object-fit: cover;
 }
 .novedad{
 
-    width: 90%; /* Ocupa todo el ancho del contenedor */
-    height: 90%; 
+    width: 90%; !* Ocupa todo el ancho del contenedor *!
+    height: 90%;
     object-fit: cover;
-    
-}
+
+}*/

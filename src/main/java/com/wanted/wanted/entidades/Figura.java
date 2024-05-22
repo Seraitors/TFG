@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -29,4 +32,6 @@ public class Figura {
     private int precio;
     private  String des;
     private String url;
+
+
 }

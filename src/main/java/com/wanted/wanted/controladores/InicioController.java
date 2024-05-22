@@ -2,10 +2,14 @@ package com.wanted.wanted.controladores;
 
 
 import com.wanted.wanted.entidades.Figura;
+import com.wanted.wanted.entidades.Usuario;
 import com.wanted.wanted.entidades.UsuarioSeguridad;
+import com.wanted.wanted.repositorio.FiguraRepository;
+import com.wanted.wanted.repositorio.UsuarioRepository;
 import com.wanted.wanted.servicios.FiguraServices;
 import com.wanted.wanted.servicios.NovedadServices;
 
+import com.wanted.wanted.servicios.UsuarioServices;
 import com.wanted.wanted.servicios.UsuariosServicesSeguridad;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,8 +36,10 @@ import java.util.Optional;
 public class InicioController {
 
     private final FiguraServices   figuraServices;
+
     private final NovedadServices novedadServices;
-    private final UsuariosServicesSeguridad usuariosServicesSeguridad;
+
+
 
 
 
@@ -41,7 +47,7 @@ public class InicioController {
     public  String  inicio(Model model){
     model.addAttribute("listaFigura",figuraServices.findAll());
     model.addAttribute("novedadFigura", novedadServices.findAll());
-    model.addAttribute("usuario", usuariosServicesSeguridad.findAll());
+
 
     return "html/lista";
 

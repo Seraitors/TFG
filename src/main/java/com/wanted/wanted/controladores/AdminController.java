@@ -81,7 +81,7 @@ public class AdminController {
             return "html/editarFigura/editarFigura";
         } else {
 
-            // el fallo puede estar aqui de por qu ete crea cosas nuevas
+
             return "redirect:/admin/pagina";
         }
 

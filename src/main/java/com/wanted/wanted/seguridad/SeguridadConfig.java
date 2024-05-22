@@ -27,20 +27,6 @@ public class SeguridadConfig {
                 return new BCryptPasswordEncoder();
         }
 
-        /*
-         * @Bean
-         * public InMemoryUserDetailsManager userDetailsService() {
-         * UserDetails user = User.builder()
-         * .username("user")
-         * .password(passwordEncoder().encode("user"))
-         * .roles("USER") .build();
-         * UserDetails admin = User.builder()
-         * .username("admin")
-         * .password(passwordEncoder().encode("admin"))
-         * .roles("USER", "ADMIN")
-         * .build();
-         * return new InMemoryUserDetailsManager(user, admin);}
-         */
 
         @Bean
         public SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
@@ -49,7 +35,7 @@ public class SeguridadConfig {
                 http
                                 .authorizeHttpRequests(auth -> auth
                                                 .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
-                                                                /* AntPathRequestMatcher.antMatcher("///**"), */
+
                                                                 AntPathRequestMatcher.antMatcher("/webjars/**"),
                                                                 AntPathRequestMatcher.antMatcher("/usuario/signup/**"),
                                                                 AntPathRequestMatcher.antMatcher("/css/**"),
@@ -62,10 +48,6 @@ public class SeguridadConfig {
                                                                 AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
                                                                 AntPathRequestMatcher.antMatcher("/encabezado/**"),
                                                                 AntPathRequestMatcher.antMatcher("/faqs/**"),
-                                                                /*
-                                                                 * AntPathRequestMatcher.antMatcher("/usuario/signup/**"
-                                                                 * ), // Agregado
-                                                                 */
                                                                 PathRequest.toH2Console())
                                                 .permitAll()
                                                 .anyRequest().authenticated())
