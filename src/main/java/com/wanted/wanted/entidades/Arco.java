@@ -1,8 +1,9 @@
 package com.wanted.wanted.entidades;
 
-
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Builder
 @Getter
@@ -14,10 +15,11 @@ import lombok.*;
 public class Arco {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@Column(nullable = false, unique = true, length=50)
+
     private String nombre;
 
-
+    @OneToMany(mappedBy = "arco")
+    private List<Figura> figuras ;
 }

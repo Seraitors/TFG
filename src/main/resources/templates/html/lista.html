@@ -85,8 +85,8 @@
 
                     <div th:if="${#authorization.expression('!isAuthenticated()')}">
                         <div class="d-flex justify-content-end">
-                            <a href="/inicioSesion/login" class="btn btn-outline-light me-2">Iniciar sesión</a>
-                            <a href="/usuario/signup" class="btn btn-warning">Registrar</a>
+                            <a th:href="@{/aaa}" class="btn btn-outline-light me-2">Iniciar sesión</a>
+                            <a th:href="@{/usuario/signup}" class="btn btn-warning">Registrar</a>
                         </div>
                     </div>
                     <ul style="margin-top: auto" class="nav ">
@@ -182,7 +182,7 @@
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
 
-                                <a href="@{/car}" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                                <a href="/OnePiece" class="btn btn-primary py-md-3 px-md-5 mt-2">One Piece</a>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
 
-                                <a href="#" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                                <a href="/Naruto" class="btn btn-primary py-md-3 px-md-5 mt-2">Naruto</a>
                             </div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
 
-                                <a href="#" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                                <a href="/DragonBall" class="btn btn-primary py-md-3 px-md-5 mt-2">Dragon ball</a>
                             </div>
                         </div>
                     </div>
@@ -209,7 +209,7 @@
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
 
-                                <a href="#" class="btn btn-primary py-md-3 px-md-5 mt-2">Reserve Now</a>
+                                <a href="#" class="btn btn-primary py-md-3 px-md-5 mt-2"> Novedades</a>
                             </div>
                         </div>
                     </div>

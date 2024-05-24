@@ -24,7 +24,8 @@ public class RegistrarController {
     @GetMapping("/usuario/signup")
     public String signup(Model model) {
         model.addAttribute("usuarioDto", new Usuario());
-        return "html/registrarSesion/signup"; // Ruta correcta para el formulario de registro
+        log.info("Paso por registrar ");
+        return "html/registarSesion/registrar"; // Ruta correcta para el formulario de registro
     }
 
     @PostMapping("/usuario/signup/entrar")
@@ -33,15 +34,15 @@ public class RegistrarController {
         if (bindingResult.hasErrors()) {
             log.info("Hay errores en el formulario");
             bindingResult.getFieldErrors().forEach(e -> log.info("field: " + e.getField() + ", rejected value: " + e.getRejectedValue()));
-            return "html/registrarSesion/signup"; // Ruta correcta para mostrar errores
+            return "html/registarSesion/registrar"; // Ruta correcta para mostrar errores
         } else {
             Usuario usuario = usuarioServices.findByUsernameOrEmail(dto.getUsername(), dto.getEmail());
             if (usuario != null) { // El usuario ya existe
                 bindingResult.rejectValue("username", "username.existente", "Ya existe un usuario con ese username");
-                return "html/registrarSesion/signup";
+                return "html/registarSesion/registrar";
             }
             usuarioServices.save(dto);
-            return "redirect:/inicioSesion/login";
+            return "redirect:/aaa";
         }
     }
 }

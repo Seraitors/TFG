@@ -72,13 +72,14 @@
             <button class="btn btn-primary-custom w-100 mb-3" type="submit">Iniciar sesión</button>
             <div class="d-flex justify-content-between">
                 <a href="/olvido-contrasena" class="text-muted">He olvidado mi contraseña</a>
-                <form th:action="@{/usuario/signup/entrar}" method="post">
+         <!--       <form th:action="@{/usuario/signup/entrar}" method="post">
+                </form>-->
 
-                    <a href="#" class="text-muted">Crear cuenta</a>
-                </form>
+
 
             </div>
         </form>
+        <a th:href="@{/usuario/signup}" class="text-muted">Crear cuenta</a>
         <hr>
         <button class="btn btn-outline-dark w-100">
             <i class="bi bi-google me-2"></i>Iniciar sesión con Google

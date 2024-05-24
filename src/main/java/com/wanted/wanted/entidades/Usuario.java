@@ -16,15 +16,15 @@ import java.util.Set;
 @Setter
 @Builder
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 
-@Table(name = "Usuario")
+
+@Table(name = "usuario")
 public class Usuario {
 
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)

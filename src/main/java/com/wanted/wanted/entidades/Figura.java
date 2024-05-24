@@ -26,7 +26,7 @@ public class Figura {
     // @NotNull( message = "el tipo debe ir rellenado")
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "tipo_arco", referencedColumnName = "nombre")
+  /*  @JoinColumn(name = "tipo_arco", referencedColumnName = "nombre")*/
     private  Arco arco;
 
     private int precio;

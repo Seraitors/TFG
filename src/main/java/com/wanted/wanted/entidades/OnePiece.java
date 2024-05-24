@@ -24,7 +24,7 @@ public class OnePiece {
     private  String nombre;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "tipo_arco", referencedColumnName = "nombre")
+/*    @JoinColumn(name = "tipo_arco", referencedColumnName = "nombre")*/
     // mirar si esto es necesario a la hora de hacer base de datos
     private  Arco arco;
 

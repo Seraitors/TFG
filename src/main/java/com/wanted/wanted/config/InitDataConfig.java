@@ -1,3 +1,4 @@
+/*
 package com.wanted.wanted.config;
 
 import com.wanted.wanted.entidades.*;
@@ -71,16 +72,20 @@ public class InitDataConfig {
                 usuarioServices.saveAll(Arrays.asList(usuario, usuario2));
         }
 
-        /**
+        */
+/**
          * hacer la base de datos como en el examen
-         */
+         *//*
+
 
         @PostConstruct
         public void initData() {
 
-                /**
+                */
+/**
                  * One piece
-                 */
+                 *//*
+
                 Arco arco = Arco.builder()
                                 .nombre("Wano").build();
 
@@ -97,9 +102,11 @@ public class InitDataConfig {
 
                 arcoServices.add(arco2);
 
-                /**
+                */
+/**
                  * Dragon ball
-                 */
+                 *//*
+
                 Arco arco3 = Arco.builder()
                                 .nombre("Namek")
                                 .build();
@@ -112,9 +119,11 @@ public class InitDataConfig {
 
                 arcoServices.add(arco4);
 
-                /**
+                */
+/**
                  * Naruto
-                 */
+                 *//*
+
 
                 Arco arco5 = Arco.builder()
                                 .nombre("Villa oculta de la Hoja")
@@ -212,9 +221,11 @@ public class InitDataConfig {
 
                 figuraServices.add(figura9);
 
-                /**
+                */
+/**
                  * De aqui son las novedades de la semana
-                 */
+                 *//*
+
 
                 Novedad novedad = Novedad.builder()
                                 .url("/imagen/fotosLista/gohan.jpg")
@@ -252,7 +263,9 @@ public class InitDataConfig {
 
                 novedadServices.add(novedad3);
 
-                /* Aqui empieza la pagina de one piece de figuras */
+                */
+/* Aqui empieza la pagina de one piece de figuras *//*
+
                 OnePiece onePiece = OnePiece.builder()
                                 .url("/imagen/fotosOnePiece/luffySombrero.jpg")
                                 .nombre("Luffy")
@@ -381,7 +394,9 @@ public class InitDataConfig {
 
                 onePieceServices.add(onePiece14);
 
-                /* Aqui vienen las figuras de naruto */
+                */
+/* Aqui vienen las figuras de naruto *//*
+
 
                 Naruto naruto = Naruto.builder()
                                 .url("/imagen/fotosNaruto/gaara.jpeg")
@@ -522,7 +537,9 @@ public class InitDataConfig {
 
                 narutoServices.add(naruto16);
 
-                /* Aqui empieza las figuras de dragon ball */
+                */
+/* Aqui empieza las figuras de dragon ball *//*
+
                 DragonBall dragonBall = DragonBall.builder()
                                 .url("/imagen/fotosDragonBall/broly.jpeg")
                                 .nombre("Obito")
@@ -665,3 +682,4 @@ public class InitDataConfig {
         }
 
 }
+*/
