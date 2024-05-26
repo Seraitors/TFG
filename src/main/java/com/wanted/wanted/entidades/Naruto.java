@@ -30,4 +30,5 @@ public class Naruto {
     private int precio;
     private String des;
     private String url;
+    private  int stock;
 }

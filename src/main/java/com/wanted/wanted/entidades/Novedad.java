@@ -30,4 +30,5 @@ public class Novedad {
     private int precio;
     private  String des;
     private String url;
+    private  int stock;
 }

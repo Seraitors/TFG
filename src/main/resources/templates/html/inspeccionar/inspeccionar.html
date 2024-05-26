@@ -89,10 +89,10 @@
                 </div>
                 <!--   Son para que te cuentes los inicios de sesion est atambien puesto arriba
           <div  sec:authorize="hasRole('ROLE_ADMIN')" >
-    
+
                    <span class="dropdown-item" th:text=" ' App: ' + ${session.numVisitasApp}"></span>
-    
-    
+
+
                    <span class="dropdown-item" th:text=" ' index: ' + ${session.numVisitasIndex}"></span>
            </div> -->
             </div>
@@ -110,11 +110,19 @@
             <h2 th:text="${figura.nombre}"></h2>
             <p th:text="${figura.des}"></p>
             <p>Precio: <span class="price" th:text="${figura.precio}"></span></p>
-            <!-- Agrega más detalles de la figura si lo necesitas -->
+            <div th:if="${figura.getStock() <= 0}" style="color: red;">
+                No hay stock
+            </div>
+            <div th:unless="${figura.getStock() <= 0}">
+                <a th:href="@{/comprar(id=${figura.id})}">
+                    <button type="button" class="boton btn-comprar">Comprar</button>
+                </a>
+            </div>
+
         </div>
     </div>
 
-    <!-- Agrega más contenido según tus necesidades -->
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

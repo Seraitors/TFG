@@ -37,6 +37,13 @@ public class SeguridadConfig {
                                                 .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
 
                                                                 AntPathRequestMatcher.antMatcher("/webjars/**"),
+                                                             /*     AntPathRequestMatcher.antMatcher("/aaa/**"),*/
+                                                                 AntPathRequestMatcher.antMatcher("/detalle/{id}**"),
+                                                                 AntPathRequestMatcher.antMatcher("/detalle/naruto/{id}**"),
+                                                                 AntPathRequestMatcher.antMatcher("/detalle/onePiece/{id}**"),
+                                                                 AntPathRequestMatcher.antMatcher("/detalle/dragon/{id}**"),
+                                                                 AntPathRequestMatcher.antMatcher("/detalle/novedad/{id}**"),
+
                                                                 AntPathRequestMatcher.antMatcher("/usuario/signup/**"),
                                                                 AntPathRequestMatcher.antMatcher("/css/**"),
                                                                 AntPathRequestMatcher.antMatcher("/js/**"),

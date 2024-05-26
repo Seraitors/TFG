@@ -192,7 +192,7 @@ public class AdminController {
     }
 
     @GetMapping("/figuras/delete/{id}")
-    public String borrarMascota(@PathVariable("id") Long id, Model model) {
+    public String borrarTodo(@PathVariable("id") Long id, Model model) {
 
         Optional<Figura> figura = figuraServices.findById(id);
         Optional<OnePiece> onePiece = onePieceServices.findById(id);

@@ -40,7 +40,7 @@ public class NarutoController {
         if (naruto.isPresent()) {
             Naruto naruto2 = naruto.get();
             model.addAttribute("figura", naruto2);
-            return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
+            return "html/inspeccionar/inspeccionarnaruto"; // Devolver la vista de detalle
         } else {
 
             return "redirect:/inicio";
@@ -50,22 +50,7 @@ public class NarutoController {
     }
 
 
-    @GetMapping("/comprar/naruto")
-    public String comprarNaruto(@RequestParam("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<Naruto> naruto = narutoServices.findById(id);
 
-        if (naruto.isPresent()) {
-            Naruto naruto2 = naruto.get();
-            model.addAttribute("figura", naruto2);
-            return "html/comprar/comprar"; // Devolver la vista de detalle
-        } else {
-
-            return "redirect:/inicio";
-        }
-
-
-    }
 
     @GetMapping("/figuras/naruto/new")
     public String nuevaFigura(Model model) {
@@ -79,6 +64,17 @@ public class NarutoController {
         log.info(nuevaPersona.toString());
         narutoServices.add(nuevaPersona);
         return "redirect:/inicio";
+    }
+
+
+    @GetMapping("/figuras/filtrarNaruto")
+    public String listadoFiltrado(@RequestParam(name = "nombre", required = false) String nombre, Model model){
+        if (nombre != null && !nombre.isEmpty()) {
+            model.addAttribute("listaFigura", narutoServices.findByNombre(nombre));
+        } else {
+            model.addAttribute("listaFigura", narutoServices.findAll());
+        }
+        return "/html/lista";
     }
 
 }

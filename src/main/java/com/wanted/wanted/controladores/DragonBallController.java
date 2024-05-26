@@ -43,7 +43,7 @@ public class DragonBallController {
         if (dragon.isPresent()) {
             DragonBall dragonBall2 = dragon.get();
             model.addAttribute("figura", dragonBall2);
-            return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
+            return "html/inspeccionar/inspeccionarDragonBall"; // Devolver la vista de detalle
         } else {
 
             return "redirect:/inicio";
@@ -53,22 +53,7 @@ public class DragonBallController {
     }
 
 
-    @GetMapping("/comprar/dragon")
-    public String comprarDragonBall(@RequestParam("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<DragonBall> dragon = dragonBallServices.findById(id);
 
-        if (dragon.isPresent()) {
-            DragonBall dragonBall2 = dragon.get();
-            model.addAttribute("figura", dragonBall2);
-            return "html/comprar/comprar"; // Devolver la vista de detalle
-        } else {
-
-            return "redirect:/inicio";
-        }
-
-
-    }
 
 
     @GetMapping("/figuras/dragonBall/new")
@@ -84,6 +69,17 @@ public class DragonBallController {
         dragonBallServices.add(nuevaPersona);
         return "redirect:/inicio";
     }
+
+    @GetMapping("/figuras/filtrarDragon")
+    public String listadoFiltrado(@RequestParam(name = "nombre", required = false) String nombre, Model model){
+        if (nombre != null && !nombre.isEmpty()) {
+            model.addAttribute("listaFigura", dragonBallServices.findByNombre(nombre));
+        } else {
+            model.addAttribute("listaFigura", dragonBallServices.findAll());
+        }
+        return "/html/lista";
+    }
+
 }
 
 

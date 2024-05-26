@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/carrusel.css">
     <link rel="stylesheet" href="/css/comprarCarrito.css">
     <link rel="stylesheet" href="/css/cambiarColoCabezera.css">
+    <link rel="stylesheet" href="/css/figurasEstilosInicio.css">
     <link rel="icon" href="/imagen/pestaña/corona.jpg">
 
     <style>
@@ -229,41 +230,46 @@
 
 
 <!--        De aqui para abajo hay que cambiar el formato -->
-        <div class="container mt-5">
-            <h3>Lista de Figuras</h3>
-            <div class="card-container">
-                <div th:each="figura: ${listaFigura}" class="card">
-                    <img th:src="${figura.url}" alt="imagen" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${figura.nombre}">Nombre</h5>
-                        <p class="card-text promocion" th:text="${figura.arco?.nombre}">Arco</p>
-                        <p class="card-text" th:text="${figura.des}">Descripción</p>
-                        <p class="card-text precio" th:text="${figura.precio}">Precio</p>
-                        <a th:href="@{/detalle/{id}(id=${figura.id})}" class="btn btn-primary boton">Información</a>
-                        <a th:href="@{/comprar(id=${figura.id})}" class="btn btn-success boton">Comprar</a>
-                        <div class="text-center mt-3">
-                            <i class="bi bi-suit-heart" style="font-size: 30px"></i>
-                        </div>
-                    </div>
+
+
+        <div class="contenedor">
+            <h1>Figuras</h1>
+            <div class="figura-contenedor">
+                <div class="figura" th:each="figura: ${listaFigura}">
+                    <a th:href="@{/detalle/{id}(id=${figura.id})}">
+                        <img th:src="${figura.url}" alt="imagen">
+                    </a>
+                    <h2 th:text="${figura.nombre}"></h2>
+                    <p th:text="${figura.arco?.nombre}" ></p>
+                    <p>Precio: <span class="price" th:text="${figura.precio}"></span></p>
                 </div>
             </div>
         </div>
 
-        <div style="margin-top: 100px;">
+        <br>
 
-            <h1>Detalle de Figura</h1>
-            <div class="figure-details" th:each="figura: ${listaFigura} ">
-                <img th:src="${figura.url}" alt="imagen">
-                <h2 th:text="${figura.nombre}"></h2>
-                <p>Precio: <span class="price" th:text="${figura.precio}"></span></p>
 
+        <div class="contenedor">
+            <h1>Novedades</h1>
+            <div class="figura-contenedor">
+                <div class="figura" th:each="novedad: ${novedadFigura}">
+                    <a th:href="@{/detalle/novedad/{id}(id=${novedad.id})}">
+                        <img th:src="${novedad.url}" alt="imagen">
+                    </a>
+                    <h2 th:text="${novedad.nombre}"></h2>
+                    <p th:text="${novedad.arco?.nombre}" ></p>
+                    <p>Precio: <span class="price" th:text="${novedad.precio}"></span></p>
+                </div>
             </div>
         </div>
+
+
+
 
         <!-- ahora desde aqui empieza la creacion de las figuras -->
         <!-- Hacer con html y css-->
 
-        <div class="container">
+  <!--      <div class="container">
             <div class="card-container">
                 <div class="card">
                     <div class="card-header">
@@ -311,9 +317,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-
+<!--
         <br>
 
         <div class="container">
@@ -348,9 +354,9 @@
 
                                     </td>
                                     <td>
-                                        <!--<input class="form-check-input" type="checkbox" id="compra">
-                                    
-                                        <label class="form-check-label" for="compra">Compra</label> -->
+                                        &lt;!&ndash;<input class="form-check-input" type="checkbox" id="compra">
+
+                                        <label class="form-check-label" for="compra">Compra</label> &ndash;&gt;
                                         <a href="">
 
                                             <button type="button" class="boton btn-comprar">Comprar</button>
@@ -368,7 +374,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
         <div class="menu bg-light py-5">

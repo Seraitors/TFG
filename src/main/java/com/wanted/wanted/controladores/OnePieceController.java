@@ -42,7 +42,7 @@ public class OnePieceController {
         if (onePiece.isPresent()) {
             OnePiece  onePiece2 = onePiece.get();
             model.addAttribute("figura", onePiece2);
-            return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
+            return "html/inspeccionar/inspeccionarOnePiece"; // Devolver la vista de detalle
         } else {
 
             return "redirect:/inicio";
@@ -52,22 +52,7 @@ public class OnePieceController {
     }
 
 
-    @GetMapping("/comprar/onePiece")
-    public String comprarOnePiece(@RequestParam("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<OnePiece> onePiece = onePieceServices.findById(id);
 
-        if (onePiece.isPresent()) {
-            OnePiece  onePiece2 = onePiece.get();
-            model.addAttribute("figura", onePiece2);
-            return "html/comprar/comprar"; // Devolver la vista de detalle
-        } else {
-
-            return "redirect:/inicio";
-        }
-
-
-    }
 
     @GetMapping("/figuras/onePiece/new")
     public String nuevaFigura(Model model) {

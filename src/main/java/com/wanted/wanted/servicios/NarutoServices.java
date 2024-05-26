@@ -3,6 +3,7 @@ package com.wanted.wanted.servicios;
 
 
 import com.wanted.wanted.entidades.DragonBall;
+import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.entidades.Naruto;
 import com.wanted.wanted.repositorio.NarutoRepository;
 import com.wanted.wanted.repositorio.NarutoRepository;
@@ -54,6 +55,19 @@ public class NarutoServices {
     public Optional<Naruto> findById(Long id) {
         return narutoRepository.findById(id);
     }
-   
-   
+
+
+    public  Page<Naruto> findByNombre(String s){
+
+        List<Naruto> list = narutoRepository.findByNombreContainsIgnoreCase(unaccent(s));
+        return new PageImpl<>(list);
+    }
+
+
+    public static String unaccent(String src) {
+        return Normalizer
+                .normalize(src, Normalizer.Form.NFD)
+                .replaceAll("[^\\p{ASCII}]", "");
+    }
+
 }
