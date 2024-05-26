@@ -3,7 +3,7 @@ package com.wanted.wanted.controladores;
 
 import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.servicios.FiguraServices;
-import com.wanted.wanted.servicios.NovedadServices;
+
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,6 @@ public class InicioController {
 
     private final FiguraServices   figuraServices;
 
-    private final NovedadServices novedadServices;
 
 
 
@@ -31,7 +30,6 @@ public class InicioController {
     @GetMapping({"/aaa" ,"/inicio"})
     public  String  inicio(Model model){
     model.addAttribute("listaFigura",figuraServices.findAll());
-    model.addAttribute("novedadFigura", novedadServices.findAll());
 
 
     return "html/lista";
@@ -57,8 +55,8 @@ public class InicioController {
 
             return "redirect:/inicio";
         }
-       
-      
+
+
     }
 
 
@@ -137,7 +135,7 @@ public class CarritoController {
     @PostMapping("/agregar")
     public ResponseEntity<String> agregarAlCarrito(@RequestBody Figura figura, HttpServletResponse response) {
         // Aquí deberías agregar la lógica para almacenar la figura en una cookie
-        Cookie cookie = new Cookie("carrito", figura.getId().toString()); 
+        Cookie cookie = new Cookie("carrito", figura.getId().toString());
         cookie.setMaxAge(24 * 60 * 60); // La cookie expirará en 1 día
         response.addCookie(cookie);
         return ResponseEntity.ok("Figura agregada al carrito");
@@ -211,88 +209,218 @@ public class CarritoController {
         return "redirect:/figuras/lista";
     }
 
-    //seguridad probar
+    /**
+     * Dragon ball controler
+     */
 
+    @GetMapping("/DragonBall")
+    public String inicioOnePiece(Model model) {
 
-/*
+        model.addAttribute("listaDragonBall", figuraServices.findAll());
 
-    @GetMapping( "/inicioSesion")
-    public  String inicio (){
-
-        return "html/index";
+        return "html/dragonBall/index";
     }
 
-    @PostMapping("/inicioSesion/submit")
-    public String inicioSesion(@ModelAttribute UsuarioSeguridad usuario, Model model) {
-        if (usuario.getNombre().isEmpty() ) {
-            model.addAttribute("errorNombre", "Credenciales inválidas");
-        }
+    /**
+     * Poner bonito y hacer todo lo del detalle con todos
+     */
+    @GetMapping("/detalle/dragon/{id}")
+    public String verDetall1e(@PathVariable("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<Figura> dragon = figuraServices.findById(id);
 
-        if (usuario.getApellido().isEmpty()){
-            model.addAttribute("errorApellido", "Credenciales inválidas");
-        }
-        if (usuario.getCorreo().isEmpty()){
-            model.addAttribute("errorCorreo","Credenciales invalidas");
-        }
-        if (usuario.getContrasena().isEmpty()){
-            model.addAttribute("errorContra","Credenciales invalidas");
-        }
-
-        if (model.containsAttribute("errorNombre") || model.containsAttribute("errorApellido") || model.containsAttribute("errorCorreo") || model.containsAttribute("errorContra") ) {
-
-            return "html/index";
+        if (dragon.isPresent()) {
+            Figura dragonBall2 = dragon.get();
+            model.addAttribute("figura", dragonBall2);
+            return "html/inspeccionar/inspeccionarDragonBall"; // Devolver la vista de detalle
         } else {
-            if (usuariosServicesSeguridad.validarusuario(usuario.getNombre(),usuario.getContrasena(), usuario.getCorreo())==true){
-                return "redirect:/inicio";
-            } else {
-                model.addAttribute("errorValidacion","Credenciales invalidas");
-                return "html/index";
-            }
 
+            return "redirect:/inicio";
         }
+
+
     }
 
 
-    @GetMapping("/registrarse")
-    public String registro() {
-        log.info(" estoy ne el get mapping");
 
-        return "html/registro";
+
+
+    @GetMapping("/figuras/dragonBall/new")
+    public String nuevaFiguraa(Model model) {
+        log.info("Estoy en nuevaFigura");
+        model.addAttribute("dragonBall", new Figura()); // Cambio el nombre del objeto en el modelo
+        return "/html/agregarFigura/agregarDragonBall";
     }
 
+    @PostMapping("/figuras/dragonBall/new/submit") // Cambio la URL de la anotación
+    public String nuevaMascotaSubmiit(@ModelAttribute("dragonBall") Figura nuevaPersona) {
+        log.info(nuevaPersona.toString());
+        figuraServices.add(nuevaPersona);
+        return "redirect:/inicio";
+    }
 
-    @PostMapping("/registrarse/submit")
-    public String registrarUsuario(@ModelAttribute UsuarioSeguridad usuario, Model model) {
-        if (usuario.getNombre().isEmpty() ) {
-            model.addAttribute("errorNombre", "Credenciales inválidas");
-        }
-
-        if (usuario.getApellido().isEmpty()){
-            model.addAttribute("errorApellido", "Credenciales inválidas");
-        }
-        if (usuario.getCorreo().isEmpty()){
-            model.addAttribute("errorCorreo","Credenciales invalidas");
-        }
-        if (usuario.getContrasena().isEmpty()){
-            model.addAttribute("errorContra","Credenciales invalidas");
-        }
-
-        if (model.containsAttribute("errorNombre") || model.containsAttribute("errorApellido") || model.containsAttribute("errorCorreo") || model.containsAttribute("errorContra") ) {
-
-            return "html/registro";
+    @GetMapping("/figuras/filtrarDragon")
+    public String listadoFiltradjo(@RequestParam(name = "nombre", required = false) String nombre, Model model){
+        if (nombre != null && !nombre.isEmpty()) {
+            model.addAttribute("listaFigura", figuraServices.findByNombre(nombre));
         } else {
-            //usuariosServices.addUser(usuario);
-            usuariosServicesSeguridad.registarUSuario(usuario);
-            return "html/index";
+            model.addAttribute("listaFigura", figuraServices.findAll());
         }
+        return "/html/lista";
     }
 
-    @PostMapping("/logout")
-    public String logout() {
-        // En este método, puedes realizar cualquier limpieza o tareas adicionales necesarias para el logout
-        return "redirect:/inicio"; // Redirige al usuario a la página de inicio de sesión después del logout
-    }
-*/
 
+    /**
+     * Naruto controller
+     */
+
+    @GetMapping("/Naruto")
+    public String inicioOnePipece(Model model) {
+
+        model.addAttribute("listaNaruto", figuraServices.findAll());
+
+        return "html/naruto/index";
+    }
+
+
+
+
+    @GetMapping("/detalle/naruto/{id}")
+    public String verDetalle1e(@PathVariable("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<Figura> naruto = figuraServices.findById(id);
+
+        if (naruto.isPresent()) {
+            Figura naruto2 = naruto.get();
+            model.addAttribute("figura", naruto2);
+            return "html/inspeccionar/inspeccionarnaruto"; // Devolver la vista de detalle
+        } else {
+
+            return "redirect:/inicio";
+        }
+
+
+    }
+
+
+
+
+    @GetMapping("/figuras/naruto/new")
+    public String nuevaaFigura(Model model) {
+        log.info("Estoy en nuevaFigura");
+        model.addAttribute("naruto", new Figura()); // Cambio el nombre del objeto en el modelo
+        return "/html/agregarFigura/agregarNaruto";
+    }
+
+    @PostMapping("/figuras/naruto/new/submit") // Cambio la URL de la anotación
+    public String nuevaaMascotaSubmit(@ModelAttribute("naruto") Figura nuevaPersona) {
+        log.info(nuevaPersona.toString());
+        figuraServices.add(nuevaPersona);
+        return "redirect:/inicio";
+    }
+
+
+    @GetMapping("/figuras/filtrarNaruto")
+    public String listadoFiltrwado(@RequestParam(name = "nombre", required = false) String nombre, Model model){
+        if (nombre != null && !nombre.isEmpty()) {
+            model.addAttribute("listaFigura", figuraServices.findByNombre(nombre));
+        } else {
+            model.addAttribute("listaFigura", figuraServices.findAll());
+        }
+        return "/html/lista";
+    }
+
+
+    /**
+     * Novedad
+     * @param model
+     * @return
+     */
+    @GetMapping("/Novedad")
+    public String inicioNovedad(  Model model) {
+
+        model.addAttribute("listaNovedad", figuraServices.findAll());
+
+        return "html/novedad/index";
+    }
+    @GetMapping("/detalle/novedad/{id}")
+    public String vearDetalle(@PathVariable("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<Figura> novedad = figuraServices.findById(id);
+
+        if (novedad.isPresent()) {
+            Figura novedad2 = novedad.get();
+            model.addAttribute("figura", novedad2);
+            return "html/inspeccionar/inspeccionarNovedad"; // Devolver la vista de detalle
+        }else{
+
+            return "redirect:/inicio";
+        }
+
+
+    }
+
+    @GetMapping("/figuras/novedad/new")
+    public String nuaevaFigura(Model model) {
+        log.info("Estoy en nuevaFigura");
+        model.addAttribute("novedad", new Figura()); // Cambio el nombre del objeto en el modelo
+        return "/html/agregarFigura/agregarNovedad";
+    }
+
+    @PostMapping("/figuras/novedad/new/submit") // Cambio la URL de la anotación
+    public String nuaevaMascotaSubmit(@ModelAttribute("novedad") Figura nuevaPersona) {
+        log.info(nuevaPersona.toString());
+        figuraServices.add(nuevaPersona);
+        return "redirect:/inicio";
+    }
+
+    /**
+     * One piece
+     * @param model
+     * @return
+     */
+    @GetMapping("/OnePiece")
+    public String inicioOneoPiece(  Model model) {
+
+        model.addAttribute("listaOnePiece", figuraServices.findAll());
+
+        return "html/onePiece/index";
+    }
+
+
+
+    @GetMapping("/detalle/onePiece/{id}")
+    public String verDetallee(@PathVariable("id") Long id, Model model) {
+        // Obtener el objeto con el ID especificado y pasarlo al modelo
+        Optional<Figura> onePiece = figuraServices.findById(id);
+
+        if (onePiece.isPresent()) {
+            Figura  onePiece2 = onePiece.get();
+            model.addAttribute("figura", onePiece2);
+            return "html/inspeccionar/inspeccionarOnePiece"; // Devolver la vista de detalle
+        } else {
+
+            return "redirect:/inicio";
+        }
+
+
+    }
+
+
+
+
+    @GetMapping("/figuras/onePiece/new")
+    public String anuevaFigura(Model model) {
+        log.info("Estoy en nuevaFigura");
+        model.addAttribute("onePiece", new Figura()); // Cambio el nombre del objeto en el modelo
+        return "/html/agregarFigura/agregarOnePiece";
+    }
+
+    @PostMapping("/figuras/onePiece/new/submit") // Cambio la URL de la anotación
+    public String nuevaaaMascotaSubmit(@ModelAttribute("onePiece") Figura nuevaPersona) {
+        log.info(nuevaPersona.toString());
+        figuraServices.add(nuevaPersona);
+        return "redirect:/inicio";
+    }
 
 }

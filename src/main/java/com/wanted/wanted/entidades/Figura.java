@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,6 +34,8 @@ public class Figura {
     private  String des;
     private String url;
     private  int stock;
+    private  String categoria;
+    private LocalDate fecha_introducida;
 
 
 }

@@ -12,6 +12,7 @@
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.stereotype.Component;
 //
+//import java.time.LocalDate;
 //import java.util.Arrays;
 //import java.util.List;
 //import java.util.Set;
@@ -28,16 +29,7 @@
 //        @Autowired
 //        private ArcoServices arcoServices;
 //
-//        @Autowired
-//        private NovedadServices novedadServices;
 //
-//        @Autowired
-//        private OnePieceServices onePieceServices;
-//
-//        @Autowired
-//        private NarutoServices narutoServices;
-//        @Autowired
-//        private DragonBallServices dragonBallServices;
 //
 //        private final PasswordEncoder passwordEncoder;
 //        private final UsuarioServices usuarioServices;
@@ -128,6 +120,9 @@
 //                                .nombre("Luffy")
 //                                .des("Esta es una figura de luffy cuando estaba en wano ")
 //                                .arco(arco)
+//                                .stock(1)
+//                                .categoria("One-piece")
+//                                .fecha_introducida(LocalDate.of(1999,10,10))
 //                                .precio(80).build();
 //
 //                figuraServices.add(figura);
@@ -137,6 +132,9 @@
 //                                .nombre("Zoro")
 //                                .des("Esta es una figura de Zoro en wano, El ancho es 10 cm de alto y de largo son 70cm.  ")
 //                                .arco(arco2)
+//                        .stock(2)
+//                        .categoria("One-piece")
+//                        .fecha_introducida(LocalDate.of(1999,10,10))
 //                                .precio(65).build();
 //
 //                figuraServices.add(figura1);
@@ -146,6 +144,9 @@
 //                                .nombre("Brook")
 //                                .des("Esta es una figura de Brook en su lucha de Bif Mom, El ancho es 15 cm de alto y de largo son 50cm.  ")
 //                                .arco(arco2)
+//                        .stock(0)
+//                        .categoria("one-piece")
+//                        .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(100).build();
 //
 //                figuraServices.add(figura2);
@@ -155,6 +156,9 @@
 //                                .nombre("Goku")
 //                                .des("Esta es la figura de Goku en su lucha contra el manvado Freezer, El ancho es 12 cm de alto y de largo son 60cm.  ")
 //                                .arco(arco3)
+//                        .stock(1)
+//                        .categoria("Dragon-ball")
+//                        .fecha_introducida(LocalDate.of(2022,8,2))
 //                                .precio(100).build();
 //
 //                figuraServices.add(figura3);
@@ -164,6 +168,9 @@
 //                                .nombre("Vegeta")
 //                                .des("Esta es una figura de vegeta herido despues de su pelea en Namek, El ancho es 10 cm de alto y de largo son 45cm.  ")
 //                                .arco(arco3)
+//                        .stock(5)
+//                        .categoria("Dragon-ball")
+//                        .fecha_introducida(LocalDate.of(2014,12,22))
 //                                .precio(30).build();
 //
 //                figuraServices.add(figura4);
@@ -173,6 +180,9 @@
 //                                .nombre("Freezer")
 //                                .des("Esta es una figura de Freezer en Namek, El ancho es 10 cm de alto y de largo son 70cm.  ")
 //                                .arco(arco3)
+//                        .stock(2)
+//                        .categoria("Dragon-ball")
+//                        .fecha_introducida(LocalDate.of(2015,2,2))
 //                                .precio(50).build();
 //
 //                figuraServices.add(figura5);
@@ -182,6 +192,9 @@
 //                                .nombre("Piccolo")
 //                                .des("Esta es una figura de Piccolo en Namek, El ancho es 11.5 cm de alto y de largo son 300cm.  ")
 //                                .arco(arco3)
+//                        .stock(10)
+//                        .categoria("Dragon-ball")
+//                        .fecha_introducida(LocalDate.of(2011,11,16))
 //                                .precio(20).build();
 //
 //                figuraServices.add(figura6);
@@ -191,6 +204,9 @@
 //                                .nombre("sasuke")
 //                                .des("Esta es una figura de sasuke en la villa oculta de la hoja de pequño, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
 //                                .arco(arco5)
+//                        .stock(5)
+//                        .categoria("Naruto")
+//                        .fecha_introducida(LocalDate.of(2014,5,8))
 //                                .precio(30).build();
 //
 //                figuraServices.add(figura7);
@@ -199,6 +215,9 @@
 //                                .nombre("naruto")
 //                                .des("Esta es una figura de naruto en la villa oculta de la hoja de pequño, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
 //                                .arco(arco5)
+//                        .stock(2)
+//                        .categoria("Naruto")
+//                        .fecha_introducida(LocalDate.of(2010,10,10))
 //                                .precio(30).build();
 //
 //                figuraServices.add(figura8);
@@ -208,6 +227,9 @@
 //                                .nombre("naruto")
 //                                .des("Esta es una figura de naruto en la villa oculta de la hoja de mayor, El ancho es 10.5 cm de alto y de largo son 200cm.  ")
 //                                .arco(arco5)
+//                        .stock(3)
+//                        .categoria("Naruto")
+//                        .fecha_introducida(LocalDate.of(2011,6,14))
 //                                .precio(35).build();
 //
 //                figuraServices.add(figura9);
@@ -216,452 +238,611 @@
 //
 //
 //
-//                Novedad novedad = Novedad.builder()
+//            Figura novedad = Figura.builder()
 //                                .url("/imagen/fotosLista/gohan.jpg")
 //                                .nombre("Gohan")
 //                                .des("Gohan modo bestia en la tierra su despertad ma skaioken")
-//                                .arco(arco4) // Aquí haces referencia a un arco no guardado
+//                                .arco(arco4)
+//                    .stock(2)
+//                    .categoria("Dragon-ball")
+//                    .fecha_introducida(LocalDate.of(2006,5,10))
 //                                .precio(150).build();
 //
-//                novedadServices.add(novedad);
+//            figuraServices.add(novedad);
 //
-//                Novedad novedad1 = Novedad.builder()
+//            Figura novedad1 = Figura.builder()
 //                                .url("/imagen/fotosLista/narutoSabio.jpg")
 //                                .nombre("Naruto")
 //                                .des("Naruto pelea contra Pain Modo sabio 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(2)
+//                    .categoria("Naruto")
+//                    .fecha_introducida(LocalDate.of(2004,8,12))
 //                                .precio(50).build();
 //
-//                novedadServices.add(novedad1);
+//            figuraServices.add(novedad1);
 //
-//                Novedad novedad2 = Novedad.builder()
+//            Figura novedad2 = Figura.builder()
 //                                .url("/imagen/fotosLista/pain.jpg")
 //                                .nombre("Pain")
 //                                .des("Pain pelea contra Naruto Modo sabio 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(3)
+//                    .categoria("Naruto")
+//                    .fecha_introducida(LocalDate.of(2018,11,26))
 //                                .precio(45).build();
 //
-//                novedadServices.add(novedad2);
+//            figuraServices.add(novedad2);
 //
-//                Novedad novedad3 = Novedad.builder()
+//            Figura novedad3 = Figura.builder()
 //                                .url("/imagen/fotosLista/obito.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("Naruto")
+//                    .fecha_introducida(LocalDate.of(2018,11,26))
 //                                .precio(50).build();
 //
-//                novedadServices.add(novedad3);
+//            figuraServices.add(novedad3);
 //
 //
 //
-//                OnePiece onePiece = OnePiece.builder()
+//            Figura onePiece = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/luffySombrero.jpg")
 //                                .nombre("Luffy")
 //                                .des("Luffy en la batalla contra kaido despues de dar la cara ante los yonkous, 30 cm de alto y de largo 122cm")
 //                                .arco(arco)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece);
+//            figuraServices.add(onePiece);
 //
-//                OnePiece onePiece1 = OnePiece.builder()
+//            Figura onePiece1 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/shanks.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(1)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece1);
+//            figuraServices.add(onePiece1);
 //
-//                OnePiece onePiece2 = OnePiece.builder()
+//            Figura onePiece2 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/ace.jpg")
 //                                .nombre("Ace")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(2)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2014,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece2);
+//            figuraServices.add(onePiece2);
 //
-//                OnePiece onePiece3 = OnePiece.builder()
+//            Figura onePiece3 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/choper.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(01)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2014,11,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece3);
+//            figuraServices.add(onePiece3);
 //
-//                OnePiece onePiece4 = OnePiece.builder()
+//            Figura onePiece4 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/trio.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(2)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2021,10,12))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece4);
+//            figuraServices.add(onePiece4);
 //
-//                OnePiece onePiece5 = OnePiece.builder()
+//            Figura onePiece5 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/zoro1.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece5);
+//            figuraServices.add(onePiece5);
 //
-//                OnePiece onePiece6 = OnePiece.builder()
+//            Figura onePiece6 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/nami.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,12,20))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece6);
+//            figuraServices.add(onePiece6);
 //
-//                OnePiece onePiece7 = OnePiece.builder()
+//            Figura onePiece7 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/zoro2.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2023,10,20))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece7);
-//                OnePiece onePiece8 = OnePiece.builder()
+//            figuraServices.add(onePiece7);
+//            Figura onePiece8 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/law.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(1)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2023,9,20))
 //                                .precio(50).build();
-//
-//                onePieceServices.add(onePiece8);
-//                OnePiece onePiece9 = OnePiece.builder()
+////    **********************************************************************************************************************************************************
+//            figuraServices.add(onePiece8);
+//            Figura onePiece9 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/sanji.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece9);
-//                OnePiece onePiece10 = OnePiece.builder()
+//            figuraServices.add(onePiece9);
+//            Figura onePiece10 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/luffy1.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece10);
-//                OnePiece onePiece11 = OnePiece.builder()
+//            figuraServices.add(onePiece10);
+//            Figura onePiece11 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/barbanegra.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece11);
-//                OnePiece onePiece12 = OnePiece.builder()
+//            figuraServices.add(onePiece11);
+//            Figura onePiece12 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/kaido.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece12);
-//                OnePiece onePiece13 = OnePiece.builder()
+//            figuraServices.add(onePiece12);
+//            Figura onePiece13 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/mam.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece13);
-//                OnePiece onePiece14 = OnePiece.builder()
+//            figuraServices.add(onePiece13);
+//            Figura onePiece14 = Figura.builder()
 //                                .url("/imagen/fotosOnePiece/sabo.jpg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                onePieceServices.add(onePiece14);
+//            figuraServices.add(onePiece14);
 //
 //
 //
 //
-//                Naruto naruto = Naruto.builder()
+//            Figura naruto = Figura.builder()
 //                                .url("/imagen/fotosNaruto/gaara.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto);
-//                Naruto naruto1 = Naruto.builder()
+//            figuraServices.add(naruto);
+//            Figura naruto1 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/naruto1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto1);
-//                Naruto naruto2 = Naruto.builder()
+//            figuraServices.add(naruto1);
+//            Figura naruto2 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/obito2.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto2);
-//                Naruto naruto3 = Naruto.builder()
+//            figuraServices.add(naruto2);
+//            Figura naruto3 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/itachi.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto3);
-//                Naruto naruto4 = Naruto.builder()
+//            figuraServices.add(naruto3);
+//            Figura naruto4 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/naruto2.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto4);
-//                Naruto naruto5 = Naruto.builder()
+//            figuraServices.add(naruto4);
+//            Figura naruto5 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/pain.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto5);
-//                Naruto naruto6 = Naruto.builder()
+//            figuraServices.add(naruto5);
+//            Figura naruto6 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/kakasi.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto6);
-//                Naruto naruto7 = Naruto.builder()
+//            figuraServices.add(naruto6);
+//            Figura naruto7 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/naruto3.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto7);
-//                Naruto naruto8 = Naruto.builder()
+//            figuraServices.add(naruto7);
+//            Figura naruto8 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/sasuke.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto8);
-//                Naruto naruto9 = Naruto.builder()
+//            figuraServices.add(naruto8);
+//            Figura naruto9 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/madara.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto9);
-//                Naruto naruto10 = Naruto.builder()
+//            figuraServices.add(naruto9);
+//            Figura naruto10 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/obite3.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto10);
-//                Naruto naruto11 = Naruto.builder()
+//            figuraServices.add(naruto10);
+//            Figura naruto11 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/kakasi1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto11);
-//                Naruto naruto12 = Naruto.builder()
+//            figuraServices.add(naruto11);
+//            Figura naruto12 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/madara1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto12);
-//                Naruto naruto13 = Naruto.builder()
+//            figuraServices.add(naruto12);
+//            Figura naruto13 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/obito.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto13);
-//                Naruto naruto14 = Naruto.builder()
+//            figuraServices.add(naruto13);
+//            Figura naruto14 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/naruto.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto14);
+//            figuraServices.add(naruto14);
 //
-//                Naruto naruto15 = Naruto.builder()
+//            Figura naruto15 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/obito1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                narutoServices.add(naruto15);
+//            figuraServices.add(naruto15);
 //
-//                Naruto naruto16 = Naruto.builder()
+//            Figura naruto16 = Figura.builder()
 //                                .url("/imagen/fotosNaruto/sakura.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(20).build();
 //
-//                narutoServices.add(naruto16);
+//            figuraServices.add(naruto16);
 //
-//                DragonBall dragonBall = DragonBall.builder()
+//            Figura dragonBall = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/broly.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall);
-//                DragonBall dragonBall1 = DragonBall.builder()
+//            figuraServices.add(dragonBall);
+//            Figura dragonBall1 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/gohan3.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall1);
-//                DragonBall dragonBall2 = DragonBall.builder()
+//            figuraServices.add(dragonBall1);
+//            Figura dragonBall2 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/vegeta.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall2);
-//                DragonBall dragonBall3 = DragonBall.builder()
+//            figuraServices.add(dragonBall2);
+//            Figura dragonBall3 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/broly1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall3);
-//                DragonBall dragonBall4 = DragonBall.builder()
+//            figuraServices.add(dragonBall3);
+//            Figura dragonBall4 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/goku.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall4);
-//                DragonBall dragonBall5 = DragonBall.builder()
+//            figuraServices.add(dragonBall4);
+//            Figura dragonBall5 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/vegeta1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall5);
-//                DragonBall dragonBall6 = DragonBall.builder()
+//            figuraServices.add(dragonBall5);
+//            Figura dragonBall6 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/broly2.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall6);
-//                DragonBall dragonBall7 = DragonBall.builder()
+//            figuraServices.add(dragonBall6);
+//            Figura dragonBall7 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/goku1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall7);
-//                DragonBall dragonBall8 = DragonBall.builder()
+//            figuraServices.add(dragonBall7);
+//            Figura dragonBall8 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/vegeta2.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall8);
-//                DragonBall dragonBall9 = DragonBall.builder()
+//            figuraServices.add(dragonBall8);
+//            Figura dragonBall9 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/gohan.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall9);
-//                DragonBall dragonBall10 = DragonBall.builder()
+//            figuraServices.add(dragonBall9);
+//            Figura dragonBall10 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/goku3.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall10);
-//                DragonBall dragonBall11 = DragonBall.builder()
+//            figuraServices.add(dragonBall10);
+//            Figura dragonBall11 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/vegeta3.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall11);
-//                DragonBall dragonBall12 = DragonBall.builder()
+//            figuraServices.add(dragonBall11);
+//            Figura dragonBall12 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/gohan1.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall12);
-//                DragonBall dragonBall13 = DragonBall.builder()
+//            figuraServices.add(dragonBall12);
+//            Figura dragonBall13 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/goku4.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall13);
-//                DragonBall dragonBall14 = DragonBall.builder()
+//            figuraServices.add(dragonBall13);
+//            Figura dragonBall14 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/vegeta4.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall14);
+//            figuraServices.add(dragonBall14);
 //
-//                DragonBall dragonBall15 = DragonBall.builder()
+//            Figura dragonBall15 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/gohan2.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall15);
+//            figuraServices.add(dragonBall15);
 //
-//                DragonBall dragonBall16 = DragonBall.builder()
+//            Figura dragonBall16 = Figura.builder()
 //                                .url("/imagen/fotosDragonBall/goku5.jpeg")
 //                                .nombre("Obito")
 //                                .des("Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200cm")
 //                                .arco(arco5)
+//                    .stock(0)
+//                    .categoria("one-piece")
+//                    .fecha_introducida(LocalDate.of(2024,10,22))
 //                                .precio(50).build();
 //
-//                dragonBallServices.add(dragonBall16);
+//            figuraServices.add(dragonBall16);
 //
 //        }
 //
