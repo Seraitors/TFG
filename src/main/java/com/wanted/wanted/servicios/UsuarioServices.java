@@ -1,6 +1,7 @@
 package com.wanted.wanted.servicios;
 
 
+import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.entidades.Usuario;
 
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -42,18 +44,24 @@ public class UsuarioServices {
 
     public List<Usuario> saveAll (List<Usuario> lista) { return usuarioRepository.saveAll(lista); }
 
-    public Usuario findById(long id) {
-        return usuarioRepository.findById(id).orElse(null);
+    public Optional<Usuario> findById(long id) {
+        return usuarioRepository.findById(id);
     }
+
 
 
     public Usuario findByUsernameOrEmail(String username, String email) {
         return usuarioRepository.findByUsernameOrEmail(username, email).orElse(null);
     }
 
+    public Usuario edit(Usuario m) {
+        return usuarioRepository.save(m);
+    }
 
+    public void delete(Usuario m) {
 
-
+        usuarioRepository.delete(m);
+    }
     private List<Usuario> usuarios = new ArrayList<>();
 
         public void registrarUsuario(Usuario usuario) {

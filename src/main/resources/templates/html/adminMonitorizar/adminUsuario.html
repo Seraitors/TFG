@@ -1,14 +1,16 @@
-<!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Administrador</title>
+    <title>Admin</title>
+
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/cambiarColoCabezera.css">
+    <link rel="stylesheet" href="/css/cambiarColoCabezera.css">
     <link rel="icon" href="/imagen/pestaña/corona.jpg">
+    <link rel="stylesheet" href="/css/figurasEstilosInicio.css">
     <style>
         /* Estilo personalizado */
         .admin-page {
@@ -85,8 +87,10 @@
         }
     </style>
 </head>
-
 <body>
+
+
+
 <header class="p-3 bg-dark text-white fixed-top">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -112,25 +116,25 @@
     </div>
 </header>
 
-    <div class="admin-page" style="margin-top: 90px">
-        <div class="admin-header">
-            <img src="/imagen/encabezado/calabera.png" alt="Logo">
-        </div>
-        <div class="admin-container">
-            <h1>Añadir figuras</h1>
-            <div class="btn-container">
-                <a href="/figuras/new" class="btn-dark-custom">Agregar Figura</a>
-                <a href="/figuras/novedad/new" class="btn-dark-custom">Agregar Novedad</a>
-                <a href="/figuras/dragonBall/new" class="btn-dark-custom">Agregar Dragon Ball</a>
-                <a href="/figuras/onePiece/new" class="btn-dark-custom">Agregar One Piece</a>
-                <a href="/figuras/naruto/new" class="btn-dark-custom">Agregar Naruto</a>
-            </div>
+
+<div class="contenedor" style="margin-top: 110px;">
+    <h1 >Usuarios</h1>
+    <div class="figura-contenedor">
+        <div class="figura" th:each="usuarios: ${usuario}">
+            <h2 th:text="${usuarios.username}"></h2>
+            <p th:text="${usuarios.email}" ></p>
+
+            <a class="button" th:href="@{/edit/usuario/{id}(id=${usuarios.id})}">Editar</a>
+
+            <a class="button" th:href="@{/figuras/delete/{id}(id=${usuarios.id})}">Borrar</a>
+
         </div>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="/js/cambiarDeColorCabecera.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script src="/js/cambiarDeColorCabecera.js"></script>
 </body>
-
 </html>

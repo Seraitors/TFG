@@ -116,7 +116,7 @@
 //
 //                Figura figura = Figura.builder()
 //
-//                                .url("../imagen/fotosLista/luffy.jpg")
+//                                .url("/imagen/fotosLista/luffy.jpg")
 //                                .nombre("Luffy")
 //                                .des("Esta es una figura de luffy cuando estaba en wano ")
 //                                .arco(arco)
@@ -128,7 +128,7 @@
 //                figuraServices.add(figura);
 //
 //                Figura figura1 = Figura.builder()
-//                                .url("../imagen/fotosLista/zoro.jpg")
+//                                .url("/imagen/fotosLista/zoro.jpg")
 //                                .nombre("Zoro")
 //                                .des("Esta es una figura de Zoro en wano, El ancho es 10 cm de alto y de largo son 70cm.  ")
 //                                .arco(arco2)

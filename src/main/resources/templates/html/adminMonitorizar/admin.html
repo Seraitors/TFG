@@ -137,6 +137,7 @@
                 <a class="button" th:href="@{/edit/onePiece/{id}(id=${figuraOnePiece.id})}"> Editar<a />
                     <a class="button" th:href="@{/figuras/delete/{id}(id=${figuraOnePiece.id})}">Borrar</a>
             </div>
+
         </div>
 
 
@@ -149,7 +150,7 @@
             <h2 th:text="${figuraNaruto.nombre}"></h2>
             <p>Precio: <span class="price" th:text="${figuraNaruto.precio}"></span></p>
             <a class="button" th:href="@{/edit/naruto/{id}(id=${figuraNaruto.id})}">Editar</a>
-            Editar</a>
+
             <a class="button" th:href="@{/figuras/delete/{id}(id=${figuraNaruto.id})}">Borrar</a>
 
         </div>

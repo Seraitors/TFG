@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    color: white;
+    color: #000000;
     text-align: center;
 
 }
@@ -24,12 +24,12 @@ body {
 .figura {
 
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
     padding: 10px;
     border-radius: 5px;
     max-width: 250px;
-    background-color: rgba(188, 0, 151, 0.8); /* Blanco con 90% de opacidad */
-    color: white; /* Asegura que el texto sea completamente opaco */
+   /* background-color: rgba(255, 255, 255, 0.8); !* Blanco con 90% de opacidad *!*/
+    color: black; /* Asegura que el texto sea completamente opaco */
     position: relative;
 }
 

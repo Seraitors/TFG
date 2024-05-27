@@ -1,5 +1,7 @@
 package com.wanted.wanted.controladores;
 
+import com.wanted.wanted.entidades.Usuario;
+import com.wanted.wanted.servicios.UsuarioServices;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,7 @@ import com.wanted.wanted.servicios.FiguraServices;
 public class AdminController {
 
     private final FiguraServices figuraServices;
+    private final UsuarioServices  usuarioServices;
 
     @GetMapping("/admin/pagina")
     public String inicio(Model model) {
@@ -169,13 +172,53 @@ public class AdminController {
         Optional<Figura> figura = figuraServices.findById(id);
         Optional<Figura> onePiece = figuraServices.findById(id);
         Optional<Figura> dragonBall = figuraServices.findById(id);
-        Optional<Figura> naruto = figuraServices.findById(id);
-        if (figura != null || onePiece != null || dragonBall != null || naruto != null)
+        Optional<Usuario> usuario = usuarioServices.findById(id);
+        if (figura != null || onePiece != null || dragonBall != null || usuario != null)
             figuraServices.delete(figura.get());
         figuraServices.delete(onePiece.get());
         figuraServices.delete(dragonBall.get());
-        figuraServices.delete(naruto.get());
+        usuarioServices.delete(usuario.get());
         return "redirect:/admin/pagina";
     }
+
+        /*Usuario*/
+    @GetMapping("/admin/usuario")
+    public  String paginaUsuario( Model model){
+        model.addAttribute("usuario" , usuarioServices.findAll());
+
+        return "html/adminMonitorizar/adminUsuario";
+
+    }
+
+    @GetMapping("/edit/usuario/{id}")
+    public String editarUsuario(@PathVariable Long id, Model moddel) {
+        Optional<Usuario> usuario = usuarioServices.findById(id);
+
+        if (usuario.isPresent()) {
+
+            Usuario usuario1 = usuario.get();
+            moddel.addAttribute("usuario", usuario1);
+
+            return "html/editarFigura/editarUsuario";
+        } else {
+
+            // el fallo puede estar aqui de por qu ete crea cosas nuevas
+            return "redirect:/admin/pagina";
+        }
+
+    }
+
+    @PostMapping("/edit/usuario/submit")
+    public String editarSubmitUsuario(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "editarUsuario";
+        }
+        usuarioServices.edit(usuario);
+
+        return "redirect:/admin/pagina";
+
+    }
+
+
 
 }

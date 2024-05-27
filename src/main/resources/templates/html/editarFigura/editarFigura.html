@@ -27,7 +27,7 @@
     <div>
         <div class="input-group mb-3"
              th:classappend="${#fields.hasErrors('url')} ? 'has-error'">
-            >
+
             <label class="form-label" for="url" > url</label>
             <input class="form-control" type="text" id="url" placeholder="url" th:field="*{url}" />
             <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"
