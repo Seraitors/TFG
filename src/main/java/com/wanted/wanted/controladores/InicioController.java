@@ -8,10 +8,12 @@ import com.wanted.wanted.servicios.FiguraServices;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -341,12 +343,14 @@ public class CarritoController {
      * @return
      */
     @GetMapping("/Novedad")
-    public String inicioNovedad(  Model model) {
-
-        model.addAttribute("listaNovedad", figuraServices.findAll());
-
+    public String figurasPorFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha, Model model) {
+        List<Figura> figuras = figuraServices.getFigurasByFechaIntroducida(fecha);
+        model.addAttribute("listaNovedad", figuras);
         return "html/novedad/index";
     }
+
+
+
     @GetMapping("/detalle/novedad/{id}")
     public String vearDetalle(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo

@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface FiguraRepository extends JpaRepository<Figura,Long>  {
@@ -45,5 +46,10 @@ public interface FiguraRepository extends JpaRepository<Figura,Long>  {
  /* Metodo filtrar por categoria */
  @Query("SELECT f FROM Figura f WHERE f.categoria LIKE %:categoria%")
  List<Figura> findFigurasByCategoriaContaining(@Param("categoria") String categoria);
+
+ /*Esto es para que te filtre por fecha */
+
+    @Query("SELECT f FROM Figura f WHERE f.fecha_introducida = :fecha")
+    List<Figura> findFigurasByFechaIntroducida(@Param("fecha") LocalDate fecha);
 
 }

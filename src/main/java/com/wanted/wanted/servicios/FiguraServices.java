@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -100,6 +101,10 @@ public class FiguraServices {
 
     public List<Figura> getFigurasByCategoria(String categoria) {
         return repositorio.findFigurasByCategoriaContaining(categoria);
+    }
+
+    public List<Figura> getFigurasByFechaIntroducida(LocalDate fecha) {
+        return repositorio.findFigurasByFechaIntroducida(fecha);
     }
 
 }

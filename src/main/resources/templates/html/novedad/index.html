@@ -110,51 +110,17 @@
     </div>
 </header>
 
-<div class="container">
-    <div class="card-container"  style="margin-top: 110px;">
-        <div class="card">
-            <div class="card-header">
-                <h3>Lista de Figuras</h3>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Arco</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th>Compra</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="figuraNovedad: ${listaNovedad}">
-                        <td><img th:src="${figuraNovedad.url}" alt="imagen"></td>
-                        <td th:text="${figuraNovedad.nombre}">Nombre</td>
-                        <td th:text="${figuraNovedad.arco?.nombre}">Arco</td>
-                        <td th:text="${figuraNovedad.des}">Descripción</td>
-                        <td th:text="${figuraNovedad.precio}">Precio</td>
-                        <td>
-                            <a th:href="@{/detalle/novedad/{id}(id=${novedad.id})}">
 
-                                <button type="button" class="boton btn-comprar">Información</button>
-                            </a>
-
-                        </td>
-                        <td>
-                            <!--<input class="form-check-input" type="checkbox" id="compra">
-
-                            <label class="form-check-label" for="compra">Compra</label> -->
-                            <a href="#">
-                                <button type="button" class="boton btn-comprar">Comprar</button>
-                            </a>
-
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+<div class="contenedor">
+    <h1>Novedades</h1>
+    <div class="figura-contenedor">
+        <div class="figura" th:each="novedad: ${novedadFigura}">
+            <a th:href="@{/detalle/novedad/{id}(id=${novedad.id})}">
+                <img th:src="${novedad.url}" alt="imagen">
+            </a>
+            <h2 th:text="${novedad.nombre}"></h2>
+            <p th:text="${novedad.arco?.nombre}" ></p>
+            <p>Precio: <span class="price" th:text="${novedad.precio}"></span></p>
         </div>
     </div>
 </div>
