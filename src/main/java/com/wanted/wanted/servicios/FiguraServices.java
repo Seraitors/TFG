@@ -11,8 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -78,6 +80,26 @@ public class FiguraServices {
 
     public void deleteById(Long id) {
         repositorio.deleteById(id);
+    }
+
+
+
+    /*
+    Prueba de numeor aleatorio
+     */
+
+
+    public List<Figura> getRandomFiguras(int number) {
+        List<Figura> allFiguras = repositorio.findAll();
+        Collections.shuffle(allFiguras);
+        return allFiguras.stream().limit(number).collect(Collectors.toList());
+    }
+
+
+    /*Esto es para filtrar por categoria */
+
+    public List<Figura> getFigurasByCategoria(String categoria) {
+        return repositorio.findFigurasByCategoriaContaining(categoria);
     }
 
 }

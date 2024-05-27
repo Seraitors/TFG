@@ -116,7 +116,7 @@
     <h1>Figuras</h1>
     <div class="figura-contenedor">
         <div class="figura" th:each="figuraNaruto: ${listaNaruto}">
-            <a th:href="@{/detalle/naruto/{id}(id=${figuraNaruto.id})}">
+            <a th:href="@{/detalle/{id}(id=${figuraNaruto.id})}">
                 <img th:src="${figuraNaruto.url}" alt="imagen">
             </a>
             <h2 th:text="${figuraNaruto.nombre}"></h2>

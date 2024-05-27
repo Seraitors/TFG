@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -29,7 +30,10 @@ public class InicioController {
 
     @GetMapping({"/aaa" ,"/inicio"})
     public  String  inicio(Model model){
-    model.addAttribute("listaFigura",figuraServices.findAll());
+
+
+        List<Figura> figuras = figuraServices.getRandomFiguras(8);
+        model.addAttribute("listaFigura",figuras);
 
 
     return "html/lista";
@@ -216,15 +220,15 @@ public class CarritoController {
     @GetMapping("/DragonBall")
     public String inicioOnePiece(Model model) {
 
-        model.addAttribute("listaDragonBall", figuraServices.findAll());
-
+        List<Figura> figuras = figuraServices.getFigurasByCategoria("dragon-ball");
+        model.addAttribute("listaDragonBall", figuras);
         return "html/dragonBall/index";
     }
 
     /**
      * Poner bonito y hacer todo lo del detalle con todos
      */
-    @GetMapping("/detalle/dragon/{id}")
+    /*@GetMapping("/detalle/dragon/{id}")
     public String verDetall1e(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
         Optional<Figura> dragon = figuraServices.findById(id);
@@ -239,7 +243,7 @@ public class CarritoController {
         }
 
 
-    }
+    }*/
 
 
 
@@ -276,8 +280,8 @@ public class CarritoController {
 
     @GetMapping("/Naruto")
     public String inicioOnePipece(Model model) {
-
-        model.addAttribute("listaNaruto", figuraServices.findAll());
+        List<Figura> figuras = figuraServices.getFigurasByCategoria("naruto");
+        model.addAttribute("listaNaruto", figuras);
 
         return "html/naruto/index";
     }
@@ -381,8 +385,8 @@ public class CarritoController {
      */
     @GetMapping("/OnePiece")
     public String inicioOneoPiece(  Model model) {
-
-        model.addAttribute("listaOnePiece", figuraServices.findAll());
+        List<Figura> figuras = figuraServices.getFigurasByCategoria("one-piece");
+        model.addAttribute("listaOnePiece", figuras);
 
         return "html/onePiece/index";
     }

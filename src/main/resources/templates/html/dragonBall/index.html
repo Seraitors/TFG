@@ -113,14 +113,14 @@
 
 
 <div class="contenedor">
-    <h1>Figuras</h1>
+    <h1>Figuras Dragon Ball</h1>
     <div class="figura-contenedor">
         <div class="figura" th:each="figuraDragonBall: ${listaDragonBall}">
-            <a th:href="@{/detalle/dragon/{id}(id=${figuraDragonBall.id})}">
+            <a th:href="@{/detalle/{id}(id=${figuraDragonBall.id})}">
                 <img th:src="${figuraDragonBall.url}" alt="imagen">
             </a>
             <h2 th:text="${figuraDragonBall.nombre}"></h2>
-            <p th:text="${figuraDragonBall.arco?.nombre}" ></p>
+            <p th:text="${figuraDragonBall.arco?.nombre}"></p>
             <p>Precio: <span class="price" th:text="${figuraDragonBall.precio}"></span></p>
         </div>
     </div>

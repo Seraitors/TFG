@@ -42,8 +42,8 @@ public interface FiguraRepository extends JpaRepository<Figura,Long>  {
     Page<Figura> findPageBy(Pageable pageable);
 
 
-
-
-
+ /* Metodo filtrar por categoria */
+ @Query("SELECT f FROM Figura f WHERE f.categoria LIKE %:categoria%")
+ List<Figura> findFigurasByCategoriaContaining(@Param("categoria") String categoria);
 
 }
