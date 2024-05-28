@@ -29,7 +29,7 @@
 
             <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;">
                 <i class="bi bi-search"></i>
-                <form id="searchForm" role="search" method="get" action="/figuras/filtrarNaruto">
+                <form id="searchForm" role="search" method="get" action="/figuras/filtrar">
                     <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
                     <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
                            placeholder="Buscar..." name="nombre">
@@ -65,6 +65,9 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a>
+                            </li>
+                            <hr class="dropdown-divider">
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/usuario" class="nav-link px-2 text-secondary">Usuario pagina</a>
                             </li>
 
                             <li>
@@ -110,7 +113,6 @@
     </div>
     </div>
 </header>
-
 
 <div class="contenedor">
     <h1>Figuras</h1>

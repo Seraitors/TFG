@@ -28,8 +28,7 @@
     </style>-->
 </head>
 
-<body>
-<header class="p-3 bg-dark text-white fixed-top ">
+<body>   <header class="p-3 bg-dark text-white fixed-top ">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -44,7 +43,7 @@
 
             <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;">
                 <i class="bi bi-search"></i>
-                <form id="searchForm" role="search" method="get" action="/figuras/filtrarDragon">
+                <form id="searchForm" role="search" method="get" action="/figuras/filtrar">
                     <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
                     <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
                            placeholder="Buscar..." name="nombre">
@@ -80,6 +79,9 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a>
+                            </li>
+                            <hr class="dropdown-divider">
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/usuario" class="nav-link px-2 text-secondary">Usuario pagina</a>
                             </li>
 
                             <li>

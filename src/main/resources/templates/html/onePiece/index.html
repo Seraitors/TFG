@@ -66,6 +66,9 @@
                             </li>
                             <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a>
                             </li>
+                            <hr class="dropdown-divider">
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/usuario" class="nav-link px-2 text-secondary">Usuario pagina</a>
+                            </li>
 
                             <li>
                                 <form th:action="@{/usuario/logout}" method="post">
