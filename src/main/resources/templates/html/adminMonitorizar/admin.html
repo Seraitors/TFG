@@ -102,6 +102,7 @@
                 </li>
                 <li><a href="/admin/meter/figura" class="nav-link px-2 text-secondary">Agregar figura</a></li>
                 <li><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a></li>
+                <li><a href="/admin/usuario" class="nav-link px-2 text-secondary">Administrar usuarios</a></li>
             </ul>
 
             <form th:action="@{/usuario/logout}" method="post">
@@ -113,21 +114,9 @@
 
 
 <div class="container" style="margin-top: 120px;">
-        <h3>Figuras pagina principal</h3>
-        <div th:each="figura: ${listaFigura}" class="figura-container">
-            <div>
-                <img th:src="${figura.url}" alt="imagen">
-                <h2 th:text="${figura.nombre}"></h2>
-                <p>Precio: <span class="price" th:text="${figura.precio}"></span></p>
-                <a class="button" th:href="@{/edit/{id}(id=${figura.id})}">
-                    Editar</a>
-                <a class="button" th:href="@{/figuras/delete/{id}(id=${figura.id})}">Borrar</a>
 
-            </div>
-        </div>
-
-        <h3>Figuras One piece </h3>
-        <div th:each="figuraOnePiece: ${onePiece}" class="figura-container">
+      <!--  <h3>Figuras One piece </h3>
+        <div th:each="figuraOnePiece: ${listaOnePiece}" class="figura-container">
 
             <div>
                 <img th:src="${figuraOnePiece.url}" alt="imagen">
@@ -138,26 +127,117 @@
                     <a class="button" th:href="@{/figuras/delete/{id}(id=${figuraOnePiece.id})}">Borrar</a>
             </div>
 
-        </div>
+        </div>-->
 
+
+    <div class="container">
+        <div class="card-container" style="margin-top: 110px;">
+            <div class="card">
+                <div class="card-header">
+                    <h3> One Piece</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="figuraOnePiece: ${listaOnePiece}">
+                            <td>
+
+                                <img th:src="${figuraOnePiece.url}" alt="imagen">
+                            </td>
+                            <td th:text="${figuraOnePiece.nombre}">Nombre</td>
+                            <td  th:text="${figuraOnePiece.precio}">Precio</td>
+                            <td>
+                                <a  th:href="@{/edit/{id}(id=${figuraOnePiece.id})}">
+
+                                    <button type="button" class="boton btn-comprar">Editar</button>
+                                </a>
+
+                            </td>
+                            <td>
+                                <a th:href="@{/figuras/delete/{id}(id=${figuraOnePiece.id})}">
+                                    <button type="button" class="boton btn-comprar">Borrar</button>
+                                </a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </div>
-    <h3>Figuras Naruto </h3>
-    <div th:each="figuraNaruto: ${naruto}" class="figura-container">
+<!--    <h3>Figuras Naruto </h3>
+    <div th:each="figuraNaruto: ${listaNaruto}" class="figura-container">
 
         <div>
             <img th:src="${figuraNaruto.url}" alt="imagen">
             <h2 th:text="${figuraNaruto.nombre}"></h2>
             <p>Precio: <span class="price" th:text="${figuraNaruto.precio}"></span></p>
-            <a class="button" th:href="@{/edit/naruto/{id}(id=${figuraNaruto.id})}">Editar</a>
+            <a class="button" th:href="@{/edit/{id}(id=${figuraNaruto.id})}">Editar</a>
 
             <a class="button" th:href="@{/figuras/delete/{id}(id=${figuraNaruto.id})}">Borrar</a>
 
         </div>
 
+    </div>-->
+
+
+
+<div class="container">
+    <div class="card-container" style="margin-top: 110px;">
+        <div class="card">
+            <div class="card-header">
+                <h3> Naruto </h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="figuraNaruto: ${listaNaruto}">
+                        <td>
+
+                            <img th:src="${figuraNaruto.url}" alt="imagen">
+                        </td>
+                        <td th:text="${figuraNaruto.nombre}">Nombre</td>
+                        <td  th:text="${figuraNaruto.precio}">Precio</td>
+                        <td>
+                            <a  th:href="@{/edit/{id}(id=${figuraNaruto.id})}">
+
+                                <button type="button" class="boton btn-comprar">Editar</button>
+                            </a>
+
+                        </td>
+                        <td>
+                            <a th:href="@{/figuras/delete/{id}(id=${figuraNaruto.id})}">
+                                <button type="button" class="boton btn-comprar">Borrar</button>
+                            </a>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <h3>Figuras Dragon Ball Z</h3>
-    <div th:each="figuraDragonBall: ${dragonBall}" class="figura-container">
+</div>
+
+ <!--   <h3>Figuras Dragon Ball Z</h3>
+    <div th:each="figuraDragonBall: ${listaDragonBall}" class="figura-container">
 
         <div>
             <img th:src="${figuraDragonBall.url}" alt="imagen">
@@ -169,10 +249,54 @@
 
         </div>
 
-    </div>
+    </div>-->
 
 
+
+
+<div class="container">
+    <div class="card-container" style="margin-top: 110px;">
+        <div class="card">
+            <div class="card-header">
+                <h3> Dragon Ball Z</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="figuraDragonBall: ${listaDragonBall}">
+                        <td>
+
+                            <img th:src="${figuraDragonBall.url}" alt="imagen">
+                        </td>
+                        <td th:text="${figuraDragonBall.nombre}">Nombre</td>
+                        <td  th:text="${figuraDragonBall.precio}">Precio</td>
+                        <td>
+                            <a  th:href="@{/edit/{id}(id=${figuraDragonBall.id})}">
+
+                                <button type="button" class="boton btn-comprar">Editar</button>
+                            </a>
+
+                        </td>
+                        <td>
+                            <a th:href="@{/figuras/delete/{id}(id=${figuraDragonBall.id})}">
+                                <button type="button" class="boton btn-comprar">Borrar</button>
+                            </a>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+</div>
 
 
 </body>

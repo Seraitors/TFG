@@ -250,6 +250,7 @@ public class CarritoController {
 
 
 
+/*
 
     @GetMapping("/figuras/dragonBall/new")
     public String nuevaFiguraa(Model model) {
@@ -274,6 +275,7 @@ public class CarritoController {
         }
         return "/html/lista";
     }
+*/
 
 
     /**
@@ -291,7 +293,7 @@ public class CarritoController {
 
 
 
-    @GetMapping("/detalle/naruto/{id}")
+  /*  @GetMapping("/detalle/naruto/{id}")
     public String verDetalle1e(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
         Optional<Figura> naruto = figuraServices.findById(id);
@@ -334,7 +336,7 @@ public class CarritoController {
             model.addAttribute("listaFigura", figuraServices.findAll());
         }
         return "/html/lista";
-    }
+    }*/
 
 
     /**
@@ -351,7 +353,7 @@ public class CarritoController {
 
 
 
-    @GetMapping("/detalle/novedad/{id}")
+  /*  @GetMapping("/detalle/novedad/{id}")
     public String vearDetalle(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
         Optional<Figura> novedad = figuraServices.findById(id);
@@ -380,7 +382,7 @@ public class CarritoController {
         log.info(nuevaPersona.toString());
         figuraServices.add(nuevaPersona);
         return "redirect:/inicio";
-    }
+    }*/
 
     /**
      * One piece
@@ -396,7 +398,7 @@ public class CarritoController {
     }
 
 
-
+/*
     @GetMapping("/detalle/onePiece/{id}")
     public String verDetallee(@PathVariable("id") Long id, Model model) {
         // Obtener el objeto con el ID especificado y pasarlo al modelo
@@ -429,6 +431,6 @@ public class CarritoController {
         log.info(nuevaPersona.toString());
         figuraServices.add(nuevaPersona);
         return "redirect:/inicio";
-    }
+    }*/
 
 }

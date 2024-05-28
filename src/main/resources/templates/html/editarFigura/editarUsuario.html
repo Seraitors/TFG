@@ -37,6 +37,15 @@
                   class="help-block" id="id-error">Errores</span>
 
         </div>
+
+        <div class="input-group mb-3"
+             th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+            <label class="form-label" for="password" >password</label>
+            <input class="form-control" type="text" id="password" placeholder="password" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                  class="help-block" id="password-error">password</span>
+
+        </div>
     </div>
 
     <button th:href="@{/figuras/lista}" type="submit" class="btn btn-primary">Enviar</button>

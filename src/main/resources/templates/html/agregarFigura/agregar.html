@@ -48,11 +48,6 @@
             <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}" class="help-block" id="url-error">Errores</span>
         </div>
 
-        <div class="mb-3" th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
-            <label class="form-label" for="id">Id</label>
-            <input class="form-control" type="text" id="id" placeholder="Id" th:field="*{id}" th:attrappend="readonly=${figuraDTO.id != null and modoEdicion} ? 'readonly' : null">
-            <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="help-block" id="id-error">Errores</span>
-        </div>
 
         <div class="mb-3" th:classappend="${#fields.hasErrors('nombre')} ? 'has-error'">
             <label class="form-label" for="nombre">Nombre</label>
@@ -83,6 +78,17 @@
             <label class="form-label" for="des">Categoria</label>
             <input class="form-control" type="text" id="cat" placeholder="Categoria" th:field="*{categoria}">
             <span th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" class="help-block" id="cat-error">Errores</span>
+        </div>
+
+        <div class="mb-3" th:classappend="${#fields.hasErrors('stock')} ? 'has-error'">
+            <label class="form-label" for="des">stock</label>
+            <input class="form-control" type="text" id="stock" placeholder="stock" th:field="*{stock}">
+            <span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}" class="help-block" id="stock-error">Errores</span>
+        </div>
+        <div class="mb-3" th:classappend="${#fields.hasErrors('fecha_introducida')} ? 'has-error'">
+            <label class="form-label" for="des">fecha_introducida</label>
+            <input class="form-control" type="text" id="fecha_introducida" placeholder="Fecha" th:field="*{fecha_introducida}">
+            <span th:if="${#fields.hasErrors('stock')}" th:errors="*{fecha_introducida}" class="help-block" id="fecha_introducida-error">Errores</span>
         </div>
 
         <button th:href="@{/figuras/lista}" type="submit" class="btn btn-primary">Enviar</button>

@@ -102,7 +102,7 @@ public class FiguraServices {
     public List<Figura> getFigurasByCategoria(String categoria) {
         return repositorio.findFigurasByCategoriaContaining(categoria);
     }
-
+        /*Filtrar por fecha*/
     public List<Figura> getFigurasByFechaIntroducida(LocalDate fecha) {
         return repositorio.findFigurasByFechaIntroducida(fecha);
     }

@@ -2,6 +2,7 @@ package com.wanted.wanted.controladores;
 
 import com.wanted.wanted.entidades.Usuario;
 import com.wanted.wanted.servicios.UsuarioServices;
+import com.wanted.wanted.servicios.VentasServices;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.wanted.wanted.entidades.Figura;
@@ -28,15 +30,17 @@ public class AdminController {
 
     private final FiguraServices figuraServices;
     private final UsuarioServices  usuarioServices;
+    private final VentasServices ventasServices;
 
     @GetMapping("/admin/pagina")
     public String inicio(Model model) {
-        model.addAttribute("listaFigura", figuraServices.findAll());
-        model.addAttribute("novedadFigura", figuraServices.findAll());
-        model.addAttribute("onePiece", figuraServices.findAll());
-        model.addAttribute("naruto", figuraServices.findAll());
-        model.addAttribute("dragonBall", figuraServices.findAll());
-        log.info("paso por administrador");
+
+        List<Figura> figuras = figuraServices.getFigurasByCategoria("dragon-ball");
+        List<Figura> figuras1 = figuraServices.getFigurasByCategoria("naruto");
+        List<Figura> figuras2 = figuraServices.getFigurasByCategoria("one-piece");
+        model.addAttribute("listaDragonBall", figuras);
+        model.addAttribute("listaNaruto", figuras1);
+        model.addAttribute("listaOnePiece", figuras2);
 
         return "html/adminMonitorizar/admin";
 
@@ -65,7 +69,7 @@ public class AdminController {
     @PostMapping("/edit/submit")
     public String editarSubmit(@Valid @ModelAttribute("figura") Figura figura, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "editarFigura";
+            return "html/editarFigura/editarFigura";
         }
         figuraServices.edit(figura);
 
@@ -75,7 +79,7 @@ public class AdminController {
 
     /* Editar One piece */
 
-    @GetMapping("/edit/onePiece/{id}")
+  /*  @GetMapping("/edit/onePiece/{id}")
     public String editar1(@PathVariable Long id, Model moddel) {
         Optional<Figura> onePiece1 = figuraServices.findById(id);
 
@@ -164,27 +168,14 @@ public class AdminController {
 
         return "redirect:/admin/pagina";
 
-    }
+    }*/
 
-    @GetMapping("/figuras/delete/{id}")
-    public String borrarTodo(@PathVariable("id") Long id, Model model) {
+    /*Usuario*/
 
-        Optional<Figura> figura = figuraServices.findById(id);
-        Optional<Figura> onePiece = figuraServices.findById(id);
-        Optional<Figura> dragonBall = figuraServices.findById(id);
-        Optional<Usuario> usuario = usuarioServices.findById(id);
-        if (figura != null || onePiece != null || dragonBall != null || usuario != null)
-            figuraServices.delete(figura.get());
-        figuraServices.delete(onePiece.get());
-        figuraServices.delete(dragonBall.get());
-        usuarioServices.delete(usuario.get());
-        return "redirect:/admin/pagina";
-    }
-
-        /*Usuario*/
     @GetMapping("/admin/usuario")
     public  String paginaUsuario( Model model){
         model.addAttribute("usuario" , usuarioServices.findAll());
+        model.addAttribute("ventas",ventasServices.findAll());
 
         return "html/adminMonitorizar/adminUsuario";
 
@@ -221,4 +212,25 @@ public class AdminController {
 
 
 
+    @GetMapping("/figuras/delete/{id}")
+    public String borrarTodo(@PathVariable("id") Long id, Model model) {
+        Optional<Figura> figura = figuraServices.findById(id);
+        Optional<Usuario> usuario = usuarioServices.findById(id);
+
+        if (figura.isPresent()) {
+            figuraServices.delete(figura.get());
+        }
+
+        if (usuario.isPresent()) {
+            usuarioServices.delete(usuario.get());
+        }
+
+        return "redirect:/admin/pagina";
+    }
 }
+
+
+
+
+
+
