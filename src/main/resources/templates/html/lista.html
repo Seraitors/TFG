@@ -76,7 +76,7 @@
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 0;">
                                 <span class="text-primary">
-                                    <span th:text="${#authentication.name}">Nombre de Usuario</span>
+                                    <span id="nombre-usuario" th:text="${#authentication.name}">Nombre de Usuario</span>
                                 </span>
                             </a>
 
@@ -94,7 +94,7 @@
 
                                 <li>
                                     <form th:action="@{/usuario/logout}" method="post">
-                                        <button type="submit" class="btn btn-danger">Salir</button>
+                                        <button type="submit" id="btn-cerrar-sesion"  class="btn btn-danger">Salir</button>
                                     </form>
                                 </li>
                             </ul>
@@ -297,38 +297,11 @@
     <script src="/js/carrusel.js"></script>
     <script src="/js/buscar.js"></script>
     <script src="/js/favoritos.js"></script>
-    <script src="/js/carritoComprar.js"></script>
+    <script src="/js/monstrarCarrito.js"></script>
     <script src="/js/cambiarDeColorCabecera.js"></script>
+    <script src="/js/añadirInicioSesion.js"></script>
+    <script src="/js/borrarCokieSesion.js"></script>
 
-    <script>
-
-        function addFavoriteProduct(productId) {
-            const favoriteProduct = {
-                user: null,
-                product: productId
-            };
-
-            fetch('/favoritos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(favoriteProduct)
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Product added to favorites successfully');
-                        document.querySelector(`[data-id="${productId}"] i`).classList.add('text-danger');
-                    } else {
-                        console.error('Error adding product to favorites:', response.status);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error adding product to favorites:', error);
-                });
-        }
-
-    </script>
 
 
 </body>

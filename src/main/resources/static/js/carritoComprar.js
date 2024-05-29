@@ -1,89 +1,74 @@
-const cart = document.getElementById('cart');
+
+function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days*24*60*60*1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + JSON.stringify(value) + ";" + expires + ";path=/";
+}
+
+// Función para obtener una cookie
+function getCookie(name) {
+    const cookieArr = document.cookie.split(';');
+    for(let i = 0; i < cookieArr.length; i++) {
+        const cookiePair = cookieArr[i].split('=');
+        if(name == cookiePair[0].trim()) {
+            return JSON.parse(cookiePair[1]);
+        }
+    }
+    return [];
+}
+
+// Variables y elementos del DOM
+
 const cartItemCount = document.getElementById('cartItemCount');
-const addToCartButtons = document.querySelectorAll('.btn-comprar');
-const cartContainer = document.getElementById('cartContainer');
+
 const cartItemsList = document.getElementById('cartItems');
 const cartTotal = document.getElementById('cartTotal');
-const btnComprar = document.getElementById('btnComprar');
+const addToCartBtn = document.querySelector('.addToCartBtn');
+let cartItems = getCookie('cartItems');
+let itemCount = cartItems.length;
 
-let cartItems = [];
-let itemCount = 0;
-let total = 0;
-
-// Función para guardar el carrito en una cookie
-function saveCartToCookie() {
-    const cartCookieValue = JSON.stringify(cartItems);
-    document.cookie = "cart=" + encodeURIComponent(cartCookieValue) + ";path=/";
-}
-
-// Función para cargar el carrito desde la cookie
-function loadCartFromCookie() {
-    const cookies = document.cookie.split(';');
-    const cartCookie = cookies.find(cookie => cookie.trim().startsWith('cart='));
-
-    if (cartCookie) {
-        const cartCookieValue = decodeURIComponent(cartCookie.split('=')[1]);
-        cartItems = JSON.parse(cartCookieValue);
-        updateCartView();
-    }
-}
-
-// Función para actualizar la vista del carrito
+// Actualizar la vista inicial del carrito
 function updateCartView() {
+    // Limpiar la vista del carrito
     cartItemsList.innerHTML = '';
-    total = 0;
 
+    // Recorrer todos los elementos del carrito
+    let total = 0;
     cartItems.forEach(item => {
         const listItem = document.createElement('li');
-        listItem.classList.add('cart-item');
         listItem.textContent = item.name + ' - $' + item.price.toFixed(2);
         cartItemsList.appendChild(listItem);
         total += item.price;
     });
 
+    // Actualizar el total
     cartTotal.textContent = 'Total: $' + total.toFixed(2);
-    cartItemCount.textContent = cartItems.length;
+    cartItemCount.textContent = itemCount;
 }
 
-// Función para agregar un artículo al carrito
+// Función para añadir un elemento al carrito
 function addToCart(event) {
+
     const productId = event.target.getAttribute('data-figura-id');
     const productName = event.target.getAttribute('data-figura-nombre');
     const productPrice = parseFloat(event.target.getAttribute('data-figura-precio'));
 
     const item = { id: productId, name: productName, price: productPrice };
     cartItems.push(item);
+    itemCount++;
 
+    // Actualizar la cookie del carrito
+    setCookie('cartItems', cartItems, 7);
+
+    // Actualizar la vista del carrito
     updateCartView();
-    saveCartToCookie(); // Guardar el carrito en la cookie
+
 }
 
-// Eventos para mostrar y ocultar el carrito
-cart.addEventListener('click', () => {
-    cartContainer.style.display = 'block';
-});
 
-document.addEventListener('click', (event) => {
-    if (!cart.contains(event.target) && !cartContainer.contains(event.target)) {
-        cartContainer.style.display = 'none';
-    }
-});
+addToCartBtn.addEventListener('click', addToCart);
 
-// Evento para el botón de comprar
-btnComprar.addEventListener('click', () => {
-    alert('Compra realizada!');
-    // Puedes agregar aquí el código para procesar la compra y limpiar el carrito si es necesario.
-    cartItems = [];
-    updateCartView();
-    saveCartToCookie(); // Limpiar la cookie del carrito
-});
+// Añadir evento a los botones de añadir al carrito
 
-// Eventos para agregar artículos al carrito
-addToCartButtons.forEach(button => {
-    button.addEventListener('click', addToCart);
-});
 
-// Cargar el carrito desde la cookie cuando la página se carga
-document.addEventListener('DOMContentLoaded', (event) => {
-    loadCartFromCookie();
-});
