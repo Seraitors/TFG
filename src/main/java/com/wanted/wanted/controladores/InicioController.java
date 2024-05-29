@@ -34,13 +34,26 @@ public class InicioController {
     public  String  inicio(Model model){
 
 
-        List<Figura> figuras = figuraServices.getRandomFiguras(8);
-        model.addAttribute("listaFigura",figuras);
+        List<Figura> figura = figuraServices.getRandomFiguras(8);
+        List<Figura> figuras = figuraServices.getFiguras(4, "novedad");
+
+
+        model.addAttribute("listaFigura",figura);
+        model.addAttribute("listaNovedad",figuras);
+
 
 
     return "html/lista";
 
 
+    }
+    @GetMapping("/Novedad")
+    public String figurasPorFecha( Model model) {
+
+
+        List<Figura> figuras = figuraServices.getFigurasByCategoria("novedad");
+        model.addAttribute("listaNovedad", figuras);
+        return "html/novedad/index";
     }
     /**
      * Para coger le id y ver el detalle
@@ -215,6 +228,30 @@ public class CarritoController {
         return "redirect:/figuras/lista";
     }
 
+    @GetMapping("/centroDeSoporte")
+    public  String centroDeSoporte(){
+        return "html/footer/centroDeSoporte";
+    }
+
+    @GetMapping("/devolucionesGarantias")
+    public  String devolucionesGarantias(){
+        return "html/footer/devolucionesGarantias";
+    }
+
+    @GetMapping("/contactar")
+    public  String contactar(){
+        return "html/footer/contactar";
+    }
+
+    @GetMapping("/privacidad")
+    public  String privacidad(){
+        return "html/footer/privacidad";
+    }
+    @GetMapping("/contacto")
+    public  String contacto(){
+        return "html/encabezado/contacto";
+    }
+
     /**
      * Dragon ball controler
      */
@@ -344,12 +381,8 @@ public class CarritoController {
      * @param model
      * @return
      */
-    @GetMapping("/Novedad")
-    public String figurasPorFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha, Model model) {
-        List<Figura> figuras = figuraServices.getFigurasByFechaIntroducida(fecha);
-        model.addAttribute("listaNovedad", figuras);
-        return "html/novedad/index";
-    }
+
+
 
 
 

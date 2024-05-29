@@ -107,4 +107,27 @@ public class FiguraServices {
         return repositorio.findFigurasByFechaIntroducida(fecha);
     }
 
+
+    /*Todo el metodo de numeros aleatorios y de categoria*/
+
+    public List<Figura> getFiguras(int number, String categoria) {
+        List<Figura> figuras;
+
+
+        if (categoria != null && !categoria.isEmpty()) {
+            // Filtrar por categoría
+            figuras = repositorio.findFigurasByCategoriaContaining(categoria);
+            if (categoria.equalsIgnoreCase("novedad")) {
+                Collections.shuffle(figuras);
+                figuras = figuras.stream().limit(number).collect(Collectors.toList());
+            }
+        } else {
+            // Obtener todas las figuras y mezclar para seleccionar aleatoriamente
+            figuras = repositorio.findAll();
+            Collections.shuffle(figuras);
+            figuras = figuras.stream().limit(number).collect(Collectors.toList());
+        }
+
+        return figuras;
+    }
 }
