@@ -117,6 +117,14 @@ public class InicioController {
         return "/html/lista";
     }
 
+
+  /*  @GetMapping("/comprar")
+    public  String comprar(){
+
+
+        return "html/comprar/comprar";
+    }*/
+
     /**
      * Esto para añadir a favoritos
      * @return

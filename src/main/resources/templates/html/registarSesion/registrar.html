@@ -10,12 +10,17 @@
     <style>
         body {
             background-color: #f8f9fa;
+            position: relative;
+            z-index: 1;
         }
         .container {
             margin-top: 50px;
         }
         .card {
             border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+            position: relative;
+            z-index: 2;
         }
         .card-header {
             background-color: #343a40;
@@ -31,10 +36,28 @@
             background-color: #004494;
             border-color: #004494;
         }
+        /* Estilo para el video de fondo */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
 
+
+
+
+<!-- Video de fondo -->
+<video class="video-background" autoplay loop muted>
+    <source src="https://cdn.pixabay.com/video/2023/02/16/150883-799711528_large.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento de video.
+</video>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6">
