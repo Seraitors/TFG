@@ -16,9 +16,9 @@ document.addEventListener('click', (event) => {
 
 function getCookieMonstrar(name) {
     const cookieArr = document.cookie.split(';');
-    for(let i = 0; i < cookieArr.length; i++) {
+    for (let i = 0; i < cookieArr.length; i++) {
         const cookiePair = cookieArr[i].split('=');
-        if(name == cookiePair[0].trim()) {
+        if (name == cookiePair[0].trim()) {
             return JSON.parse(cookiePair[1]);
         }
     }
@@ -28,25 +28,37 @@ const cartItemCountMonstar = document.getElementById('cartItemCount');
 
 const cartItemsListMonstar = document.getElementById('cartItems');
 const cartTotalMonstar = document.getElementById('cartTotal');
-let cartItemsMonstar = getCookieMonstrar('cartItems');
-let itemCountMonstar = cartItemsMonstar.length;
-function updateCartView() {
+
+function updateCartViewMostrar() {
     // Limpiar la vista del carrito
-    cartItemsListMonstar.innerHTML = '';
+    const userLogCookie = getCookieMonstrar('user-log');
+    if (userLogCookie.length !== 0) {
 
-    // Recorrer todos los elementos del carrito
-    let total = 0;
-    cartItemsMonstar.forEach(item => {
-        const listItem = document.createElement('li');
-        listItem.textContent = item.name + ' - $' + item.price.toFixed(2);
-        cartItemsListMonstar.appendChild(listItem);
-        total += item.price;
-    });
+        let cartItems = getCookieMonstrar('cartItems');
+        let cartItemMostrar = cartItems[userLogCookie];
+        let itemCountMostrar = cartItemMostrar.length;
+        cartItemsListMonstar.innerHTML = '';
 
-    // Actualizar el total
-    cartTotalMonstar.textContent = 'Total: $' + total.toFixed(2);
-    cartItemCountMonstar.textContent = itemCountMonstar;
+        // Recorrer todos los elementos del carrito
+        let total = 0;
+        cartItemMostrar.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.name + ' - $' + item.price.toFixed(2);
+            cartItemsListMonstar.appendChild(listItem);
+            total += item.price;
+        });
+
+        // Actualizar el total
+        cartTotalMonstar.textContent = 'Total: $' + total.toFixed(2);
+        cartItemCountMonstar.textContent = itemCountMostrar;
+    }
 }
 
-updateCartView();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartViewMostrar();
+
+});
+
 
