@@ -40,6 +40,12 @@ public class InicioSesionController {
         return "html/iniciarSesion/index";
     }
 
+    @PostMapping("/inicioSesion/login/sudmit")
+    public  String iniciarSesion1( Model model){
+
+
+        return "redirect:/inicio";
+    }
     /**
      * Mirar por qu eno me redirige al informacion
      * Cambiar el post para ver si se queda guardado el perfil para la pagina cuando cargue 
