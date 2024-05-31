@@ -55,10 +55,26 @@ function updateCartViewMostrar() {
 }
 
 
+/*function clearCart() {
+    const userLogCookie = getCookieMonstrar('user-log');
+    if (userLogCookie.length !== 0) {
+        let cartItems = getCookieMonstrar('cartItems');
+        delete cartItems[userLogCookie];
+        document.cookie = 'cartItems=' + JSON.stringify(cartItems) + '; path=/;';
+        updateCartViewMostrar();
+    }
+}*/
+
 
 document.addEventListener('DOMContentLoaded', () => {
     updateCartViewMostrar();
 
 });
+
+/*
+document.getElementById('btnBorrar').addEventListener('click', () => {
+    clearCart();
+});
+*/
 
 

@@ -11,12 +11,38 @@
     overflow-y: auto;
     z-index: 9999;
     color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
 }
 
 #btnComprar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    outline: none;
+    margin-left: 10px; /* Espacio entre los botones */
+}
+
+#btnComprar:hover {
+    background-color: #0056b3;
+}
+
+#btnComprar:active {
+    transform: translateY(1px);
+}
+
+#btnBorrar {
     background-color: #000000;
     color: #fff;
     border: none;
@@ -27,10 +53,6 @@
     outline: none;
 }
 
-#btnComprar:hover {
-    background-color: #0056b3;
-}
-
-#btnComprar:active {
-    transform: translateY(1px);
+#btnBorrar:hover {
+    background-color: #d9534f; /* Cambia a un color de fondo diferente al pasar el ratón */
 }
