@@ -40,10 +40,8 @@ public class InicioSesionController {
         return "html/iniciarSesion/index";
     }
 
-    @PostMapping("/inicioSesion/login/sudmit")
+    @PostMapping("/inicioSesion/login/submit")
     public  String iniciarSesion1( Model model){
-
-
         return "redirect:/inicio";
     }
     /**
