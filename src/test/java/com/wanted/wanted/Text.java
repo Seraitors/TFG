@@ -21,9 +21,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 @Slf4j
 @DataJpaTest
@@ -104,7 +107,34 @@ public class Text {
 //        List<Figura> figuras = figuraRepository.findTop3By();
 //        assertThat(figuras).isNotEmpty();
 //    }
+//    @Test
+//    public void testAddFigura() {
+//        Figura figura = new Figura();
+//        figura.setNombre("Luffy");
+//        figura.setUrl("/imagen/fotosLista/luffy.jpg");
+//
+//        when(figuraRepository.save(any(Figura.class))).thenReturn(figura);
+//
+//        Figura savedFigura = figuraService.add(figura);
+//
+//        assertNotNull(savedFigura);
+//        assertEquals("Luffy", savedFigura.getNombre());
+//        verify(figuraRepository, times(1)).save(figura);
+//    }
 
+    @Test
+    public void testFindFiguraById() {
+        Figura figura = new Figura();
+        figura.setId(1L);
+        figura.setNombre("Luffy");
+
+        when(figuraRepository.findById(1L)).thenReturn(Optional.of(figura));
+
+        Optional<Figura> foundFigura = figuraRepository.findById(1L);
+
+        assertTrue(foundFigura.isPresent());
+        assertEquals("Luffy", foundFigura.get().getNombre());
+    }
 
         /*//derivada
         @Test
