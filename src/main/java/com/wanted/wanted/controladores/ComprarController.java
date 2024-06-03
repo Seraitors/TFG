@@ -30,6 +30,7 @@ public class ComprarController {
      */
 
 
+/*
     @GetMapping("/comprar")
     public String comprar(@RequestParam("id") Long id, Model model) {
        Optional<Figura>  figura = figuraServices.findById(id);
@@ -48,6 +49,7 @@ public class ComprarController {
 
 
     }
+*/
 
 
     @GetMapping("/comprar/novedad")

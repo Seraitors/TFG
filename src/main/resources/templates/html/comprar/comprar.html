@@ -28,6 +28,8 @@
             margin: 10px 0;
         }
     </style>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="checkout.js" defer></script>
 </head>
 <header class="p-3 bg-dark text-white fixed-top ">
     <div class="container">
@@ -100,7 +102,11 @@
                 <h2>Carrito de Compras</h2>
                 <ul id="cartItems"></ul>
                 <div id="cartTotal">Total: $0.00</div>
+                <a>
+
                 <button id="btnComprar">Comprar</button>
+
+                </a>
             </div>
             <!--   Son para que te cuentes los inicios de sesion est atambien puesto arriba
       <div  sec:authorize="hasRole('ROLE_ADMIN')" >
@@ -118,22 +124,32 @@
     </div>
 </header>
 <body>
+    <div id="checkout">
+
+    </div>
+
+
+
+
+
+
+
 <div class="container" style="margin-top: 110px;">
     <div class="row">
         <!-- Columna para el producto -->
         <div class="col-md-6">
-            <div class="figure-details">
+           <!-- <div class="figure-details">
                 <img th:src="@{${figura.url}}" alt="imagen">
                 <h2 th:text="${figura.nombre}"></h2>
                 <p th:text="${figura.des}"></p>
                 <p>Precio: <span class="price" th:text="${figura.precio} + ' €'"></span></p>
-            </div>
+            </div>-->
         </div>
         <!-- Columna para el formulario de pago -->
         <div class="col-md-6">
             <div class="payment-form">
                 <h2>Método de Pago</h2>
-                <form>
+
                     <div class="form-group">
                         <label for="cardName">Nombre en la Tarjeta</label>
                         <input type="text" class="form-control" id="cardName" placeholder="Nombre en la tarjeta" required>
@@ -157,7 +173,7 @@
                         <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Pagar</button>
-                </form>
+
             </div>
         </div>
     </div>

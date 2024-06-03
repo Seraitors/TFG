@@ -29,52 +29,71 @@ const cartItemCountMonstar = document.getElementById('cartItemCount');
 const cartItemsListMonstar = document.getElementById('cartItems');
 const cartTotalMonstar = document.getElementById('cartTotal');
 
+
+
+
 function updateCartViewMostrar() {
     // Limpiar la vista del carrito
     const userLogCookie = getCookieMonstrar('user-log');
     if (userLogCookie.length !== 0) {
 
         let cartItems = getCookieMonstrar('cartItems');
-        let cartItemMostrar = cartItems[userLogCookie];
-        let itemCountMostrar = cartItemMostrar.length;
-        cartItemsListMonstar.innerHTML = '';
+        if (cartItems[userLogCookie]){
+            let cartItemMostrar = cartItems[userLogCookie];
+            let itemCountMostrar = cartItemMostrar.length;
+            cartItemsListMonstar.innerHTML = '';
 
-        // Recorrer todos los elementos del carrito
-        let total = 0;
-        cartItemMostrar.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.textContent = item.name + ' - $' + item.price.toFixed(2);
-            cartItemsListMonstar.appendChild(listItem);
-            total += item.price;
-        });
+            // Recorrer todos los elementos del carrito
+            let total = 0;
+            cartItemMostrar.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item.name + ' - $' + item.price.toFixed(2);
+                cartItemsListMonstar.appendChild(listItem);
+                total += item.price;
+            });
 
-        // Actualizar el total
-        cartTotalMonstar.textContent = 'Total: $' + total.toFixed(2);
-        cartItemCountMonstar.textContent = itemCountMostrar;
+            // Actualizar el total
+            cartTotalMonstar.textContent = 'Total: $' + total.toFixed(2);
+            cartItemCountMonstar.textContent = itemCountMostrar;
+        }
+
     }
 }
 
 
-/*function clearCart() {
+function clearCart() {
+
+    console.log("hola bebebebe")
     const userLogCookie = getCookieMonstrar('user-log');
+
+    console.log("esto es borrar");
     if (userLogCookie.length !== 0) {
         let cartItems = getCookieMonstrar('cartItems');
         delete cartItems[userLogCookie];
-        document.cookie = 'cartItems=' + JSON.stringify(cartItems) + '; path=/;';
+        setCookie('cartItems', cartItems, 7);
+
+        window.location.reload();
+
+
         updateCartViewMostrar();
-    }
-}*/
+   }
+
+
+
+}
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    const btnLimpiar = document.querySelector('#btnLimpiar');
+
+    btnLimpiar.addEventListener('click', clearCart);
     updateCartViewMostrar();
 
 });
 
-/*
-document.getElementById('btnBorrar').addEventListener('click', () => {
-    clearCart();
-});
-*/
+/*btnLimpiar.addEventListener('click', clearCart);*/
+
 
 

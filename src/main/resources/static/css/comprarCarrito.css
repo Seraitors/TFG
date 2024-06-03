@@ -11,7 +11,6 @@
     overflow-y: auto;
     z-index: 9999;
     color: black;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -42,7 +41,7 @@
     transform: translateY(1px);
 }
 
-#btnBorrar {
+#btnLimpiar {
     background-color: #000000;
     color: #fff;
     border: none;
@@ -53,6 +52,6 @@
     outline: none;
 }
 
-#btnBorrar:hover {
+#btnLimpiar:hover {
     background-color: #d9534f; /* Cambia a un color de fondo diferente al pasar el ratón */
 }
