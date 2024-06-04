@@ -56,6 +56,9 @@ public class MensajesConfig implements WebMvcConfigurer {
         registry.addInterceptor(localeChangeInterceptor());
     }
 
+
+
+
 }
 
 
