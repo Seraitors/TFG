@@ -1,9 +1,8 @@
 package com.wanted.wanted.controladores;
 
-
 import com.wanted.wanted.entidades.Usuario;
-import com.wanted.wanted.servicios.FiguraServices;
 import com.wanted.wanted.servicios.UsuarioServices;
+import com.wanted.wanted.servicios.EmailService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class RegistrarController {
 
     private final UsuarioServices usuarioServices;
+    private final EmailService emailService;
 
     @GetMapping("/usuario/signup")
     public String signup(Model model) {
@@ -42,9 +42,13 @@ public class RegistrarController {
                 return "html/registarSesion/registrar";
             }
             usuarioServices.save(dto);
+
+            // Enviar correo electrónico de notificación
+            emailService.sendRegistrationEmail(dto.getEmail(),
+                    "Bienvenido a Wanted",
+                    "Gracias por registrarte en nuestra aplicación nakama, bienvenido al nuevo mundo " + dto.getUsername() + ".");
+
             return "redirect:/aaa";
         }
     }
 }
-
-

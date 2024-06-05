@@ -94,14 +94,14 @@
             <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
-        <!--Sendiblue-->
+
 
 
         <dependency>
-            <groupId>com.sendinblue</groupId>
-            <artifactId>sendinblue</artifactId>
-            <version>2.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+
 
 
 
