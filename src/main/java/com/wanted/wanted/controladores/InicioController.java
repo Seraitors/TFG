@@ -28,9 +28,7 @@ public class InicioController {
 
 
 
-
-
-    @GetMapping({"/aaa" ,"/inicio"})
+    @GetMapping({"/aaa" ,"/inicio","/"})
     public  String  inicio(Model model){
 
 
@@ -129,45 +127,6 @@ public class InicioController {
      * Esto para añadir a favoritos
      * @return
      */
-
- /*   @PostMapping("/figuras/{id}/favorito")
-    public ResponseEntity<String> toggleFavorito(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
-        Optional<Figura> figuraOpt = figuraServices.findById(id);
-        if (figuraOpt.isPresent()) {
-            Figura figura = figuraOpt.get();
-            Usuario usuario = usuariosServicesSeguridad.findByUsername(userDetails.getUsername());
-            if (usuario.getFavoritos().contains(figura)) {
-                usuario.getFavoritos().remove(figura);
-            } else {
-                usuario.getFavoritos().add(figura);
-            }
-            usuariosServicesSeguridad.save(usuario);
-            return ResponseEntity.ok("Favorito actualizado");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-}*/
-
-
-
-
-
-
-    // darle un ojo
-/*     @RestController
-@RequestMapping("/carrito")
-public class CarritoController {
-
-    @PostMapping("/agregar")
-    public ResponseEntity<String> agregarAlCarrito(@RequestBody Figura figura, HttpServletResponse response) {
-        // Aquí deberías agregar la lógica para almacenar la figura en una cookie
-        Cookie cookie = new Cookie("carrito", figura.getId().toString());
-        cookie.setMaxAge(24 * 60 * 60); // La cookie expirará en 1 día
-        response.addCookie(cookie);
-        return ResponseEntity.ok("Figura agregada al carrito");
-    }
-} */
 
 
 
@@ -272,56 +231,6 @@ public class CarritoController {
         return "html/dragonBall/index";
     }
 
-    /**
-     * Poner bonito y hacer todo lo del detalle con todos
-     */
-    /*@GetMapping("/detalle/dragon/{id}")
-    public String verDetall1e(@PathVariable("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<Figura> dragon = figuraServices.findById(id);
-
-        if (dragon.isPresent()) {
-            Figura dragonBall2 = dragon.get();
-            model.addAttribute("figura", dragonBall2);
-            return "html/inspeccionar/inspeccionarDragonBall"; // Devolver la vista de detalle
-        } else {
-
-            return "redirect:/inicio";
-        }
-
-
-    }*/
-
-
-
-
-/*
-
-    @GetMapping("/figuras/dragonBall/new")
-    public String nuevaFiguraa(Model model) {
-        log.info("Estoy en nuevaFigura");
-        model.addAttribute("dragonBall", new Figura()); // Cambio el nombre del objeto en el modelo
-        return "/html/agregarFigura/agregarDragonBall";
-    }
-
-    @PostMapping("/figuras/dragonBall/new/submit") // Cambio la URL de la anotación
-    public String nuevaMascotaSubmiit(@ModelAttribute("dragonBall") Figura nuevaPersona) {
-        log.info(nuevaPersona.toString());
-        figuraServices.add(nuevaPersona);
-        return "redirect:/inicio";
-    }
-
-    @GetMapping("/figuras/filtrarDragon")
-    public String listadoFiltradjo(@RequestParam(name = "nombre", required = false) String nombre, Model model){
-        if (nombre != null && !nombre.isEmpty()) {
-            model.addAttribute("listaFigura", figuraServices.findByNombre(nombre));
-        } else {
-            model.addAttribute("listaFigura", figuraServices.findAll());
-        }
-        return "/html/lista";
-    }
-*/
-
 
     /**
      * Naruto controller
@@ -337,94 +246,6 @@ public class CarritoController {
 
 
 
-
-  /*  @GetMapping("/detalle/naruto/{id}")
-    public String verDetalle1e(@PathVariable("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<Figura> naruto = figuraServices.findById(id);
-
-        if (naruto.isPresent()) {
-            Figura naruto2 = naruto.get();
-            model.addAttribute("figura", naruto2);
-            return "html/inspeccionar/inspeccionarnaruto"; // Devolver la vista de detalle
-        } else {
-
-            return "redirect:/inicio";
-        }
-
-
-    }
-
-
-
-
-    @GetMapping("/figuras/naruto/new")
-    public String nuevaaFigura(Model model) {
-        log.info("Estoy en nuevaFigura");
-        model.addAttribute("naruto", new Figura()); // Cambio el nombre del objeto en el modelo
-        return "/html/agregarFigura/agregarNaruto";
-    }
-
-    @PostMapping("/figuras/naruto/new/submit") // Cambio la URL de la anotación
-    public String nuevaaMascotaSubmit(@ModelAttribute("naruto") Figura nuevaPersona) {
-        log.info(nuevaPersona.toString());
-        figuraServices.add(nuevaPersona);
-        return "redirect:/inicio";
-    }
-
-
-    @GetMapping("/figuras/filtrarNaruto")
-    public String listadoFiltrwado(@RequestParam(name = "nombre", required = false) String nombre, Model model){
-        if (nombre != null && !nombre.isEmpty()) {
-            model.addAttribute("listaFigura", figuraServices.findByNombre(nombre));
-        } else {
-            model.addAttribute("listaFigura", figuraServices.findAll());
-        }
-        return "/html/lista";
-    }*/
-
-
-    /**
-     * Novedad
-     * @param model
-     * @return
-     */
-
-
-
-
-
-  /*  @GetMapping("/detalle/novedad/{id}")
-    public String vearDetalle(@PathVariable("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<Figura> novedad = figuraServices.findById(id);
-
-        if (novedad.isPresent()) {
-            Figura novedad2 = novedad.get();
-            model.addAttribute("figura", novedad2);
-            return "html/inspeccionar/inspeccionarNovedad"; // Devolver la vista de detalle
-        }else{
-
-            return "redirect:/inicio";
-        }
-
-
-    }
-
-    @GetMapping("/figuras/novedad/new")
-    public String nuaevaFigura(Model model) {
-        log.info("Estoy en nuevaFigura");
-        model.addAttribute("novedad", new Figura()); // Cambio el nombre del objeto en el modelo
-        return "/html/agregarFigura/agregarNovedad";
-    }
-
-    @PostMapping("/figuras/novedad/new/submit") // Cambio la URL de la anotación
-    public String nuaevaMascotaSubmit(@ModelAttribute("novedad") Figura nuevaPersona) {
-        log.info(nuevaPersona.toString());
-        figuraServices.add(nuevaPersona);
-        return "redirect:/inicio";
-    }*/
-
     /**
      * One piece
      * @param model
@@ -439,39 +260,6 @@ public class CarritoController {
     }
 
 
-/*
-    @GetMapping("/detalle/onePiece/{id}")
-    public String verDetallee(@PathVariable("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
-        Optional<Figura> onePiece = figuraServices.findById(id);
 
-        if (onePiece.isPresent()) {
-            Figura  onePiece2 = onePiece.get();
-            model.addAttribute("figura", onePiece2);
-            return "html/inspeccionar/inspeccionarOnePiece"; // Devolver la vista de detalle
-        } else {
-
-            return "redirect:/inicio";
-        }
-
-
-    }
-
-
-
-
-    @GetMapping("/figuras/onePiece/new")
-    public String anuevaFigura(Model model) {
-        log.info("Estoy en nuevaFigura");
-        model.addAttribute("onePiece", new Figura()); // Cambio el nombre del objeto en el modelo
-        return "/html/agregarFigura/agregarOnePiece";
-    }
-
-    @PostMapping("/figuras/onePiece/new/submit") // Cambio la URL de la anotación
-    public String nuevaaaMascotaSubmit(@ModelAttribute("onePiece") Figura nuevaPersona) {
-        log.info(nuevaPersona.toString());
-        figuraServices.add(nuevaPersona);
-        return "redirect:/inicio";
-    }*/
 
 }

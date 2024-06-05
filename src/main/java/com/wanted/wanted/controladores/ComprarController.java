@@ -30,27 +30,6 @@ public class ComprarController {
      */
 
 
-/*
-    @GetMapping("/comprar")
-    public String comprar(@RequestParam("id") Long id, Model model) {
-       Optional<Figura>  figura = figuraServices.findById(id);
-        model.addAttribute("figura", figura);
-
-        if (figura.isPresent()) {
-            Figura figura2 = figura.get();
-            model.addAttribute("figura", figura2);
-            return "html/comprar/comprar"; // Devolver la vista de detalle
-        }else{
-
-            return "redirect:html/inicio";
-        }
-
-
-
-
-    }
-*/
-
 
     @GetMapping("/comprar/novedad")
     public String comprarNovedad(@RequestParam("id") Long id, Model model) {

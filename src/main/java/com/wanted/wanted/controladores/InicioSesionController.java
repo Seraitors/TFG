@@ -50,13 +50,7 @@ public class InicioSesionController {
      * EN le htmll cambiar para ver si carga y funciona
      * @return
      */
-/*
-    @PostMapping("/iniciarSesion/entrar")
-    public  String entrar(){
 
-        return "redirect:/inicio";
-    }
-*/
 
     /*Crear un idex para cuando te salgas de la aplicacion*/
     @GetMapping("/usuario/logout")

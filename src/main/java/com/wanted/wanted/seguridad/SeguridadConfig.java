@@ -48,6 +48,7 @@ public class SeguridadConfig {
                                                 .requestMatchers(AntPathRequestMatcher.antMatcher("/inicio/**"),
 
                                                                 AntPathRequestMatcher.antMatcher("/webjars/**"),
+                                                                AntPathRequestMatcher.antMatcher("/"),
                                                                 AntPathRequestMatcher.antMatcher("/api/**"),
                                                                  AntPathRequestMatcher.antMatcher("/api/payments/**"),
                                                              /*     AntPathRequestMatcher.antMatcher("/aaa/**"),*/
