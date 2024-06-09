@@ -3,6 +3,7 @@ package com.wanted.wanted.servicios;
 
 import com.wanted.wanted.entidades.Figura;
 import com.wanted.wanted.repositorio.FiguraRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,8 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+
+@Transactional
 public class FiguraServices {
 
     private  final FiguraRepository repositorio;
@@ -129,5 +132,12 @@ public class FiguraServices {
         }
 
         return figuras;
+    }
+
+
+    public void restarStock(String id ){
+
+        repositorio.restarStockById(id);
+
     }
 }

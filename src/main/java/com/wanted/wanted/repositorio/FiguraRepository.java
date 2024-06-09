@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -50,5 +51,11 @@ public interface FiguraRepository extends JpaRepository<Figura,Long>  {
 
     @Query("SELECT f FROM Figura f WHERE f.fecha_introducida = :fecha")
     List<Figura> findFigurasByFechaIntroducida(@Param("fecha") LocalDate fecha);
+
+
+    @Modifying
+    @Query("UPDATE Figura SET stock = stock - 1 WHERE id = :id")
+    void restarStockById(@Param("id") String id );
+
 
 }

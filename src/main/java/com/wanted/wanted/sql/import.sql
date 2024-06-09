@@ -1,14 +1,16 @@
-
+/*
 -- Insertar Roles
 INSERT INTO super_roles (nombre, descripcion) VALUES ('ROLE_USER', NULL);
+
+
 INSERT INTO super_roles (nombre, descripcion) VALUES ('ROLE_ADMIN', NULL);
 
 -- Insertar Usuarios (con contraseñas codificadas)
 INSERT INTO usuario (username, email, password, fecha_alta)
-VALUES ('user', 'user@wanted.es', 'encoded_user_password', NOW());
+VALUES ('user', 'user@wanted.es', 'user', NOW());
 
 INSERT INTO usuario (username, email, password, fecha_alta)
-VALUES ('admin', 'admin@wanted.es', 'encoded_admin_password', NOW());
+VALUES ('admin', 'admin@wanted.es', 'admin', NOW());
 
 -- Obtener IDs de Roles
 -- Supongamos que los IDs son 1 para ROLE_USER y 2 para ROLE_ADMIN
@@ -22,17 +24,8 @@ INSERT INTO rol_perfil (registar_id, rol_id) VALUES (2, 1); -- admin tiene ROLE_
 INSERT INTO rol_perfil (registar_id, rol_id) VALUES (2, 2); -- admin tiene ROLE_ADMIN
 
 
-INSERT INTO super_roles (nombre)
-VALUES ('ROLE_USER');
 
-INSERT INTO super_roles (nombre)
-VALUES ('ROLE_ADMIN');
 
-INSERT INTO usuario (username,email ,password)
-VALUES ('user','user@wanted.es','user');
-
-INSERT INTO usuario (username,email ,password )
-VALUES ('admin','admin@wanted.es','admin');
 
 INSERT INTO tipo_arco  (id, nombre) VALUES (1, 'Wano');
 
@@ -47,8 +40,6 @@ INSERT INTO tipo_arco (id, nombre) VALUES (5, 'Tierra');
 INSERT INTO tipo_arco (id, nombre) VALUES (6, 'Villa oculta de la Hoja');
 
 
-INSERT INTO figura (id, url, nombre, des, arco_id, stock, categoria, fecha_introducida, precio)
-VALUES (0, '/imagen/fotosNaruto/obito2.jpeg', 'Obito', 'Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200 cm', 5, 0, 'naruto', '2024-10-22', 50);
 
 INSERT INTO figura (id, url, nombre, des, arco_id, stock, categoria, fecha_introducida, precio)
 VALUES (1, '/imagen/fotosLista/luffy.jpg', 'Luffy', 'Esta es una figura de luffy cuando estaba en wano. El ancho es de 10 cm y de largo es 20 cm ', 1, 1, 'one-piece', '2022-10-10', 80);
@@ -87,7 +78,7 @@ INSERT INTO figura (id, url, nombre, des, arco_id, stock, categoria, fecha_intro
 VALUES (12, '/imagen/fotosLista/narutoSabio.jpg', 'Naruto', 'Naruto pelea contra Pain Modo sabio 20 cm de alto y de largo 200cm', 5, 2, 'naruto', '2004-08-12', 50);
 
 INSERT INTO figura (id, url, nombre, des, arco_id, stock, categoria, fecha_introducida, precio)
-VALUES (13, '/imagen/fotosNovedad/pain.jpg', 'Pain', 'Pain pelea contra Naruto Modo sabio 20 cm de alto y de largo 200cm', 5, 3, 'novedad', '2018-11-26', 45);
+VALUES (13, '/imagen/fotosNovedad/pain.jpeg', 'Pain', 'Pain pelea contra Naruto Modo sabio 20 cm de alto y de largo 200cm', 5, 3, 'novedad', '2018-11-26', 45);
 
 INSERT INTO figura (id, url, nombre, des, arco_id, stock, categoria, fecha_introducida, precio)
 VALUES (14, '/imagen/fotosNovedad/sora.jpg', 'Sora', 'figura de Sora de Kingdom Hearts con llave Espada de agua.El ancho es de 13 cm y de largo son 17 cm   ', 5, 2, 'novedad', '2020-11-26', 50);
@@ -239,3 +230,13 @@ VALUES (63, '/imagen/fotosDragonBall/gohan2.jpeg', 'Obito', 'Obito modo pelea en
 
 INSERT INTO figura (id, url, nombre, des, arco_id, stock, categoria, fecha_introducida, precio)
 VALUES (64, '/imagen/fotosDragonBall/goku5.jpeg', 'Obito', 'Obito modo pelea en la gran guerra .El ancho es de 20 cm y de largo 20cm', 5, 0, 'dragon-ball', '2024-10-22', 50);
+
+INSERT INTO figura (id, url, nombre, des, arco_id, stock, categoria, fecha_introducida, precio)
+VALUES (65, '/imagen/fotosNaruto/obito2.jpeg', 'Obito', 'Obito modo pelea en la gran guerra ninja 20 cm de alto y de largo 200 cm', 5, 0, 'naruto', '2024-10-22', 50);
+*/
+
+
+
+
+
+

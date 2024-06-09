@@ -120,7 +120,7 @@ public class InicioController {
     public  String comprar(){
 
 
-        return "html/comprar/comprar";
+        return "html/comprar/stripe";
     }
 
     /**

@@ -64,7 +64,8 @@ public class SeguridadConfig {
                                                                 AntPathRequestMatcher.antMatcher("/caracteristicas/**"),
                                                                 AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
                                                                 AntPathRequestMatcher.antMatcher("/encabezado/**"),
-                                                                AntPathRequestMatcher.antMatcher("/faqs/**")
+                                                                AntPathRequestMatcher.antMatcher("/faqs/**"),
+                                                                AntPathRequestMatcher.antMatcher("/Novedad/**")
                                                                   )
                                                 .permitAll()
                                                 .anyRequest().authenticated())
@@ -80,7 +81,8 @@ public class SeguridadConfig {
                 http.csrf(csrf -> csrf.ignoringRequestMatchers(
                                 AntPathRequestMatcher.antMatcher("/"),
                                 AntPathRequestMatcher.antMatcher("/webjars/**"),
-                                AntPathRequestMatcher.antMatcher("/css/**")
+                                AntPathRequestMatcher.antMatcher("/css/**"),
+                        AntPathRequestMatcher.antMatcher("/api/**")
                                ));
 
                 // Para que funcione la consola del h2

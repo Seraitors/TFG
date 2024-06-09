@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -134,6 +135,18 @@ public class AdminController {
 
         return "redirect:/admin/pagina";
     }
+
+
+/*    @DeleteMapping("/figuras/delete/{id}")
+    public String borrarTodo1(@PathVariable("id") Long id, Model model) {
+        Optional<Figura> figura = figuraServices.findById(id);
+        Optional<Usuario> usuario = usuarioServices.findById(id);
+
+        figura.ifPresent(figuraServices::delete);
+        usuario.ifPresent(usuarioServices::delete);
+
+        return "redirect:/admin/pagina";
+    }*/
 }
 
 

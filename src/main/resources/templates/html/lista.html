@@ -54,9 +54,6 @@
                 </form>
             </div>
 
-            <div class="d-inline-flex align-items-center" id="addToCart" style="margin-right: 20px;" data-id="${figura.id}" onclick="addFavoriteProduct(${figura.id})">
-                <i class="bi bi-bookmark bi-heart${figura.enFavoritos ? ' text-danger' : ''}"></i>
-            </div>
 
             <div>
                 <div th:if="${#authorization.expression('!isAuthenticated()')}">
