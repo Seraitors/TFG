@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="/css/naruto.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/figurasEstilosInicio.css">
+    <link rel="stylesheet" href="/css/fotosTamaño.css">
     <link rel="icon" href="/imagen/pestaña/corona.jpg" >
     <link rel="stylesheet" href="/css/comprarCarrito.css">
 </head>
 
-<body>
-<header class="p-3 bg-dark text-white fixed-top ">
+<body><header class="p-3 bg-dark text-white fixed-top">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -27,92 +27,71 @@
                 <li><a href="/faqs" id="linkFaqs" class="nav-link px-2 text-white">FAQs</a></li>
                 <li><a href="/encabezado" id="linkAcerca" class="nav-link px-2 text-white">Acerca</a></li>
             </ul>
-            <!-- Esto es para que te pueda filtrar estoy llamando al controlador-->
 
             <div id="toggleSearchForm" class="d-inline-flex align-items-center" style="margin-right: 10px;">
                 <i class="bi bi-search"></i>
                 <form id="searchForm" role="search" method="get" action="/figuras/filtrar">
                     <label for="buscarPorNombre" class="form-label" id="Filtro"></label>
-                    <input type="text" class="form-control form-control-dark" id="buscarPorNombre"
-                           placeholder="Buscar..." name="nombre">
+                    <input type="text" class="form-control form-control-dark" id="buscarPorNombre" placeholder="Buscar..." name="nombre">
                 </form>
             </div>
 
 
-
             <div>
-
                 <div th:if="${#authorization.expression('!isAuthenticated()')}">
                     <div class="d-flex justify-content-end">
                         <a th:href="@{/aaa}" class="btn btn-outline-light me-2">Iniciar sesión</a>
                         <a th:href="@{/usuario/signup}" class="btn btn-warning">Registrar</a>
                     </div>
                 </div>
-                <ul style="margin-top: auto" class="nav ">
+                <ul style="margin-top: auto" class="nav">
                     <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
-                        <!-- pones estio -->
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 0;">
-                                <span class="text-primary">
-                                    <span th:text="${#authentication.name}">Nombre de Usuario</span>
-                                </span>
+                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 0;">
+                            <span class="text-primary">
+                                <span id="nombre-usuario" th:text="${#authentication.name}">Nombre de Usuario</span>
+                            </span>
                         </a>
 
-                        <ul class="dropdown-menu"  >
-                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/meter/figura" class="nav-link px-2 text-secondary">Agregar
-                                figura</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a>
-                            </li>
+                        <ul class="dropdown-menu">
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/meter/figura" class="nav-link px-2 text-secondary">Agregar figura</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/pagina" class="nav-link px-2 text-secondary">Monitorizar pagina</a></li>
                             <hr class="dropdown-divider">
-                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/usuario" class="nav-link px-2 text-secondary">Usuario pagina</a>
-                            </li>
-
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/usuario" class="nav-link px-2 text-secondary">Usuario pagina</a></li>
                             <li>
                                 <form th:action="@{/usuario/logout}" method="post">
-                                    <button type="submit" class="btn btn-danger">Salir</button>
+                                    <button type="submit" id="btn-cerrar-sesion" class="btn btn-danger">Salir</button>
                                 </form>
                             </li>
                         </ul>
                     </li>
                 </ul>
-
             </div>
-
-
 
             <div id="cart" style="margin: 10px;">
                 <i class="bi bi-cart"></i>
                 <span id="cartItemCount">0</span>
             </div>
 
-            <div id="cartContainer" class="cart-container" style="display: none;">
-                <h2>Carrito de Compras</h2>
-                <ul id="cartItems"></ul>
-                <div id="cartTotal">Total: $0.00</div>
-                <button id="btnComprar">Comprar</button>
+            <div id="cartContainer" class="cart-container">
+                <div>
+                    <h2>Carrito de Compras</h2>
+                    <ul id="cartItems"></ul>
+                    <div id="cartTotal">Total: $0.00</div>
+                </div>
+                <div class="cart-buttons">
+                    <button id="btnLimpiar"  class="btnLimpiar">Limpiar</button>
+
+                    <a href="/comprar">
+
+                        <button id="btnComprar">Comprar</button>
+                    </a>
+                </div>
             </div>
-            <!--   Son para que te cuentes los inicios de sesion est atambien puesto arriba-->
-            <!--    <div  sec:authorize="hasRole('ROLE_ADMIN')" >
-
-                    <h1>hola mundo</h1>
-
-                         <span class="dropdown-item" th:text=" ' App: ' + ${session.numVisitasApp}"></span>
-
-
-                         <span class="dropdown-item" th:text=" ' index: ' + ${session.numVisitasIndex}"></span>
-                 </div>
-                  </div>-->
-
-
-
-
         </div>
     </div>
-    </div>
 </header>
+
 
 <div class="contenedor" style="margin-top: 100px">
     <h1>Novedades</h1>

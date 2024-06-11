@@ -41,10 +41,10 @@
         <img src="/imagen/encabezado/calabera.png" alt="Logo de la Página Web">
         <h4>Agregar elemento</h4>
     </div>
-    <form method="post" action="#" th:action="@{/figuras/new/submit}" th:object="${figuraDTO}">
+    <form method="post" th:action="@{/figura/new/submit}" th:object="${figuraDTO}" enctype="multipart/form-data">
         <div class="mb-3" th:classappend="${#fields.hasErrors('url')} ? 'has-error'">
-            <label class="form-label" for="url">URL</label>
-            <input class="form-control" type="text" id="url" placeholder="URL" th:field="*{url}">
+            <label class="form-label" for="url-error">Imagen</label>
+            <input class="form-control" type="file" id="file" name="file" required>
             <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}" class="help-block" id="url-error">Errores</span>
         </div>
 

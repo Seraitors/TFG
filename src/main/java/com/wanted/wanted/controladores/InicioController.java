@@ -11,8 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -84,12 +88,49 @@ public class InicioController {
         return "/html/agregarFigura/agregar";
     }
 
-    @PostMapping("/figuras/new/submit") // Cambio la URL de la anotación
+
+    @PostMapping("figura/new/submit")
+    public String submitNewFigura(@RequestParam("file") MultipartFile file, @ModelAttribute("figuraDTO") Figura figuraDTO, BindingResult result, Model model) {
+        if (file.isEmpty()) {
+            result.rejectValue("url", "file.empty", "El archivo de imagen es requerido");
+            return "/html/agregarFigura/agregar";
+        }
+
+        try {
+            String fileName = file.getOriginalFilename();
+            String uploadDir = new File("src/main/resources/static/imagen/fotosDragonBall/").getAbsolutePath();
+
+            // Crear el directorio si no existe
+            File dir = new File(uploadDir);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            // Guardar el archivo en el servidor
+            File dest = new File(uploadDir + File.separator + fileName);
+            file.transferTo(dest);
+
+            // Establecer la URL del archivo subido en el DTO
+            figuraDTO.setUrl("/imagen/fotosDragonBall/" + fileName);
+
+            // Guardar el resto de la información
+            figuraServices.save(figuraDTO);
+            return "redirect:/aaa";
+        } catch (IOException e) {
+            log.error("Error al subir el archivo", e);
+            result.rejectValue("url", "file.upload.error", "Error al subir el archivo");
+            return "/html/agregarFigura/agregar";
+        }
+    }
+
+
+
+ /*   @PostMapping("/figura/new/submit") // Cambio la URL de la anotación
     public String nuevaMascotaSubmit(@ModelAttribute("figuraDTO") Figura nuevaPersona) {
         log.info(nuevaPersona.toString());
         figuraServices.add(nuevaPersona);
         return "redirect:/inicio";
-    }
+    }*/
 
 
     @GetMapping("/admin/meter/figura")
