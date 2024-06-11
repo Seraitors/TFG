@@ -72,6 +72,30 @@ function obtenerPrecioTotal() {
     }
 }
 
+
+function obtenerVenta() {
+    const carrito = getCookie('cartItems');
+    const userLogCookie = getCookie('user-log');
+
+    if (userLogCookie.length !== 0) {
+        let carritoUserPrice = carrito[userLogCookie];
+        let nombreFigura = "";
+    let datosVivienda = document.getElementById('direccion').value  + " " +  document.getElementById('ciudad').value + " " + document.getElementById('codigo_postal').value + " " +  document.getElementById('pais').value
+    let venta={
+        "fechaCompra": new Date().toISOString(),
+        "nombre": document.getElementById('nombre').value,
+        "figuraComprada":"goku",
+        "precioTotal":obtenerPrecioTotal(),
+        "datosVivienda":datosVivienda
+
+
+    }
+
+    console.log(venta);
+
+    return venta;
+}}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const stripe = Stripe('pk_test_51PMaMmEU6FtnP23OvWcrCbFimaRvuLTiuDYgWqwAe5g69wTwZii9AuQi5WAR8io63FOdTdw1MfSS8piqWASmu6X900afNsbBt5');
     const elements = stripe.elements();
@@ -107,6 +131,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(obtenerCarritoUser())
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    // Aquí puedes manejar la respuesta si lo necesitas
+                })
+                .catch(error => {
+                    console.error('There was an error with the fetch operation:', error);
+                });
+
+            fetch('/api/postPayVenta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(obtenerVenta())
             })
                 .then(response => {
                     if (!response.ok) {

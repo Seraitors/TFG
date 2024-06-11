@@ -58,4 +58,6 @@ public interface FiguraRepository extends JpaRepository<Figura,Long>  {
     void restarStockById(@Param("id") String id );
 
 
+
+
 }

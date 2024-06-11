@@ -93,12 +93,15 @@ package com.wanted.wanted.controladores;
 import com.stripe.Stripe;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
+import com.wanted.wanted.entidades.Ventas;
 import com.wanted.wanted.servicios.FiguraServices;
+import com.wanted.wanted.servicios.VentasServices;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,6 +115,8 @@ public class PaymentController {
     @Autowired
     private FiguraServices figuraServices;
 
+    @Autowired
+    private VentasServices ventasServices;
     private String stripeApiKey="sk_test_51PMaMmEU6FtnP23OHX1jwNGRqHGjL7hXH6C8V0CT3x2mlUBoVsLUr0lLRSPWliTJRaHkBcWHKswzr4sfTzELp3hZ009qcZ8bUt";
 
     @PostConstruct
@@ -155,12 +160,28 @@ public class PaymentController {
             String id = (String) venta.get("id");
             figuraServices.restarStock(id);
 
+
         }
+
+
+        //aqui hacer correo
     }
 
 
 
+    @PostMapping("/postPayVenta")
+    public void procesarVentaInsertar(@RequestBody Map<String, Object> venta) {
 
+
+        Ventas venta_final = new Ventas();
+        venta_final.setFechaCompra( (String) venta.get("fechaCompra"));
+        venta_final.setNombre((String) venta.get("nombre"));
+        venta_final.setFiguraComprada((String) venta.get("figuraComprada"));
+        venta_final.setPrecioTotal((int)venta.get("precioTotal"));
+        venta_final.setDatosVivienda((String) venta.get("datosVivienda"));
+        ventasServices.insertarVenta(venta_final);
+
+    }
 
 
 

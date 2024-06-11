@@ -20,9 +20,9 @@ public class Ventas {
     @GeneratedValue
     @Column(nullable = false,unique = true)
     private  Long id;
-    private LocalDate fechaCompra;
+    private String fechaCompra;
     private String nombre;
-    private int figuraComprada;
+    private String figuraComprada;
     private int precioTotal;
     private String datosVivienda;
 
