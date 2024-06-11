@@ -115,13 +115,14 @@ public class InicioController {
 
             // Guardar el resto de la información
             figuraServices.save(figuraDTO);
-            return "redirect:/aaa";
+            return "redirect:/figuras/lista";
         } catch (IOException e) {
             log.error("Error al subir el archivo", e);
             result.rejectValue("url", "file.upload.error", "Error al subir el archivo");
             return "/html/agregarFigura/agregar";
         }
     }
+
 
 
 
