@@ -6,6 +6,7 @@ import com.wanted.wanted.servicios.EmailService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Slf4j
 @Controller
 public class RegistrarController {
-
+    @Autowired
     private final UsuarioServices usuarioServices;
+    @Autowired
     private final EmailService emailService;
 
     @GetMapping("/usuario/signup")
@@ -37,7 +39,7 @@ public class RegistrarController {
             return "html/registarSesion/registrar"; // Ruta correcta para mostrar errores
         } else {
             Usuario usuario = usuarioServices.findByUsernameOrEmail(dto.getUsername(), dto.getEmail());
-            if (usuario != null) { // El usuario ya existe
+            if (usuario != null || usuario.getUsername().equals(dto.getUsername()) || usuario.getEmail().equals(dto.getEmail()))  { // El usuario ya existe
                 bindingResult.rejectValue("username", "username.existente", "Ya existe un usuario con ese username");
                 return "html/registarSesion/registrar";
             }

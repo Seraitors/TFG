@@ -65,6 +65,12 @@ public class SeguridadConfig {
                                                                 AntPathRequestMatcher.antMatcher("/pagoEnca/**"),
                                                                 AntPathRequestMatcher.antMatcher("/encabezado/**"),
                                                                 AntPathRequestMatcher.antMatcher("/faqs/**"),
+                                                                AntPathRequestMatcher.antMatcher("/figuras/filtrar/**"),
+                                                                AntPathRequestMatcher.antMatcher("/devolucionesGarantias/**"),
+                                                                AntPathRequestMatcher.antMatcher("/contactar/**"),
+                                                                AntPathRequestMatcher.antMatcher("/privacidad/**"),
+                                                                AntPathRequestMatcher.antMatcher("/contacto/**"),
+                                                                AntPathRequestMatcher.antMatcher("/centroDeSoporte/**"),
                                                                 AntPathRequestMatcher.antMatcher("/Novedad/**")
                                                                   )
                                                 .permitAll()

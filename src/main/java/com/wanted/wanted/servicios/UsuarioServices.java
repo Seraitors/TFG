@@ -44,4 +44,11 @@ public class UsuarioServices {
     public void delete(Usuario m) {
         usuarioRepository.delete(m);
     }
+
+
+    public  Usuario obtenerUsuarioPoremail(String userName){
+
+        return  usuarioRepository.obtenerUsuarioPorUser(userName).orElse(null);
+
+    }
 }

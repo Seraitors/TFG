@@ -41,6 +41,7 @@ function obtenerCarritoUser() {
 
     if (userLogCookie.length !== 0) {
         let carritoUser = carrito[userLogCookie];
+        carritoUser.push({"userName":userLogCookie});
         console.log(carritoUser);
         return carritoUser;
     }
@@ -68,7 +69,7 @@ function obtenerPrecioTotal() {
 
 
         // Envía el total con IVA al backend
-        return totalMasIva;
+        return totalMasIva + 0.0;
     }
 }
 
@@ -78,18 +79,27 @@ function obtenerVenta() {
     const userLogCookie = getCookie('user-log');
 
     if (userLogCookie.length !== 0) {
-        let carritoUserPrice = carrito[userLogCookie];
-        let nombreFigura = "";
-    let datosVivienda = document.getElementById('direccion').value  + " " +  document.getElementById('ciudad').value + " " + document.getElementById('codigo_postal').value + " " +  document.getElementById('pais').value
-    let venta={
-        "fechaCompra": new Date().toISOString(),
-        "nombre": document.getElementById('nombre').value,
-        "figuraComprada":"goku",
-        "precioTotal":obtenerPrecioTotal(),
-        "datosVivienda":datosVivienda
 
 
-    }
+            let carritoUserPrice = carrito[userLogCookie];
+            let nombreFigura = "";
+
+            for (let item of carritoUserPrice) {
+                nombreFigura= nombreFigura+  item["name"] + " " ;
+            }
+
+            let datosVivienda = document.getElementById('direccion').value  + " " +  document.getElementById('ciudad').value + " " + document.getElementById('codigo_postal').value + " " +  document.getElementById('pais').value
+            let venta={
+                "fechaCompra": new Date().toISOString(),
+                "nombre": document.getElementById('nombre').value,
+                "figuraComprada":nombreFigura,
+                "precioTotal":obtenerPrecioTotal(),
+                "datosVivienda":datosVivienda
+
+
+            }
+
+
 
     console.log(venta);
 

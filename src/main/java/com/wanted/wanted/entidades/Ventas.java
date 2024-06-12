@@ -23,7 +23,7 @@ public class Ventas {
     private String fechaCompra;
     private String nombre;
     private String figuraComprada;
-    private int precioTotal;
+    private double precioTotal;
     private String datosVivienda;
 
 }

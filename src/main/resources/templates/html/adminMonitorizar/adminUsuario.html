@@ -89,14 +89,14 @@
                     <tr>
                         <th>Usuario</th>
                         <th>Username</th>
-                        <th>Fecha </th>
+
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="usuarios: ${usuario}">
                         <td th:text="${usuarios.username}">Nombre</td>
                         <td th:text="${usuarios.email}">Arco</td>
-                        <td th:text="${usuarios.fechaAlta}">Fecha</td>
+
                         <td>
                             <a th:href="@{/edit/usuario/{id}(id=${usuarios.id})}">
 
