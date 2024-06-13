@@ -39,7 +39,7 @@ public class RegistrarController {
             return "html/registarSesion/registrar"; // Ruta correcta para mostrar errores
         } else {
             Usuario usuario = usuarioServices.findByUsernameOrEmail(dto.getUsername(), dto.getEmail());
-            if (usuario != null || usuario.getUsername().equals(dto.getUsername()) || usuario.getEmail().equals(dto.getEmail()))  { // El usuario ya existe
+            if (usuario != null && usuario.getUsername().equals(dto.getUsername()) && usuario.getEmail().equals(dto.getEmail()))  { // El usuario ya existe
                 bindingResult.rejectValue("username", "username.existente", "Ya existe un usuario con ese username");
                 return "html/registarSesion/registrar";
             }

@@ -85,7 +85,7 @@ public class InicioController {
     public String nuevaFigura(Model model) {
         log.info("Estoy en nuevaFigura");
         model.addAttribute("figuraDTO", new Figura()); // Cambio el nombre del objeto en el modelo
-        return "/html/agregarFigura/agregar";
+        return "html/agregarFigura/agregar";
     }
 
 
@@ -93,7 +93,7 @@ public class InicioController {
     public String submitNewFigura(@RequestParam("file") MultipartFile file, @ModelAttribute("figuraDTO") Figura figuraDTO, BindingResult result, Model model) {
         if (file.isEmpty()) {
             result.rejectValue("url", "file.empty", "El archivo de imagen es requerido");
-            return "/html/agregarFigura/agregar";
+            return "html/agregarFigura/agregar";
         }
 
         try {
@@ -119,7 +119,7 @@ public class InicioController {
         } catch (IOException e) {
             log.error("Error al subir el archivo", e);
             result.rejectValue("url", "file.upload.error", "Error al subir el archivo");
-            return "/html/agregarFigura/agregar";
+            return "html/agregarFigura/agregar";
         }
     }
 
@@ -155,7 +155,7 @@ public class InicioController {
         } else {
             model.addAttribute("listaFigura", figuraServices.findAll() );
         }
-        return "/html/lista";
+        return "html/lista";
     }
 
 

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  figura-mysql:
+    image: mysql:latest
+    container_name: figura-mysql
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: quevedo
+      MYSQL_DATABASE: figuradb
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+
+  figura-app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: figura-app
+    ports:
+      - "7071:7071"  # Corregido el puerto para que coincida con el puerto expuesto en el Dockerfile
+    depends_on:
+      - figura-mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://figura-mysql:3306/figuradb  # Corregido el puerto del servidor MySQL a 3306
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: quevedo
