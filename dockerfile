@@ -10,7 +10,7 @@
 FROM openjdk:17-jdk-slim
 #WORKDIR /app
 #COPY --from=build /app/target/wanted-0.0.1-SNAPSHOT.jar /app/Wanted.jar
-COPY target/wanted-0.0.1-SNAPSHOT.jar /app/Wanted.jar
+COPY target/wanted-0.0.1-SNAPSHOT.jar Wanted.jar
 EXPOSE 7071
 
 ENTRYPOINT ["java", "-jar", "Wanted.jar"]
