@@ -19,7 +19,7 @@ services:
       dockerfile: dockerfile
     container_name: figura-app
     ports:
-      - "7071:7071"  # Corregido el puerto para que coincida con el puerto expuesto en el Dockerfile
+      - "7071:7071"  # Corregido el puerto para que coincida con el puerto expuesto en el Dockerfile  d 
     depends_on:
       - figura-mysql
     environment:
