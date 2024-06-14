@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar cancion</title>
+
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="icon" href="/imagen/pestaña/corona.jpg" >
+
+</head>
+<body>
+<h4>Agregar</h4>
+<form method="post" action="#"
+      th:action="@{/edit/usuario/submit}"
+      th:object="${usuario}">
+    <input type="hidden" th:field="*{id}">
+
+
+    <h4 >Agregar elemento</h4>
+    <div>
+        <div class="input-group mb-3"
+             th:classappend="${#fields.hasErrors('username')} ? 'has-error'">
+
+            <label class="form-label" for="username" > username</label>
+            <input class="form-control" type="text" id="username" placeholder="username" th:field="*{username}" />
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                  class="help-block" id="url-error">Errores</span>
+
+
+        </div>
+
+        <div class="input-group mb-3"
+             th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
+            <label class="form-label" for="email" >Email</label>
+            <input class="form-control" type="text" id="email" placeholder="email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                  class="help-block" id="id-error">Errores</span>
+
+        </div>
+
+        <div class="input-group mb-3"
+             th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+            <label class="form-label" for="password" >password</label>
+            <input class="form-control" type="text" id="password" placeholder="password" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                  class="help-block" id="password-error">password</span>
+
+        </div>
+    </div>
+
+    <button th:href="@{/figuras/lista}" type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}" ></script>
+</body>
+</html>

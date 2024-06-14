@@ -1,0 +1,35 @@
+
+.figura-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.figura {
+    width: 200px; /* Fixed width for each figure */
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.figura img {
+    width: 100%; /* Ensure the image fits within the figure */
+    height: 250px; /* Fixed height for the image */
+    object-fit: cover; /* Cover to maintain aspect ratio and cover the fixed height */
+}
+.figura h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    text-transform: capitalize; /* Capitalize the first letter of each word */
+}
+.figura p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+.figura .price {
+    font-weight: bold;
+}
+
