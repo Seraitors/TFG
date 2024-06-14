@@ -45,3 +45,21 @@ span.price {
     font-weight: bold;
     color: #007bff;
 }
+
+.addToCartBtn {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Quita el borde */
+    padding: 10px 20px; /* Espacio interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Quita la decoración de texto */
+    display: inline-block; /* Permite el ajuste del tamaño */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.addToCartBtn:hover {
+    background-color: #45a049; /* Cambio de color al pasar el cursor */
+}
