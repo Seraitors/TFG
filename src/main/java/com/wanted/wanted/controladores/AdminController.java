@@ -137,16 +137,7 @@ public class AdminController {
     }
 
 
-/*    @DeleteMapping("/figuras/delete/{id}")
-    public String borrarTodo1(@PathVariable("id") Long id, Model model) {
-        Optional<Figura> figura = figuraServices.findById(id);
-        Optional<Usuario> usuario = usuarioServices.findById(id);
 
-        figura.ifPresent(figuraServices::delete);
-        usuario.ifPresent(usuarioServices::delete);
-
-        return "redirect:/admin/pagina";
-    }*/
 }
 
 

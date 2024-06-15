@@ -57,21 +57,16 @@ public class InicioController {
         model.addAttribute("listaNovedad", figuras);
         return "html/novedad/index";
     }
-    /**
-     * Para coger le id y ver el detalle
-     * @param id
-     * @param model
-     * @return
-     */
+
     @GetMapping("/detalle/{id}")
     public String verDetalle(@PathVariable("id") Long id, Model model) {
-        // Obtener el objeto con el ID especificado y pasarlo al modelo
+
         Optional<Figura> figura = figuraServices.findById(id);
 
         if (figura.isPresent()) {
             Figura figura2 = figura.get();
              model.addAttribute("figura", figura2);
-               return "html/inspeccionar/inspeccionar"; // Devolver la vista de detalle
+               return "html/inspeccionar/inspeccionar";
         }else{
 
             return "redirect:/inicio";
@@ -84,7 +79,7 @@ public class InicioController {
     @GetMapping("/figuras/new")
     public String nuevaFigura(Model model) {
         log.info("Estoy en nuevaFigura");
-        model.addAttribute("figuraDTO", new Figura()); // Cambio el nombre del objeto en el modelo
+        model.addAttribute("figuraDTO", new Figura());
         return "html/agregarFigura/agregar";
     }
 
@@ -127,14 +122,6 @@ public class InicioController {
 
 
 
- /*   @PostMapping("/figura/new/submit") // Cambio la URL de la anotación
-    public String nuevaMascotaSubmit(@ModelAttribute("figuraDTO") Figura nuevaPersona) {
-        log.info(nuevaPersona.toString());
-        figuraServices.add(nuevaPersona);
-        return "redirect:/inicio";
-    }*/
-
-
     @GetMapping("/admin/meter/figura")
 
     public  String añadirFiguras (){
@@ -165,11 +152,6 @@ public class InicioController {
 
         return "html/comprar/stripe";
     }
-
-    /**
-     * Esto para añadir a favoritos
-     * @return
-     */
 
 
 
@@ -262,9 +244,7 @@ public class InicioController {
         return "html/encabezado/contacto";
     }
 
-    /**
-     * Dragon ball controler
-     */
+
 
     @GetMapping("/DragonBall")
     public String inicioOnePiece(Model model) {
@@ -275,9 +255,7 @@ public class InicioController {
     }
 
 
-    /**
-     * Naruto controller
-     */
+
 
     @GetMapping("/Naruto")
     public String inicioOnePipece(Model model) {
@@ -288,12 +266,6 @@ public class InicioController {
     }
 
 
-
-    /**
-     * One piece
-     * @param model
-     * @return
-     */
     @GetMapping("/OnePiece")
     public String inicioOneoPiece(  Model model) {
         List<Figura> figuras = figuraServices.getFigurasByCategoria("one-piece");

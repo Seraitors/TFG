@@ -25,11 +25,10 @@ public class InicioSesionController {
 
 
 
-    //registar son los usuarios
+
     private final UsuarioServices usuarioServices;
 
 
-    //roles son los perfiles
 
     private final RolServices rolServices;
     
@@ -44,45 +43,13 @@ public class InicioSesionController {
     public  String iniciarSesion1( Model model){
         return "redirect:/inicio";
     }
-    /**
-     * Mirar por qu eno me redirige al informacion
-     * Cambiar el post para ver si se queda guardado el perfil para la pagina cuando cargue 
-     * EN le htmll cambiar para ver si carga y funciona
-     * @return
-     */
 
-
-    /*Crear un idex para cuando te salgas de la aplicacion*/
     @GetMapping("/usuario/logout")
     public String salir(){
         return "redirect:/inicio";
     }
 
-/*    *//**
-     * Esto es para cuando le des al login que se vay aa ets apagina
-     * @return
-     *//*
-    @GetMapping("/despues/login")
-    public  String despuesLogin(){
 
-        return "html/inicarSesion/despuesLogin";
-
-    }
-
-    @PostMapping("/despues/login/entrar")
-    public  String entar1(){
-
-        return "redirect:/despues/login";
-    }
-    */
-
-
-
-   /* @PostMapping("/inicioSesion/logout")
-            public String logout () {
-            return "redirect:html/encabezado/iniciarSesion";
-        }
-*/
 }
 
 

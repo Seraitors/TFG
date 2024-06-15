@@ -72,6 +72,9 @@
         .form-header h4 {
             margin-bottom: 20px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -85,11 +88,12 @@
     <form method="post" action="#" th:action="@{/edit/submit}" th:object="${figura}">
         <input type="hidden" th:field="*{id}">
 
-        <div class="mb-3" th:classappend="${#fields.hasErrors('url')} ? 'has-error'">
-            <label class="form-label" for="url">URL</label>
+        <div class="mb-3 hidden" th:classappend="${#fields.hasErrors('url')} ? 'has-error'">
+            <label class="form-label" for="url">Ruta de imagen 'No tocar'</label>
             <input class="form-control" type="text" id="url" placeholder="URL" th:field="*{url}">
             <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}" class="help-block" id="url-error">Errores</span>
         </div>
+
 
 
 
