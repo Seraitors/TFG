@@ -95,7 +95,7 @@ public class PaymentController {
         if (usuario != null){
             emailService.sendRegistrationEmail(usuario.getEmail(),
                     "Compra en Wanted",
-                    "Gracias por tus Muertos");
+                    "Gracias por tu compra , pago echo corractemente. ");
         }
 
         //aqui hacer correo
