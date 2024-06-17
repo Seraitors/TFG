@@ -42,9 +42,6 @@ public class Text {
         private FiguraRepository figuraRepository;
 
 
-
-        @Autowired
-        private ArcoRepository arcoRepository;
     @Test
     public void testFindByNombre() {
         Figura figura = new Figura();

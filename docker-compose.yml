@@ -19,10 +19,10 @@ services:
       dockerfile: dockerfile
     container_name: figura-app
     ports:
-      - "7071:7071"  # Corregido el puerto para que coincida con el puerto expuesto en el Dockerfile  d 
+      - "7071:7071"
     depends_on:
       - figura-mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://figura-mysql:3306/figuradb  # Corregido el puerto del servidor MySQL a 3306
+      SPRING_DATASOURCE_URL: jdbc:mysql://figura-mysql:3306/figuradb
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: quevedo

@@ -1,0 +1,1 @@
+Para arrancar la apliacacion lo unico que hay que hacer es darle hal play del compose o hacerle un docker up -d
